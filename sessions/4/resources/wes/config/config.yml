@@ -1,0 +1,17 @@
+wes:
+  serverProps:
+    publicApiPort: 5000
+    adminApiPort: 5001
+  serviceInfo:
+    id: wes.starterkit.federatedgenomics.org
+    name: Federated Genomics WES service
+    description: Workflow Execution Service (WES) instance. Enables small-scale test workflows to be run over the web. Deployment of the GA4GH Starter Kit.
+    contactUrl: mailto:nobody@federatedgenomics.org
+    documentationUrl: https://apidocs.federatedgenomics.org/wes
+    createdAt: "2022-07-10T09:00:00Z"
+    updatedAt: "2022-07-10T09:00:00Z"
+    environment: development
+    version: 1.0.0
+    organization:
+      name: Federated Genomics
+      url: https://this-is-not-a-site.federatedgenomics.org
