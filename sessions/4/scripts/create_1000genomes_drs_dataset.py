@@ -20,25 +20,63 @@ def main():
         drs_object = {
             "id": sample + ".1kgenomes.wgs.downsampled.cram",
             "description": "1000 Genomes WGS Downsample CRAM for Sample: " + sample,
-            "createdTime": "2022-07-10T09:00:00Z",
-            "mimeType": "application/cram",
+            "created_time": "2022-07-10T09:00:00Z",
+            "mime_type": "application/cram",
             "name": sample + ".1kgenomes.wgs.downsampled.cram",
             "size": 0,
-            "updatedTime": "2022-07-10T09:00:00Z",
+            "updated_time": "2022-07-10T09:00:00Z",
             "version": "0.1.0",
             "aliases": [
-                sample + " WGS Downsampled"
+                sample + " WGS Downsampled CRAM"
             ],
             "checksums": [
             ],
-            "isBundle": False,
-            "awsS3AccessObjects": []
+            "is_bundle": False,
+            "aws_s3_access_objects": []
         }
         output_fh.write(json.dumps(drs_object) + "\n")
 
         # CRAI DRS OBJECT
+        drs_object = {
+            "id": sample + ".1kgenomes.wgs.downsampled.crai",
+            "description": "1000 Genomes WGS Downsample CRAI for Sample: " + sample,
+            "created_time": "2022-07-10T09:00:00Z",
+            "mime_type": "application/crai",
+            "name": sample + ".1kgenomes.wgs.downsampled.crai",
+            "size": 0,
+            "updated_time": "2022-07-10T09:00:00Z",
+            "version": "0.1.0",
+            "aliases": [
+                sample + " WGS Downsampled CRAI"
+            ],
+            "checksums": [
+            ],
+            "is_bundle": False,
+            "aws_s3_access_objects": []
+        }
+        output_fh.write(json.dumps(drs_object) + "\n")
 
         # BUNDLE DRS OBJECT
+        drs_object = {
+            "id": sample + ".1kgenomes.wgs.downsampled.bundle",
+            "description": "1000 Genomes WGS Downsample CRAM/CRAI Bundle for Sample: " + sample,
+            "created_time": "2022-07-10T09:00:00Z",
+            "name": sample + ".1kgenomes.wgs.downsampled.bundle",
+            "size": 0,
+            "updated_time": "2022-07-10T09:00:00Z",
+            "version": "0.1.0",
+            "aliases": [
+                sample + " WGS Downsampled CRAM/CRAI Bundle"
+            ],
+            "checksums": [
+            ],
+            "is_bundle": True,
+            "drs_object_children": [
+                {"id": sample + ".1kgenomes.wgs.downsampled.cram"},
+                {"id": sample + ".1kgenomes.wgs.downsampled.crai"}
+            ]
+        }
+        output_fh.write(json.dumps(drs_object) + "\n")
 
     output_fh.close()
 

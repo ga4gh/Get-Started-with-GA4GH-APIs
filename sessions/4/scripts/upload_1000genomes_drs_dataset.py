@@ -12,6 +12,11 @@ def main():
         drs_object = json.loads(drs_object_json)
 
         response = requests.post(url, json=drs_object)
+        if response.status_code != 200:
+            print(drs_object["id"])
+            print(response)
+            print(response.content)
+            print("*")
 
 if __name__ == "__main__":
     main()
