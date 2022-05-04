@@ -10,21 +10,40 @@ In this session, participants will gain familiarity with the GA4GH Starter Kit, 
 
 ## Tutorial
 
-### As Admin - Initialize databases for DRS and WES Starter Kits
+** Note: If you have not already done so, clone the tutorial repository and enter the working directory for Session 4:
 
-```bash
-docker pull ga4gh/ga4gh-starter-kit-utils:0.1.1
+```
+git clone https://github.com/ga4gh/ismb-2022-ga4gh-tutorial.git
+cd ismb-2022-ga4gh-tutorial/sessions/4
 ```
 
-```bash
-docker run ga4gh/ga4gh-starter-kit-utils:0.1.1 database list-migrations drs
+### As Admin - Initialize databases for DRS and WES Starter Kits
+
+```
+docker-compose up -d
 ```
 
 ### As Admin - Start services
 
 ### As Admin - Test DRS and WES services
 
+```
+GET http://localhost:4000/ga4gh/drs/v1/service-info
+```
+
+Some more HTTP calls to DRS here...
+
+```
+GET http://localhost:5000/ga4gh/wes/v1/service-info
+```
+
+Run "hello world" workflows in Nextflow and WDL here...
+
 ### As Admin - Load 1000 Genomes dataset into DRS
+
+```
+python scripts/create_1000genomes_drs_dataset.py
+```
 
 ### As Researcher - Inspect DRS for 1000 Genomes data
 

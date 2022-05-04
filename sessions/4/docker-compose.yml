@@ -1,5 +1,8 @@
 version: "3.9"
 services:
+  
+  # DRS
+
   drs-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.1
     volumes:
@@ -12,33 +15,54 @@ services:
     volumes:
       - "./resources/drs/db:/db"
     command: database add-test-dataset -d jdbc:sqlite:/db/drs.db drs@v0.2.2
-  # drs:
-  #   image: ga4gh/ga4gh-starter-kit-drs:0.2.2
-  #   hostname: drs.starterkit.federatedgenomics.org
-  #   ports:
-  #     - "4000:4000"
-  #     - "4001:4001"
-  #   volumes:
-  #     - "./resources/drs/config:/config"
-  #     - "./resources/drs/db:/db"
-  #   command: -c /config/config.yml
-  # wes:
-  #   image: ga4gh/ga4gh-starter-kit-wes:0.3.0-nextflow
-  #   hostname: wes.starterkit.federatedgenomics.org
-  #   ports:
-  #     - "5000:5000"
-  #     - "5001:5001"
-  #   volumes:
-  #     - "./resources/wes/config:/config"
-  #     - "./resources/wes/db:/db"
-  #     - "/var/run/docker.sock:/var/run/docker.sock"
-  #     - "/tmp/shared/wes:/tmp/shared/wes"
-  #   command: -c /config/config.yml
-  # cromwell-docker:
-  #   image: ga4gh/cromwell-docker:test
-  #   hostname: cromwell-docker.federatedgenomics.org
-  #   volumes:
-  #     - "/var/run/docker.sock:/var/run/docker.sock"
-  #     - "/tmp/shared/cromwell/runs:/tmp/shared/cromwell/runs"
-  #   working_dir: /tmp/shared/cromwell/runs
-  #   command: server
+  drs:
+    depends_on:
+      - drs-migrate
+      - drs-dataset
+    image: ga4gh/ga4gh-starter-kit-drs:0.2.2
+    hostname: drs.starterkit.federatedgenomics.org
+    ports:
+      - "4000:4000"
+      - "4001:4001"
+    volumes:
+      - "./resources/drs/config:/config"
+      - "./resources/drs/db:/db"
+    command: -c /config/config.yml
+
+  # WES
+
+  wes-migrate:
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.1
+    volumes:
+      - "./resources/wes/db:/db"
+    command: database create-tables -d jdbc:sqlite:/db/wes.db wes@v0.3.0
+  wes-dataset:
+    depends_on:
+      - wes-migrate
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.1
+    volumes:
+      - "./resources/wes/db:/db"
+    command: database add-test-dataset -d jdbc:sqlite:/db/wes.db wes@v0.3.0
+  wes:
+    depends_on:
+      - wes-migrate
+      - wes-dataset
+    image: ga4gh/ga4gh-starter-kit-wes:0.3.0-nextflow
+    hostname: wes.starterkit.federatedgenomics.org
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+    volumes:
+      - "./resources/wes/config:/config"
+      - "./resources/wes/db:/db"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/tmp/shared/wes:/tmp/shared/wes"
+    command: -c /config/config.yml
+  cromwell-docker:
+    image: ga4gh/cromwell-docker:test
+    hostname: cromwell-docker.federatedgenomics.org
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+      - "/tmp/shared/cromwell/runs:/tmp/shared/cromwell/runs"
+    working_dir: /tmp/shared/cromwell/runs
+    command: server

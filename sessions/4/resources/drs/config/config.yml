@@ -2,6 +2,8 @@ drs:
   serverProps:
     publicApiPort: 4000
     adminApiPort: 4001
+  databaseProps:
+    url: jdbc:sqlite:/db/drs.db
   serviceInfo:
     id: drs.starterkit.federatedgenomics.org
     name: Federated Genomics DRS service
