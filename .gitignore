@@ -1,1 +1,3 @@
 *.db
+sessions/4/tmp/*
+!sessions/4/tmp/.file
