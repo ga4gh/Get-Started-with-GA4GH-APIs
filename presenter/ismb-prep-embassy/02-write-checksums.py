@@ -5,8 +5,10 @@ import sys
 def get_md5_and_write(infile, outfile):
     with open(infile, "rb") as f:
         file_hash = hashlib.md5()
-        while chunk := f.read(8192):
+        chunk = f.read(8192)
+        while chunk:
             file_hash.update(chunk)
+            chunk = f.read(8192)
     
         open(outfile, "w").write(file_hash.hexdigest()+"\n")
 
