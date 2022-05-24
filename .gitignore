@@ -2,3 +2,9 @@
 sessions/4/tmp/*
 !sessions/4/tmp/.file
 presenter/ismb-prep-embassy/.env.sh
+presenter/ismb-prep-embassy/downsampled/*
+!presenter/ismb-prep-embassy/downsampled/.file
+presenter/ismb-prep-embassy/downsampled-highcov/*
+!presenter/ismb-prep-embassy/downsampled-highcov/.file
+presenter/ismb-prep-embassy/ref/*
+!presenter/ismb-prep-embassy/ref/.file
