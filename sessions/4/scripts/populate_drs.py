@@ -10,6 +10,8 @@ def post_drs_object_to_server(object_id=None, description=None, name=None,
     checksum_md5=None, checksum_sha1=None, checksum_sha256=None,
     drs_object_parent_ids=[], aws_file_key=None):
 
+    """Submit DRS Object to the local Starter Kit DRS server"""
+
     url = "http://localhost:5001/admin/ga4gh/drs/v1/objects"
     drs_object_json = {
         "id": object_id,
@@ -49,6 +51,8 @@ def post_drs_object_to_server(object_id=None, description=None, name=None,
         print(message)
 
 def add_bed_to_drs():
+    """Register test dataset BED file on local Starter Kit DRS service"""
+
     post_drs_object_to_server(
         object_id="cnest.downsampling.intervals",
         description="Downsampling interval file for test runs of CNest",
@@ -67,6 +71,8 @@ def add_bed_to_drs():
     )
 
 def add_ref_to_drs():
+    """Register GRCh38 reference genome on local Starter Kit DRS service"""
+
     # bundle
     post_drs_object_to_server(
         object_id="GRCh38.reference.bundle",
@@ -118,6 +124,10 @@ def add_ref_to_drs():
     )
 
 def add_1k_genomes_highcov_dataset_to_drs():
+    """
+    Register test CRAM dataset (from 1000 genomes) on local Starter Kit DRS 
+    """
+
     # create root bundle for high coverage downsampled dataset
     root_bundle_id = "1000genomes.highcov.downsampled"
     post_drs_object_to_server(
@@ -217,6 +227,8 @@ def add_1k_genomes_highcov_dataset_to_drs():
         )
 
 def main():
+    """Register all test dataset DRS Objects on local Starter Kit DRS server"""
+
     add_bed_to_drs()
     add_ref_to_drs()
     add_1k_genomes_highcov_dataset_to_drs()
