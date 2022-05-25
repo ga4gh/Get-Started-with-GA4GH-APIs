@@ -12,13 +12,74 @@ In this session, we will introduce two more GA4GH standard APIs: Data Connect an
 
 ## Tutorial
 
+** Note: If you have not already done so, clone the tutorial repository and enter the working directory for Session 5:
+
+```
+git clone https://github.com/ga4gh/ismb-2022-ga4gh-tutorial.git
+cd ismb-2022-ga4gh-tutorial/sessions/5
+```
+
 ### As Admin - Deploy services
+
+```
+docker-compose up -d
+```
 
 ### As Admin - Load 1000 Genomes search data into Data Connect
 
+The Data Connect Starter Kit comes loaded with two default datasets - phenopackets v1 dataset and 200 genome samples from the 1000 genomes sample dataset.   
+
 ### As Researcher - Explore Data Connect endpoints
 
-### As Researcher - Perform search queries on /search endpoint
+### 1. /tables
+
+```
+GET http://localhost:4500/tables
+```
+
+### 2. /table/<table_name>/info
+
+```
+GET http://localhost:4500/table/one_thousand_genomes_sample/info
+```
+
+### 3. /table/<table_name>/data
+
+```
+GET http://localhost:4500/table/one_thousand_genomes_sample/data
+```
+
+### 4. /search
+
+search for samples with population_code = "PUR" and sex = "female"
+```
+POST: 
+http://localhost:4500/search
+
+HEADER: 
+content-type: application/json
+
+REQUEST BODY:
+{
+  "query": "select sample_name , sex , population_code , population_name from one_thousand_genomes_sample where population_code=? and sex=?;",
+  "parameters": [ "PUR","female" ]
+} 
+```
+
+search for samples with superpopulation_name = "European Ancestry" and population_code = "FIN"
+```
+POST: 
+http://localhost:4500/search
+
+HEADER: 
+content-type: application/json
+
+REQUEST BODY:
+{
+  "query": "select * from one_thousand_genomes_sample where superpopulation_name = ? and population_code=?;",
+  "parameters": [ "European Ancestry","FIN" ]
+} 
+```
 
 ### As Researcher - Attempt to access DRS objects, get auth info
 
