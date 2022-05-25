@@ -31,25 +31,31 @@ The Data Connect Starter Kit comes loaded with two default datasets - phenopacke
 
 ### As Researcher - Explore Data Connect endpoints
 
-### 1. /tables
+### 1. /service-info
+
+```
+GET http://localhost:4500/service-info
+```
+
+### 2. /tables
 
 ```
 GET http://localhost:4500/tables
 ```
 
-### 2. /table/<table_name>/info
+### 3. /table/<table_name>/info
 
 ```
 GET http://localhost:4500/table/one_thousand_genomes_sample/info
 ```
 
-### 3. /table/<table_name>/data
+### 4. /table/<table_name>/data
 
 ```
 GET http://localhost:4500/table/one_thousand_genomes_sample/data
 ```
 
-### 4. /search
+### 5. /search
 
 search for samples with population_code = "PUR" and sex = "female"
 ```
