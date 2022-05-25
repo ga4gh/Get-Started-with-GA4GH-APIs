@@ -1,7 +1,7 @@
 drs:
   serverProps:
-    publicApiPort: 4000
-    adminApiPort: 4001
+    publicApiPort: 5000
+    adminApiPort: 5001
   databaseProps:
     url: jdbc:sqlite:/db/drs.db
   serviceInfo:
