@@ -22,8 +22,8 @@ services:
     image: ga4gh/ga4gh-starter-kit-drs:0.2.2
     hostname: drs.starterkit.federatedgenomics.org
     ports:
-      - "4000:4000"
-      - "4001:4001"
+      - "5000:5000"
+      - "5001:5001"
     volumes:
       - "./resources/drs/config:/config"
       - "./resources/drs/db:/db"
@@ -50,8 +50,8 @@ services:
     image: ga4gh/ga4gh-starter-kit-wes:0.3.0-nextflow
     hostname: wes.starterkit.federatedgenomics.org
     ports:
-      - "5000:5000"
-      - "5001:5001"
+      - "6000:6000"
+      - "6001:6001"
     volumes:
       - "./resources/wes/config:/config"
       - "./resources/wes/db:/db"

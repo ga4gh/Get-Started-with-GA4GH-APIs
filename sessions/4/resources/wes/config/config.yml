@@ -1,7 +1,7 @@
 wes:
   serverProps:
-    publicApiPort: 5000
-    adminApiPort: 5001
+    publicApiPort: 6000
+    adminApiPort: 6001
   serviceInfo:
     id: wes.starterkit.federatedgenomics.org
     name: Federated Genomics WES service
