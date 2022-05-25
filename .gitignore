@@ -1,6 +1,8 @@
 *.db
 sessions/4/tmp/*
 !sessions/4/tmp/.file
+sessions/5/tmp/*
+!sessions/5/tmp/.file
 presenter/ismb-prep-embassy/.env.sh
 presenter/ismb-prep-embassy/downsampled/*
 !presenter/ismb-prep-embassy/downsampled/.file
