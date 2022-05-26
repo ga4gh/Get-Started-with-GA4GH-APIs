@@ -9,7 +9,7 @@ def main():
     fh = open(sql_script, "a")
 
 
-    broker_url = "https://passport-broker.federatedgenomics.org"
+    broker_url = "http://localhost:4455/"
     broker_secret = "1F4B4EBC23ABE9C1AFFFD5531C95F"
     insert_broker = "INSERT INTO passport_broker (url, secret) VALUES ('%s', '%s');\n" % (broker_url, broker_secret)
     fh.write(insert_broker)

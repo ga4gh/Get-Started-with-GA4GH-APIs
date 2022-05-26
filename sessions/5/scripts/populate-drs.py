@@ -1,3 +1,5 @@
+import json
+import os
 import requests
 import datetime
 
@@ -131,6 +133,121 @@ def add_1k_genomes_lowcov_dataset_to_drs():
     """
     Register test CRAM dataset (from 1000 genomes) on local Starter Kit DRS
     """
+
+    # First, register a project-level bundle for each superpopulation
+    superpops = {
+        "EAS": {
+            "name": "EastAsianAncestry",
+            "desc": "East Asian ancestry",
+            "visa_id": 1
+        },
+        "EUR": {
+            "name": "EuropeanAncestry",
+            "desc": "European ancestry",
+            "visa_id": 2
+        },
+        "AFR": {
+            "name": "AfricanAncestry",
+            "desc": "African ancestry",
+            "visa_id": 3
+        },
+        "AMR": {
+            "name": "AmericanAncestry",
+            "desc": "American ancestry",
+            "visa_id": 4
+        },
+        "SAS": {
+            "name": "SouthAsianAncestry",
+            "desc": "South Asian ancestry",
+            "visa_id": 5
+        }
+    }
+    superpop_keys = ["EAS", "EUR", "AFR", "AMR", "SAS"]
+
+    for key in superpop_keys:
+        superpop = superpops[key]
+        superpop_bundle_id = "1000genomes.%s.superpopulation" % superpop["name"]
+        post_drs_object_to_server(
+            object_id=superpop_bundle_id,
+            description="Controlled access CRAMs for individuals with " + superpop["desc"],
+            name="1000 Genomes Controlled Access Low Coverage CRAMs - " + superpop["name"],
+            version="1.0.0",
+            aliases=[
+                superpop["name"]
+            ],
+            is_bundle=True
+        )
+
+    # Register 200 CRAM/CRAI pairs
+
+    # First, load igsr_sampled.ndjson to create mapping of sample name to superpop
+    superpop_mapping_file = os.path.join("data", "igsr_samples.ndjson")
+    superpop_json_records = [json.loads(record.rstrip()) for record in open(superpop_mapping_file, "r").readlines()]
+    superpop_map = {record["sample_name"] : record["superpopulation_code"] for record in superpop_json_records}
+    
+    input_file = os.path.join("data", "1000genomes-testdataset-metadata.tsv")
+    input_fh = open(input_file, "r")
+    header = input_fh.readline().rstrip().split("\t")
+    for record in input_fh:
+        record_split = record.rstrip().split("\t")
+        record_dict = {header[i] : record_split[i] for i in range(0, len(header))}
+        superpop = superpops[superpop_map[record_dict["sample_id"]]]
+        superpop_bundle_id = "1000genomes.%s.superpopulation" % superpop["name"]
+        cram_bundle_id = "%s.1000genomes.lowcov.downsampled.bundle" % (record_dict["sample_id"])
+        
+        # CRAM/CRAI Bundle
+        post_drs_object_to_server(
+            object_id=cram_bundle_id,
+            description="Low coverage, downsampled CRAM/CRAI bundle for sample %s" % (record_dict["sample_id"]),
+            name="%s 1000 Genomes Downsampled Low Coverage CRAM Bundle" % (record_dict["sample_id"]),
+            version="1.0.0",
+            aliases=[
+                "%s low coverage downsampled bundle" % record_dict["sample_id"]
+            ],
+            is_bundle=True,
+            drs_object_parent_ids=[superpop_bundle_id],
+            passport_visa_id=superpop["visa_id"]
+        )
+        
+        # CRAM File
+        post_drs_object_to_server(
+            object_id="%s.1000genomes.lowcov.downsampled.cram" % (record_dict["sample_id"]),
+            description="Low coverage, downsampled CRAM file for sample %s" % (record_dict["sample_id"]),
+            name="%s 1000 Genomes Downsampled Low Coverage CRAM file" % (record_dict["sample_id"]),
+            version="1.0.0",
+            aliases=[
+                "%s low coverage downsampled CRAM" % record_dict["sample_id"]
+            ],
+            is_bundle=False,
+            size=record_dict["cram_size"],
+            mime_type="application/cram",
+            checksum_md5=record_dict["cram_md5"],
+            checksum_sha1=record_dict["cram_sha1"],
+            checksum_sha256=record_dict["cram_sha256"],
+            drs_object_parent_ids=[cram_bundle_id],
+            aws_file_key="/data/1000genomes/cram/lowcov/%s.lowcoverage.downsampled.cram" % record_dict["sample_id"],
+            passport_visa_id=superpop["visa_id"]
+        )
+
+        #CRAI File
+        post_drs_object_to_server(
+            object_id="%s.1000genomes.lowcov.downsampled.crai" % (record_dict["sample_id"]),
+            description="Low coverage, downsampled CRAI file for sample %s" % (record_dict["sample_id"]),
+            name="%s 1000 Genomes Downsampled Low Coverage CRAI file" % (record_dict["sample_id"]),
+            version="1.0.0",
+            aliases=[
+                "%s low coverage downsampled CRAI" % record_dict["sample_id"]
+            ],
+            is_bundle=False,
+            size=record_dict["crai_size"],
+            mime_type="application/crai",
+            checksum_md5=record_dict["crai_md5"],
+            checksum_sha1=record_dict["crai_sha1"],
+            checksum_sha256=record_dict["crai_sha256"],
+            drs_object_parent_ids=[cram_bundle_id],
+            aws_file_key="/data/1000genomes/cram/lowcov/%s.lowcoverage.downsampled.cram.crai" % record_dict["sample_id"],
+            passport_visa_id=superpop["visa_id"]
+        )
 
 def main():
     """Register all test dataset DRS Objects on local Starter Kit DRS server"""
