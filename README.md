@@ -17,6 +17,8 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 * Ensure the Docker daemon is running on your local machine at the start of the tutorial.
 
+###### Setting up Python
+
 * Install [Python](https://www.python.org/downloads/) on your local machine. Verify installation by running `python --version` in your terminal, you should see the version printed.
     * Note: If you installed Python3 you should place a 3 at the end of your commands, for example `python3` and `pip3`
 
