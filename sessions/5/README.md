@@ -78,7 +78,7 @@ POST:
 http://localhost:4500/search
 
 HEADER: 
-content-type: application/json
+Content-Type: application/json
 
 REQUEST BODY:
 {
@@ -90,6 +90,60 @@ REQUEST BODY:
 ### As Researcher - Attempt to access DRS objects, get auth info
 
 ### As Admin - Create visas on the passport broker
+
+### 1. Confirm the Passport Broker is working
+```
+GET http://localhost:4500/ga4gh/passport/v1/service-info
+```
+
+### 2. Create a visa
+```
+POST http://localhost:4501/admin/ga4gh/passport/v1/visas
+
+HEADER:
+Content-Type: application/json
+
+REQUEST BODY: 
+{
+  "id": "6ecaef9e-d6bb-4d96-9aed-ca517ceed8a1",
+  "visaName": "1000GenomesIndividualsWithEastAsianAncestry",
+  "visaIssuer": "https://federatedgenomics.org/",
+  "visaDescription": "Controls access to genomic data obtained from individuals with East Asian ancestry",
+  "visaSecret": "29CD6DFBB2684BAEACED3B1C6A7F4"
+}
+```
+
+Repeat the process for all the other visas (one-by-one):
+```
+{
+  "id": "3af0e101-cd51-4fe4-aa8c-29a69be48fe0",
+  "visaName": "1000GenomesIndividualsWithEuropeanAncestry",
+  "visaIssuer": "https://federatedgenomics.org/",
+  "visaDescription": "Controls access to genomic data obtained from individuals with European ancestry",
+  "visaSecret": "47B42DF32976DFDBD6EC4D9ED2593"
+},
+{
+  "id": "e38f656e-3146-4b06-92f2-6edea44f0cd1",
+  "visaName": "1000GenomesIndividualsWithAfricanAncestry",
+  "visaIssuer": "https://federatedgenomics.org/",
+  "visaDescription": "Controls access to genomic data obtained from individuals with African ancestry",
+  "visaSecret": "582A164E2C5DA377F3E3F76158CE6"
+},
+{
+  "id": "b62249d0-d71d-42d2-9a67-55003fdae8ec",
+  "visaName": "1000GenomesIndividualsWithAmericanAncestry",
+  "visaIssuer": "https://federatedgenomics.org/",
+  "visaDescription": "Controls access to genomic data obtained from individuals with American ancestry",
+  "visaSecret": "BF9CAB5D5157C5C21EBDEE6C91D91"
+},
+{
+  "id": "55cb5d06-bbf3-428b-a822-3565557518ba",
+  "visaName": "1000GenomesIndividualsWithSouthAsianAncestry",
+  "visaIssuer": "https://federatedgenomics.org/",
+  "visaDescription": "Controls access to genomic data obtained from individuals with South Asian ancestry",
+  "visaSecret": "9474C832599DC95F949DB3CAE443E"
+}
+```
 
 ### As Researcher - Register account with the passport broker, request visas
 
