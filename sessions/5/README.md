@@ -151,10 +151,86 @@ Repeat the process for all the other visas (one-by-one):
 }
 ```
 
-### As Researcher - Register account with the passport broker, request visas
+### As Researcher - Register account with the passport broker
+Visit the [welcome page](http://127.0.0.1:4455/welcome)
+
+Towards the bottom, under Account Management press [Sign Up](http://127.0.0.1:4455/registration) to create an account.
+
+After signing up, you should see your account information on the welcome page, under User Information.
+
+Once the sign up is complete, a user in the passport broker service will also be created. Confirm the new user is created:
+```
+GET http://localhost:4501/admin/ga4gh/passport/v1/users
+```
+You should see your account's ID in the array of user IDs.
 
 ### As Admin - Grant visas to researcher
+```
+PUT http://localhost:4501/admin/ga4gh/passport/v1/<USER_ID>
+
+HEADER:
+Content-Type: application/json
+
+REQUEST BODY: 
+{
+    "id": "<USER_ID>",
+    "passportVisaAssertions": [
+        {
+            "status": "active",
+            "passportVisa": {
+                "id": "6ecaef9e-d6bb-4d96-9aed-ca517ceed8a1",
+                "visaName": "1000GenomesIndividualsWithEastAsianAncestry",
+                "visaIssuer": "https://federatedgenomics.org/",
+                "visaDescription": "Controls access to genomic data obtained from individuals with East Asian ancestry"
+            }
+        },
+        {
+            "status": "active",
+            "passportVisa": {
+                "id": "3af0e101-cd51-4fe4-aa8c-29a69be48fe0",
+                "visaName": "1000GenomesIndividualsWithEuropeanAncestry",
+                "visaIssuer": "https://federatedgenomics.org/",
+                "visaDescription": "Controls access to genomic data obtained from individuals with European ancestry",
+                "visaSecret": "47B42DF32976DFDBD6EC4D9ED2593"
+            }
+        },
+        {
+            "status": "active",
+            "passportVisa": {
+                "id": "e38f656e-3146-4b06-92f2-6edea44f0cd1",
+                "visaName": "1000GenomesIndividualsWithAfricanAncestry",
+                "visaIssuer": "https://federatedgenomics.org/",
+                "visaDescription": "Controls access to genomic data obtained from individuals with African ancestry",
+                "visaSecret": "582A164E2C5DA377F3E3F76158CE6"
+            }
+        },
+        {
+            "status": "active",
+            "passportVisa": {
+                "id": "b62249d0-d71d-42d2-9a67-55003fdae8ec",
+                "visaName": "1000GenomesIndividualsWithAmericanAncestry",
+                "visaIssuer": "https://federatedgenomics.org/",
+                "visaDescription": "Controls access to genomic data obtained from individuals with American ancestry",
+                "visaSecret": "BF9CAB5D5157C5C21EBDEE6C91D91"
+            }
+        },
+        {
+            "status": "active",
+            "passportVisa": {
+                "id": "55cb5d06-bbf3-428b-a822-3565557518ba",
+                "visaName": "1000GenomesIndividualsWithSouthAsianAncestry",
+                "visaIssuer": "https://federatedgenomics.org/",
+                "visaDescription": "Controls access to genomic data obtained from individuals with South Asian ancestry",
+                "visaSecret": "9474C832599DC95F949DB3CAE443E"
+            }
+        }
+    ]
+}
+```
 
 ### As Researcher - Log in to broker, select visas and obtain passport
+Back in the [welcome page](http://127.0.0.1:4455/welcome) press [Get Passport Token](http://127.0.0.1:4455/passport). On this page you should see your assigned visas, select some of them and press Get Passport Token.
+
+You can confirm the validity of your JWT token by visiting https://jwt.io/ and pasting the JWT token to examine its contents.
 
 ### As Researcher - Take passport to DRS to obtain access to DRS objects
