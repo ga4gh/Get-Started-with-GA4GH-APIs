@@ -22,7 +22,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 * Install [Python](https://www.python.org/downloads/) on your local machine. Verify installation by running `python --version` in your terminal, you should see the version printed.
     * Note: If you installed Python3 you should place a 3 at the end of your commands, for example `python3` and `pip3`
 
-* The Package Installer for Python (pip) should come pre-installed, you can confirm it by running the command `pip --version`.
+* The Package Installer for Python `pip` should come pre-installed, you can confirm it by running the command `pip --version`.
     * If `pip` is not installed, visit the [pip documentation website](https://pip.pypa.io/en/stable/installation/) to set it up.
 
 * Download the required python modules by running the command `pip install -r starterkit-requirements.txt`
