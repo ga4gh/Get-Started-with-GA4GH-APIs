@@ -121,21 +121,27 @@ Repeat the process for all the other visas (one-by-one):
   "visaIssuer": "https://federatedgenomics.org/",
   "visaDescription": "Controls access to genomic data obtained from individuals with European ancestry",
   "visaSecret": "47B42DF32976DFDBD6EC4D9ED2593"
-},
+}
+```
+```
 {
   "id": "e38f656e-3146-4b06-92f2-6edea44f0cd1",
   "visaName": "1000GenomesIndividualsWithAfricanAncestry",
   "visaIssuer": "https://federatedgenomics.org/",
   "visaDescription": "Controls access to genomic data obtained from individuals with African ancestry",
   "visaSecret": "582A164E2C5DA377F3E3F76158CE6"
-},
+}
+```
+```
 {
   "id": "b62249d0-d71d-42d2-9a67-55003fdae8ec",
   "visaName": "1000GenomesIndividualsWithAmericanAncestry",
   "visaIssuer": "https://federatedgenomics.org/",
   "visaDescription": "Controls access to genomic data obtained from individuals with American ancestry",
   "visaSecret": "BF9CAB5D5157C5C21EBDEE6C91D91"
-},
+}
+```
+```
 {
   "id": "55cb5d06-bbf3-428b-a822-3565557518ba",
   "visaName": "1000GenomesIndividualsWithSouthAsianAncestry",
@@ -143,9 +149,6 @@ Repeat the process for all the other visas (one-by-one):
   "visaDescription": "Controls access to genomic data obtained from individuals with South Asian ancestry",
   "visaSecret": "9474C832599DC95F949DB3CAE443E"
 }
-```
-```
-hi
 ```
 
 ### As Researcher - Register account with the passport broker, request visas
