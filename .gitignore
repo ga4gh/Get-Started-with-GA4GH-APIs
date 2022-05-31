@@ -10,3 +10,6 @@ presenter/ismb-prep-embassy/downsampled-highcov/*
 !presenter/ismb-prep-embassy/downsampled-highcov/.file
 presenter/ismb-prep-embassy/ref/*
 !presenter/ismb-prep-embassy/ref/.file
+
+# Ignore Mac OS DS Store files
+**/.DS_Store
