@@ -34,25 +34,25 @@ The Data Connect Starter Kit comes loaded with two default datasets - phenopacke
 ### 1. /service-info
 
 ```
-GET http://localhost:4500/service-info
+GET http://localhost:4800/service-info
 ```
 
 ### 2. /tables
 
 ```
-GET http://localhost:4500/tables
+GET http://localhost:4800/tables
 ```
 
 ### 3. /table/<table_name>/info
 
 ```
-GET http://localhost:4500/table/one_thousand_genomes_sample/info
+GET http://localhost:4800/table/one_thousand_genomes_sample/info
 ```
 
 ### 4. /table/<table_name>/data
 
 ```
-GET http://localhost:4500/table/one_thousand_genomes_sample/data
+GET http://localhost:4800/table/one_thousand_genomes_sample/data
 ```
 
 ### 5. /search
@@ -60,7 +60,7 @@ GET http://localhost:4500/table/one_thousand_genomes_sample/data
 search for samples with population_code = "PUR" and sex = "female"
 ```
 POST: 
-http://localhost:4500/search
+http://localhost:4800/search
 
 HEADER: 
 content-type: application/json
@@ -75,7 +75,7 @@ REQUEST BODY:
 search for samples with superpopulation_name = "European Ancestry" and population_code = "FIN"
 ```
 POST: 
-http://localhost:4500/search
+http://localhost:4800/search
 
 HEADER: 
 Content-Type: application/json
