@@ -28,13 +28,13 @@ docker-compose up -d
 ### As Admin - Test DRS and WES services
 
 ```
-GET http://localhost:4000/ga4gh/drs/v1/service-info
+GET http://localhost:5000/ga4gh/drs/v1/service-info
 ```
 
 Some more HTTP calls to DRS here...
 
 ```
-GET http://localhost:5000/ga4gh/wes/v1/service-info
+GET http://localhost:6000/ga4gh/wes/v1/service-info
 ```
 
 Run "hello world" workflows in Nextflow and WDL here...
