@@ -20,6 +20,18 @@ Candidate scripts to be selected from https://github.com/ga4gh/fasp-scripts/tree
 
 For follow on from morning sessions will likely use CNest example (complex), or SAMTools (less computaionally ambitious, but easier).
 
+### Draft component list
+
+| Component/Standard | Implementation used                                          |
+| ------------------ | ------------------------------------------------------------ |
+| DRS Service        | dbGaP DRS Service                                            |
+| WES Service        | WES Starter Kit implementation                               |
+| Data Discovery     | KIds First FHIR or Data Connect                              |
+| Passport provided  | dbGap Passport Provider (not required for open data)         |
+| Candidate dataset  | Clinical and Genetic Evaluation of Individuals with Undiagnosed Disorders Through the Undiagnosed Diseases Network (UDN) [dbgap:phs001232.v1.p1](http://identifiers.org/dbgap:phs001232.v1.p1) |
+
+
+
 ## Session specific requirements
 
 Jupyter
@@ -30,7 +42,7 @@ Starter accounts with cloud credits on selected platforms (to be listed e.g. Sev
 
 ### Working notes
 
-*Notes on candidate scripts and servers.*
+*Notes on candidate scripts and servers. (still for discussion but see specific proposal as above)*
 
 *FASPNotebook02  - is working end to end. CRDC and TopMed data sources and SB WES Client.* 
 
