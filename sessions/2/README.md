@@ -6,7 +6,7 @@
 
 **Slides:** [link](https://docs.google.com/presentation/d/1zuw_KVO_TQy91ODBWYmObkc_FTkAK7iy-SETjTY5TkQ)
 
-<!--Suggestion that this session would be #4 in the running order.-->
+*Suggestion that this session would be #4 in the running order.*
 
 The key addition from previous sessions is to run scripts and notebooks against GA4GH services provided by GA4GH Driver Projects and other data providers.
 
@@ -18,7 +18,7 @@ Participants will interact with Driver Project implementations of Data Connect a
 
 Candidate scripts to be selected from https://github.com/ga4gh/fasp-scripts/tree/master/notebooks
 
-For follow on from morning sessions will likely use CNest example.
+For follow on from morning sessions will likely use CNest example (complex), or SAMTools (less computaionally ambitious, but easier).
 
 ## Session specific requirements
 
@@ -27,3 +27,19 @@ Jupyter
 Fasp-scripts
 
 Starter accounts with cloud credits on selected platforms (to be listed e.g. Seven Bridges BioData Catalyst)
+
+### Working notes
+
+*Notes on candidate scripts and servers.*
+
+*FASPNotebook02  - is working end to end. CRDC and TopMed data sources and SB WES Client.* 
+
+*FASPNotebook06 is potentially nice - SRA data source and DNAStack WES Client - issues are: a) cannot get results back b) Use of the signed URL wasn't working* 
+
+*The above all hide the specifics of the WES call in the WES Client (not all bad if the client code is in scope for the tutorial)*
+
+*Probably to merge with something like SBCGC_WES_Example.ipynb which deals with constructing the WES call in the notebook.*
+
+*SBCGC_WES_Example.ipynb was the basis for the CNest example*
+
+## 

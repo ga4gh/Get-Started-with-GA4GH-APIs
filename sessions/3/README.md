@@ -16,7 +16,7 @@ In this session, participants will learn how to run workflows on the data access
 
 ## Tutorial
 
-Possibly CNest compute on TopMed etc. doesn't feature intil this session.
+Possibly CNest compute on TopMed etc. doesn't feature until this session.
 
 ### Session specific requirements
 
