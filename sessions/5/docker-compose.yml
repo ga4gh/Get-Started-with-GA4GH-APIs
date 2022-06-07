@@ -2,16 +2,12 @@ version: "3.9"
 services:
 
   # DATA CONNECT
-
-  # Doesn't work together with the passport-broker since it also uses port 4500.
-  # If passport-broker's ports are changed it stops working.
-  # Can potentially change the port of data-connect, or figure out why passport-broker didn't work
-
-  # data-connect:
-  #   image: ga4gh/ga4gh-starter-kit-data-connect:0.1.0
-  #   hostname: dataconnect.starterkit.ga4gh.org
-  #   ports:
-  #     - "4500:4500"
+  data-connect:
+     image: ga4gh/ga4gh-starter-kit-data-connect:0.1.0
+     hostname: dataconnect.starterkit.ga4gh.org
+     ports:
+       - "4800:4500" # public
+       - "4801:4501" # admin
 
   # PASSPORT
   kratos-migrate:
