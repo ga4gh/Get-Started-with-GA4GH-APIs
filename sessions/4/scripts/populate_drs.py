@@ -45,9 +45,9 @@ def post_drs_object_to_server(object_id=None, description=None, name=None,
 
     response = requests.post(url, json=drs_object_json)
     if response.status_code != 200:
-        message = "WARNING: Unsuccessful object creation for DRS object with" \
-            + " ID: '" + object_id + "'." \
-            + " Status Code: " + str(response.status_code)
+        response_json = response.json()
+        message = ( "WARNING: Unsuccessful object creation for DRS object with ID: '{}'. " \
+        + "Status Code: {}. Error Message: {}").format(object_id, response_json["status_code"], response_json["msg"])
         print(message)
 
 def add_bed_to_drs():
