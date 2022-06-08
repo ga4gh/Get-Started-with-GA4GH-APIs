@@ -1,4 +1,4 @@
-# Supporting: Running a local metaresolver
+# Supporting: Running a local metaresolver using Bioregistry
 
 ## Outline
 
@@ -6,36 +6,39 @@ This shows how a Bioregistry resolver can be used to resolve prefixed DRS ids.
 
 ## Tutorial
 
-GitHub Repository: https://github.com/biopragmatics/Bioregistry
+Bioregistry GitHub Repository: https://github.com/biopragmatics/Bioregistry
 
 ### **Installation:**
 
-Follow the install instructions [here](https://github.com/biopragmatics/Bioregistry#-installation), using the "development mode for local curation" option.
+Follow the install instructions in the repository [here](https://github.com/biopragmatics/Bioregistry#-installation), using the "development mode for local curation" option.
 
  As described [here](https://github.com/biopragmatics/Bioregistry#%EF%B8%8F-resolver-app), add the web installation and start the web application locally.
 
-Check the port on which Bioregistry starts, and use that in all calls to Bioregistry.
+Note that by default Bioregistry starts on port 5000, which appears to be also the default port for the DRS server. Take care in the order in which you start services, note port numbers and adjust examples shown here as appropriate. 
 
-Note that by default Bioregistry starts on port 5000, which appears to be default port for the DRS server. Take care in the order in which you start services, note port numbers and adjust examples shown here as appropriate. In the following examples we will assume Bioregistry is running on port 5010.
+In the following examples we will assume Bioregistry is running on port 5010.
 
 ### **Check resolution of regular DRS ids**
 
-Your local Bioregistry should resolve any DRS prefix that has been registered in identifiers.org
+Your local Bioregistry should resolve any DRS prefix that has been registered in identifiers.org or other prefix registries.
 
-For example, http://localhost:5010/4dfc:dg.4dfc:098e18d4-5ece-4bc6-9a79-68f5082da9bc
+For example, http://localhost:5010/dg.4dfc:098e18d4-5ece-4bc6-9a79-68f5082da9bc
 
 ### Add a prefix for your DRS server to the local registry
 
-Add an entry to the Bioregistry/exports/registry/registry.json file following this patten
+Add an entry to the bioregistry/exports/registry/registry.json file following this pattern
 
- `"`mydrs": {`
-   `"description": "Local DRS Server",`
-   `"example": "81944ba1",`
-   `"homepage": "https://localhost",`
-   `"name": "My local DRS server",`
-   `"pattern": ".*",`
-   `"sampleId": "81944ba1",`
-   "uri_format": "https://localhost:5000/ga4gh/drs/v1/objects/$1" }`
+ ```json
+ "mydrs": {
+   "description": "Local DRS Server",
+   "example": "81944ba1",
+   "homepage": "https://localhost",
+   "name": "My local DRS server",
+   "pattern": ".*",
+   "sampleId": "81944ba1",
+   "uri_format": "https://localhost:5000/ga4gh/drs/v1/objects/$1"
+   }
+ ```
 
 You should use values specific to your DRS server as follows:
 
