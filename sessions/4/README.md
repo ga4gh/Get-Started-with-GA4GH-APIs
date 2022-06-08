@@ -42,7 +42,7 @@ Run "hello world" workflows in Nextflow and WDL here...
 ### As Admin - Load 1000 Genomes dataset into DRS
 
 ```
-python scripts/create_1000genomes_drs_dataset.py
+python scripts/populate_drs.py
 ```
 
 ### As Researcher - Inspect DRS for 1000 Genomes data
