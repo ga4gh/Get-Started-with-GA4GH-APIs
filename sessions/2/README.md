@@ -27,8 +27,8 @@ For follow on from morning sessions will likely use CNest example (complex), or 
 | DRS Service        | dbGaP DRS Service                                            |
 | WES Service        | WES Starter Kit implementation                               |
 | Data Discovery     | KIds First FHIR or Data Connect                              |
-| Passport provided  | dbGap Passport Provider (not required for open data)         |
-| Candidate dataset  | Clinical and Genetic Evaluation of Individuals with Undiagnosed Disorders Through the Undiagnosed Diseases Network (UDN) [dbgap:phs001232.v1.p1](http://identifiers.org/dbgap:phs001232.v1.p1) |
+| Passport provider  | dbGap Passport Provider (not required for open data)         |
+| Candidate dataset  | Clinical and Genetic Evaluation of Individuals with Undiagnosed Disorders Through the Undiagnosed Diseases Network (UDN) [*phs001232.v4.p2*](*phs001232.v4.p2*) |
 
 
 
