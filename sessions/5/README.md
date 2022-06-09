@@ -87,7 +87,34 @@ REQUEST BODY:
 } 
 ```
 
+### As Admin - Add the broker and visa information to the DRS server and load 1000 genomes data into DRS.
+```
+python3 scripts/add-known-visas-to-drs.py
+```
+```
+python3 scripts/populate-drs.py
+```
 ### As Researcher - Attempt to access DRS objects, get auth info
+
+### 1. Get DRS endpoint from the DRS URI retrieved from the Data Connect /search response
+
+```
+GET http://localhost:5000/ga4gh/drs/v1/objects/HG00740.1000genomes.lowcov.downsampled.cram
+```
+You will see an error response
+```json
+{
+"timestamp": "2022-06-08T21:53:08Z",
+"status_code": 401,
+"error": "Unauthorized",
+"msg": "Request for controlled data is missing user passport(s)"
+}
+```
+### 2. Get the passport broker and visa details from the DRS server
+
+```
+....
+```
 
 ### As Admin - Create visas on the passport broker
 
@@ -234,3 +261,5 @@ Back in the [welcome page](http://127.0.0.1:4455/welcome) press [Get Passport To
 You can confirm the validity of your JWT token by visiting https://jwt.io/ and pasting the JWT token to examine its contents.
 
 ### As Researcher - Take passport to DRS to obtain access to DRS objects
+
+[ TODO: explore bulk DRS request as well]
