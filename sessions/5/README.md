@@ -110,10 +110,19 @@ You will see an error response
 "msg": "Request for controlled data is missing user passport(s)"
 }
 ```
-### 2. Get the passport broker and visa details from the DRS server
+### 2. Get the passport broker and visa details from the DRS server for a drs object id
 
 ```
-....
+OPTIONS http://localhost:5000/ga4gh/drs/v1/objects/HG00740.1000genomes.lowcov.downsampled.cram
+```
+
+### 3. Get the passport broker and visa details from the DRS server for an array of drs object ids
+
+```
+OPTIONS http://localhost:5000/ga4gh/drs/v1/objects
+
+REQUEST BODY
+{"selection": ["HG00740.1000genomes.lowcov.downsampled.cram", "HG00740.1000genomes.lowcov.downsampled.crai"]}
 ```
 
 ### As Admin - Create visas on the passport broker
@@ -262,4 +271,31 @@ You can confirm the validity of your JWT token by visiting https://jwt.io/ and p
 
 ### As Researcher - Take passport to DRS to obtain access to DRS objects
 
-[ TODO: explore bulk DRS request as well]
+### 1. Request DRS object 
+
+```
+POST http://localhost:5000/ga4gh/drs/v1/objects/HG00740.1000genomes.lowcov.downsampled.cram
+
+BODY
+{ "passports": ["<jwt token>"] } 
+
+```
+
+### 2. Bulk request DRS objects
+
+```
+POST http://localhost:5000/ga4gh/drs/v1/objects
+
+BODY
+{
+    "selection":
+    [
+        "HG00740.1000genomes.lowcov.downsampled.cram",
+        "HG00740.1000genomes.lowcov.downsampled.crai"
+    ],
+    "passports":
+    [
+        "<jwt token>"
+    ]
+}
+```

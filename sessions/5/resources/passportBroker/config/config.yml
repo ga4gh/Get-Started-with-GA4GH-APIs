@@ -1,0 +1,5 @@
+passportBrokerConfig:
+  brokerProps:
+    # should have an entry drs table "passport_broker". Added to the db using tmp/add-known-visas-to-drs.py
+    passportIssuer: http://localhost:4455/
+    brokerSecret: 1F4B4EBC23ABE9C1AFFFD5531C95F

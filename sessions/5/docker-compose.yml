@@ -78,6 +78,9 @@ services:
     networks:
       - intranet
     hostname: passport-broker.ga4gh.org
+    volumes:
+      - "./resources/passportBroker/config:/config"
+    command: -c /config/config.yml
 
   # DRS
   drs-migrate:
