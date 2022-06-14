@@ -25,17 +25,17 @@ cd ismb-2022-ga4gh-tutorial/sessions/5
 docker-compose up -d
 ```
 
-###### If a port is already in use...
+#### If a port is already in use...
 
 You might see an error like this:
 ```
 ERROR: for 5_drs_1 Cannot start service drs: Ports are not available: listen tcp 0.0.0.0:5000: bind: address already in use
 ```
-In this case you can check which service is using a specific port:
+In this case you can check which service is using that specific port:
 ```
 sudo lsof -i :<port>
 ```
-You can also kill the process that is using the port (first note their PID from the command above). 
+You can also kill the process that is using the port (You can find the PID of the process by running the command above). 
 Make sure to not kill a vital process!
 ```
 kill -9 <PID>
