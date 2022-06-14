@@ -25,7 +25,20 @@ cd ismb-2022-ga4gh-tutorial/sessions/5
 docker-compose up -d
 ```
 
-#### If a port is already in use...
+#### Potential Error: "127.0.0.1 redirected you too many times..."
+
+The front end service requires cookies. Please make sure cookies are enabled in your browser of choice.
+
+If cookies are enabled and you are still getting this error: 
+1. Spin down the docker compose and clear all docker services 
+```
+docker-compose down
+docker container prune
+```
+2. Clear your cookies and cache in your browser
+3. Then start the docker service again...
+
+#### Potential Error: If a port is already in use...
 
 You might see an error like this:
 ```
