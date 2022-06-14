@@ -27,7 +27,7 @@ docker-compose up -d
 
 #### Potential Error: "127.0.0.1 redirected you too many times..."
 
-The front end service requires cookies. Please make sure cookies are enabled in your browser of choice.
+The front-end service requires cookies. Please make sure cookies are enabled in your browser of choice.
 
 If cookies are enabled and you are still getting this error: 
 1. Spin down the docker compose and clear all docker services 
