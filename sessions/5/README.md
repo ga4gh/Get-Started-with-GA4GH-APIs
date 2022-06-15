@@ -87,6 +87,17 @@ REQUEST BODY:
 } 
 ```
 
+### 6. Convert DRS Object URI to HTTP URL
+
+drs://{host}/{id} -> http(s)://{host}/ga4gh/drs/v1/objects/{id}
+
+```
+drs://localhost:5000/HG00740.1000genomes.lowcov.downsampled.cram ->
+
+http://localhost:5000/ga4gh/drs/v1/objects/HG00740.1000genomes.lowcov.downsampled.cram
+
+```
+
 ### As Admin - Add the broker and visa information to the DRS server and load 1000 genomes data into DRS.
 ```
 python3 scripts/add-known-visas-to-drs.py

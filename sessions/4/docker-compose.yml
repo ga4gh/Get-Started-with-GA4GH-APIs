@@ -28,6 +28,8 @@ services:
       - "./resources/drs/config:/config"
       - "./resources/drs/db:/db"
     command: -c /config/config.yml
+    networks:
+      - intranet
 
   # WES
 
@@ -47,7 +49,7 @@ services:
     depends_on:
       - wes-migrate
       - wes-dataset
-    image: ga4gh/ga4gh-starter-kit-wes:0.3.0-nextflow
+    image: ga4gh/ga4gh-starter-kit-wes:0.3.1-nextflow
     hostname: wes.starterkit.federatedgenomics.org
     ports:
       - "6000:6000"
@@ -57,12 +59,9 @@ services:
       - "./resources/wes/db:/db"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/tmp/shared/wes:/tmp/shared/wes"
+    working_dir: /tmp/shared/wes
     command: -c /config/config.yml
-  cromwell-docker:
-    image: ga4gh/cromwell-docker:test
-    hostname: cromwell-docker.federatedgenomics.org
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/tmp/shared/cromwell/runs:/tmp/shared/cromwell/runs"
-    working_dir: /tmp/shared/cromwell/runs
-    command: server
+    networks:
+      - intranet
+networks:
+  intranet:
