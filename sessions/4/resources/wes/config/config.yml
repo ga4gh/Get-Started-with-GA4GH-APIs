@@ -2,6 +2,8 @@ wes:
   serverProps:
     publicApiPort: 6000
     adminApiPort: 6001
+  databaseProps:
+    url: jdbc:sqlite:/db/wes.db
   serviceInfo:
     id: wes.starterkit.federatedgenomics.org
     name: Federated Genomics WES service

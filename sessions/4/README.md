@@ -17,36 +17,104 @@ git clone https://github.com/ga4gh/ismb-2022-ga4gh-tutorial.git
 cd ismb-2022-ga4gh-tutorial/sessions/4
 ```
 
-### As Admin - Initialize databases for DRS and WES Starter Kits
+### As Admin - Start services and initialize databases for DRS and WES Starter Kits
 
 ```
 docker-compose up -d
 ```
 
-### As Admin - Start services
+Note: For this part of the tutorial we assume the data is public access 
+and there is no authorization needed. 
 
-### As Admin - Test DRS and WES services
+### Load 1000 genomes data into DRS
+
+To check if the DRS service is up and running as expected, check if the service-info endpoint is working as expected
+
+```
+GET http://localhost:5000/ga4gh/drs/v1/service-info
+```
+service-info endpoint should return the server details of the current implementation.
+
+To load the 1000 genomes data into DRS server, run
+
+```
+python3 scripts/populate-drs.py
+```
+
+### Explore DRS endpoints
+### 1. GET /service-info
 
 ```
 GET http://localhost:5000/ga4gh/drs/v1/service-info
 ```
 
-Some more HTTP calls to DRS here...
+### 2. GET /objects/{id}
+
+```
+GET http://localhost:5000/ga4gh/drs/v1/objects/HG00449.1000genomes.highcov.downsampled.cram
+```
+
+
+
+### 3. Bulk request /objects
+
+```
+POST http://localhost:5000/ga4gh/drs/v1/objects
+
+BODY
+{
+    "selection":
+        [
+            "HG00449.1000genomes.lowcov.downsampled.cram",
+            "HG00449.1000genomes.lowcov.downsampled.crai"
+        ],
+}
+```
+
+### 4. OPTIONS /objects/{id}
+
+```
+OPTIONS http://localhost:5000/ga4gh/drs/v1/objects/HG00449.1000genomes.highcov.downsampled.cram 
+```
+we will talk in detail about the case where the data is not publicly accessible and there is authorization involved in the next part of the tutorial.
+
+POST method is also available for the /objects/{id} endpoint. You can learn more about the specification [here](https://ga4gh.github.io/data-repository-service-schemas/preview/release/drs-1.2.0/docs/).
+
+
+### Explore WES endpoints
+### 1. /service-info
 
 ```
 GET http://localhost:6000/ga4gh/wes/v1/service-info
 ```
 
-Run "hello world" workflows in Nextflow and WDL here...
 
-### As Admin - Load 1000 Genomes dataset into DRS
+### 3. List runs
 
 ```
-python scripts/populate_drs.py
+GET http://localhost:6000/ga4gh/wes/v1/runs
 ```
 
-### As Researcher - Inspect DRS for 1000 Genomes data
+### 4. Add a nextflow workflow 
 
-### As Researcher - Run CNest workflow (Nextflow)
+```
+POST http://localhost:6000/ga4gh/wes/v1/runs
 
-### As Researcher - Run CNest workflow (WDL)
+REQUEST HEADER 
+Content-Type: multipart/form-data
+
+REQUEST BODY (form-data)
+workflow_type:NEXTFLOW
+workflow_type_version:21.04.0
+workflow_url:https://github.com/jb-adams/samtools-view-count-nf
+workflow_params:{"input":<drs uri>}
+```
+TODO: fix wes - /runs
+TODO: fix wes - drs hostname resolution
+### 5. Monitor the workflow
+
+
+### 6. Add a nextflow workflow - Samtools view
+
+
+### 7. Monitor the workflow
