@@ -1,8 +1,8 @@
 *.db
-sessions/4/tmp/*
-!sessions/4/tmp/.file
-sessions/5/tmp/*
-!sessions/5/tmp/.file
+sessions/StarterKits/Part_1_DRS_WES/tmp/*
+!sessions/StarterKits/Part_1_DRS_WES/tmp/.file
+sessions/StarterKits/Part_2_DataConnect_Passports/tmp/*
+!sessions/StarterKits/Part_2_DataConnect_Passports/tmp/.file
 presenter/ismb-prep-embassy/.env.sh
 presenter/ismb-prep-embassy/downsampled/*
 !presenter/ismb-prep-embassy/downsampled/.file
