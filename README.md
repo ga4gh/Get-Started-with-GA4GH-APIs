@@ -28,6 +28,23 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 * Download the required python modules by running the command `pip install -r starterkit-requirements.txt`
 
 ## Schedule
+### Starter Kits: 
+### Part I: Data abstraction and workflow execution
+
+**Time:** TBD
+
+**Summary:** Run DRS and WES instances using Docker, execute a nextflow workflow using WES
+
+[**Go to Starter Kits Part I**](sessions/StarterKits/Part_1_DRS_WES/README.md)
+
+### Part II: Controlled data access and data discovery
+
+**Time:** TBD
+
+**Summary:** Run Data Connect and Passport Broker instances using Docker. Acting as a researcher, search and obtain authorization for input datasets based on clearance.
+
+[**Go to Starter Kits Part II**](sessions/StarterKits/Part_2_DataConnect_Passports/README.md)
+
 
 ### Session 1: Introduction to GA4GH, Federated Analysis, and the Starter Kit
 
@@ -53,21 +70,6 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 [**Go to Session 3**](./sessions/3/README.md)
 
-### Session 4: Starter Kit - Data abstraction and workflow execution
-
-**Time:** 3:30 pm - 4:45 pm
-
-**Summary:** Run DRS and WES instances using Docker, execute workflows from Dockstore via WES
-
-[**Go to Session 4**](./sessions/4/README.md)
-
-### Session 5: Starter Kit - Controlled data access and data discovery
-
-**Time:** 5 pm - 6 pm
-
-**Summary:** Run Data Connect and Passport Broker instances using Docker. Acting as a researcher, search and obtain authorization for input datasets based on clearance.
-
-[**Go to Session 5**](./sessions/5/README.md)
 
 ## Instructors
 
@@ -75,7 +77,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
     * Github
     * ORCID
 
-2. Jeremy Adams, M Sc. Team Lead, Global Alliance for Genomics and Health
+2. Yash Puligundla, Software Engineer, Global Alliance for Genomics and Health
     * Github
     * ORCID
 
