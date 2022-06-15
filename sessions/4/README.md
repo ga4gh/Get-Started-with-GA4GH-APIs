@@ -26,6 +26,22 @@ docker-compose up -d
 Note: For this part of the tutorial we assume the data is public access 
 and there is no authorization needed. 
 
+#### If a port is already in use...
+
+You might see an error like this:
+```
+ERROR: for 5_drs_1 Cannot start service drs: Ports are not available: listen tcp 0.0.0.0:5000: bind: address already in use
+```
+In this case you can check which service is using that specific port:
+```
+sudo lsof -i :<port>
+```
+You can also kill the process that is using the port (You can find the PID of the process by running the command above). 
+Make sure to not kill a vital process!
+```
+kill -9 <PID>
+```
+
 ### Load 1000 genomes data into DRS
 
 To check if the DRS service is up and running as expected, check if the service-info endpoint is working as expected

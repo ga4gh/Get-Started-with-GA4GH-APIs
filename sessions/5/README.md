@@ -25,6 +25,35 @@ cd ismb-2022-ga4gh-tutorial/sessions/5
 docker-compose up -d
 ```
 
+#### Potential Error 1: "127.0.0.1 redirected you too many times..."
+
+The front-end service requires cookies. Please make sure cookies are enabled in your browser of choice.
+
+If cookies are enabled and you are still getting this error...
+1. Spin down the docker compose and clear all docker services:
+```
+docker-compose down
+docker container prune
+```
+2. Clear your cookies and cache in your browser.
+3. Then start the docker service again.
+
+#### Potential Error 2: If a port is already in use...
+
+You might see an error like this:
+```
+ERROR: for 5_drs_1 Cannot start service drs: Ports are not available: listen tcp 0.0.0.0:5000: bind: address already in use
+```
+In this case you can check which service is using that specific port:
+```
+sudo lsof -i :<port>
+```
+You can also kill the process that is using the port (You can find the PID of the process by running the command above). 
+Make sure to not kill a vital process!
+```
+kill -9 <PID>
+```
+
 ### As Admin - Load 1000 Genomes search data into Data Connect
 
 The Data Connect Starter Kit comes loaded with two default datasets - phenopackets v1 dataset and 200 genome samples from the 1000 genomes sample dataset.   
