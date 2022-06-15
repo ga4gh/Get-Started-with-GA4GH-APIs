@@ -29,7 +29,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 ## Schedule
 ### Starter Kits: 
-### <p style="color:#676565;">Part I: Data abstraction and workflow execution</p>
+### Part I: Data abstraction and workflow execution
 
 **Time:** TBD
 
@@ -37,7 +37,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 [**Go to Starter Kits Part I**](sessions/StarterKits/Part_1_DRS_WES/README.md)
 
-###<p style="color:#676565">Part II: Controlled data access and data discovery </p>
+### Part II: Controlled data access and data discovery
 
 **Time:** TBD
 
