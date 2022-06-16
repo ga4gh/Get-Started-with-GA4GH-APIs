@@ -2,7 +2,7 @@
 
 ## Outline
 
-**Time:** Sunday, July 10th, 2022 @ TBD
+**Time:** Sunday, July 10th, 2022 @ 5 pm - 6 pm
 
 **Slides:** [link](https://docs.google.com/presentation/d/1qHAFg6z_JZNIeyMa8FXu9aZXoKvay9PM5yk5zTielio)
 
