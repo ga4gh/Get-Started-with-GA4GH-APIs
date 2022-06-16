@@ -1,8 +1,8 @@
-# Session 4: Starter Kit - Data abstraction and workflow execution
+# Starter Kits - Data abstraction and workflow execution
 
 ## Outline
 
-**Time:** Sunday, July 10th, 2022 @ 3:30 pm - 4:45 pm
+**Time:** Sunday, July 10th, 2022 @ TBD
 
 **Slides:** [link](https://docs.google.com/presentation/d/1cJe5MyI6K0sHBHNcsvbLTbgaYGzsnVLCrYiEBtD2e2c)
 
@@ -14,7 +14,7 @@ In this session, participants will gain familiarity with the GA4GH Starter Kit, 
 
 ```
 git clone https://github.com/ga4gh/ismb-2022-ga4gh-tutorial.git
-cd ismb-2022-ga4gh-tutorial/sessions/4
+cd ismb-2022-ga4gh-tutorial/sessions/StarterKits/Part_1_DRS_WES
 ```
 
 ### As Admin - Start services and initialize databases for DRS and WES Starter Kits
@@ -134,3 +134,8 @@ TODO: fix wes - drs hostname resolution
 
 
 ### 7. Monitor the workflow
+
+### Stop and Remove all the docker containers, networks, volumes, and images created by `docker-compose up`
+```
+docker-compose down
+```

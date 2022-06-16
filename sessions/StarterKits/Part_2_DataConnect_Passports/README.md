@@ -1,8 +1,8 @@
-# Session 5: Starter Kit - Controlled data access and data discovery
+# Starter Kits - Controlled data access and data discovery
 
 ## Outline
 
-**Time:** Sunday, July 10th, 2022 @ 5 pm - 6 pm
+**Time:** Sunday, July 10th, 2022 @ TBD
 
 **Slides:** [link](https://docs.google.com/presentation/d/1qHAFg6z_JZNIeyMa8FXu9aZXoKvay9PM5yk5zTielio)
 
@@ -16,7 +16,7 @@ In this session, we will introduce two more GA4GH standard APIs: Data Connect an
 
 ```
 git clone https://github.com/ga4gh/ismb-2022-ga4gh-tutorial.git
-cd ismb-2022-ga4gh-tutorial/sessions/5
+cd ismb-2022-ga4gh-tutorial/StarterKits/Part_2_DataConnect_Passports
 ```
 
 ### As Admin - Deploy services
@@ -30,13 +30,12 @@ docker-compose up -d
 The front-end service requires cookies. Please make sure cookies are enabled in your browser of choice.
 
 If cookies are enabled and you are still getting this error...
-1. Spin down the docker compose and clear all docker services:
+1. Spin down the docker compose and remove any idle docker containers:
 ```
 docker-compose down
 docker container prune
 ```
-2. Clear your cookies and cache in your browser.
-3. Then start the docker service again.
+2. Then start the docker service again.
 
 #### Potential Error 2: If a port is already in use...
 

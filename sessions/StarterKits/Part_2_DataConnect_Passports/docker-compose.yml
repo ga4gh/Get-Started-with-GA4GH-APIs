@@ -83,11 +83,15 @@ services:
     command: -c /config/config.yml
 
   # DRS
+
+  # Create DRS Database
   drs-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.1
     volumes:
       - "./resources/drs/db:/db"
     command: database create-tables -d jdbc:sqlite:/db/drs.db drs@v0.3.1
+
+  # Add default data to DRS Database
   drs-dataset:
     depends_on:
       - drs-migrate
@@ -95,6 +99,8 @@ services:
     volumes:
       - "./resources/drs/db:/db"
     command: database add-test-dataset -d jdbc:sqlite:/db/drs.db drs@v0.3.1
+
+  # DRS Starter Kit
   drs:
     depends_on:
       - drs-migrate
