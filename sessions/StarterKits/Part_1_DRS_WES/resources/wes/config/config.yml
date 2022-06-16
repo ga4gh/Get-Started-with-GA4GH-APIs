@@ -17,3 +17,5 @@ wes:
     organization:
       name: Federated Genomics
       url: https://this-is-not-a-site.federatedgenomics.org
+  wesServiceProps:
+    drsDockerContainer: true
