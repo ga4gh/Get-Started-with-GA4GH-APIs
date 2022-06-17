@@ -1,4 +1,4 @@
-# Session 5: Starter Kit - Controlled data access and data discovery
+# Starter Kits - Controlled data access and data discovery
 
 ## Outline
 
@@ -16,13 +16,41 @@ In this session, we will introduce two more GA4GH standard APIs: Data Connect an
 
 ```
 git clone https://github.com/ga4gh/ismb-2022-ga4gh-tutorial.git
-cd ismb-2022-ga4gh-tutorial/sessions/5
+cd ismb-2022-ga4gh-tutorial/StarterKits/Part_2_DataConnect_Passports
 ```
 
 ### As Admin - Deploy services
 
 ```
 docker-compose up -d
+```
+
+#### Potential Error 1: "127.0.0.1 redirected you too many times..."
+
+The front-end service requires cookies. Please make sure cookies are enabled in your browser of choice.
+
+If cookies are enabled and you are still getting this error...
+1. Spin down the docker compose and remove any idle docker containers:
+```
+docker-compose down
+docker container prune
+```
+2. Then start the docker service again.
+
+#### Potential Error 2: If a port is already in use...
+
+You might see an error like this:
+```
+ERROR: for 5_drs_1 Cannot start service drs: Ports are not available: listen tcp 0.0.0.0:5000: bind: address already in use
+```
+In this case you can check which service is using that specific port:
+```
+sudo lsof -i :<port>
+```
+You can also kill the process that is using the port (You can find the PID of the process by running the command above). 
+Make sure to not kill a vital process!
+```
+kill -9 <PID>
 ```
 
 ### As Admin - Load 1000 Genomes search data into Data Connect
@@ -87,7 +115,54 @@ REQUEST BODY:
 } 
 ```
 
+### 6. Convert DRS Object URI to HTTP URL
+
+drs://{host}/{id} -> http(s)://{host}/ga4gh/drs/v1/objects/{id}
+
+```
+drs://localhost:5000/HG00740.1000genomes.lowcov.downsampled.cram ->
+
+http://localhost:5000/ga4gh/drs/v1/objects/HG00740.1000genomes.lowcov.downsampled.cram
+
+```
+
+### As Admin - Add the broker and visa information to the DRS server and load 1000 genomes data into DRS.
+```
+python3 scripts/add-known-visas-to-drs.py
+```
+```
+python3 scripts/populate-drs.py
+```
 ### As Researcher - Attempt to access DRS objects, get auth info
+
+### 1. Get DRS endpoint from the DRS URI retrieved from the Data Connect /search response
+
+```
+GET http://localhost:5000/ga4gh/drs/v1/objects/HG00740.1000genomes.lowcov.downsampled.cram
+```
+You will see an error response
+```json
+{
+"timestamp": "2022-06-08T21:53:08Z",
+"status_code": 401,
+"error": "Unauthorized",
+"msg": "Request for controlled data is missing user passport(s)"
+}
+```
+### 2. Get the passport broker and visa details from the DRS server for a drs object id
+
+```
+OPTIONS http://localhost:5000/ga4gh/drs/v1/objects/HG00740.1000genomes.lowcov.downsampled.cram
+```
+
+### 3. Get the passport broker and visa details from the DRS server for an array of drs object ids
+
+```
+OPTIONS http://localhost:5000/ga4gh/drs/v1/objects
+
+REQUEST BODY
+{"selection": ["HG00740.1000genomes.lowcov.downsampled.cram", "HG00740.1000genomes.lowcov.downsampled.crai"]}
+```
 
 ### As Admin - Create visas on the passport broker
 
@@ -234,3 +309,32 @@ Back in the [welcome page](http://127.0.0.1:4455/welcome) press [Get Passport To
 You can confirm the validity of your JWT token by visiting https://jwt.io/ and pasting the JWT token to examine its contents.
 
 ### As Researcher - Take passport to DRS to obtain access to DRS objects
+
+### 1. Request DRS object 
+
+```
+POST http://localhost:5000/ga4gh/drs/v1/objects/HG00740.1000genomes.lowcov.downsampled.cram
+
+BODY
+{ "passports": ["<jwt token>"] } 
+
+```
+
+### 2. Bulk request DRS objects
+
+```
+POST http://localhost:5000/ga4gh/drs/v1/objects
+
+BODY
+{
+    "selection":
+    [
+        "HG00740.1000genomes.lowcov.downsampled.cram",
+        "HG00740.1000genomes.lowcov.downsampled.crai"
+    ],
+    "passports":
+    [
+        "<jwt token>"
+    ]
+}
+```

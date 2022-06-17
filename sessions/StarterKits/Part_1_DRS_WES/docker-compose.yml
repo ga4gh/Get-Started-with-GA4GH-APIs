@@ -3,24 +3,32 @@ services:
   
   # DRS
 
+  # Create DRS Database
   drs-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.1
+    container_name: part_1_drs_migrate
     volumes:
       - "./resources/drs/db:/db"
     command: database create-tables -d jdbc:sqlite:/db/drs.db drs@v0.3.1
+
+  # Add default data to DRS Database
   drs-dataset:
     depends_on:
       - drs-migrate
     image: ga4gh/ga4gh-starter-kit-utils:0.1.1
+    container_name: part_1_drs_dataset
     volumes:
       - "./resources/drs/db:/db"
     command: database add-test-dataset -d jdbc:sqlite:/db/drs.db drs@v0.3.1
+
+  # DRS Starter Kit
   drs:
     depends_on:
       - drs-migrate
       - drs-dataset
     image: ga4gh/ga4gh-starter-kit-drs:0.3.1
     hostname: drs.starterkit.federatedgenomics.org
+    container_name: part_1_drs
     ports:
       - "5000:5000"
       - "5001:5001"
@@ -31,11 +39,14 @@ services:
 
   # WES
 
+  # Create WES Database
   wes-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.1
     volumes:
       - "./resources/wes/db:/db"
     command: database create-tables -d jdbc:sqlite:/db/wes.db wes@v0.3.0
+
+  # Add default data to WES Database
   wes-dataset:
     depends_on:
       - wes-migrate
@@ -43,12 +54,15 @@ services:
     volumes:
       - "./resources/wes/db:/db"
     command: database add-test-dataset -d jdbc:sqlite:/db/wes.db wes@v0.3.0
+
+  # WES Starter Kit
   wes:
     depends_on:
       - wes-migrate
       - wes-dataset
-    image: ga4gh/ga4gh-starter-kit-wes:0.3.0-nextflow
+    image: ga4gh/ga4gh-starter-kit-wes:0.3.2-nextflow
     hostname: wes.starterkit.federatedgenomics.org
+    container_name: part_1_wes
     ports:
       - "6000:6000"
       - "6001:6001"
@@ -57,12 +71,5 @@ services:
       - "./resources/wes/db:/db"
       - "/var/run/docker.sock:/var/run/docker.sock"
       - "/tmp/shared/wes:/tmp/shared/wes"
+    working_dir: /tmp/shared/wes
     command: -c /config/config.yml
-  cromwell-docker:
-    image: ga4gh/cromwell-docker:test
-    hostname: cromwell-docker.federatedgenomics.org
-    volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/tmp/shared/cromwell/runs:/tmp/shared/cromwell/runs"
-    working_dir: /tmp/shared/cromwell/runs
-    command: server
