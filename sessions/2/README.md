@@ -34,11 +34,37 @@ For follow on from morning sessions will likely use CNest example (complex), or 
 
 ## Session specific requirements
 
-Jupyter
+#### Jupyter/pandas
 
-Fasp-scripts
+Anaconda?
+
+#### Fasp-scripts
+
+Clone the fasp-client branch of fasp-scripts
+
+`git clone -b fasp-client --single-branch https://github.com/ga4gh/fasp-scripts.git`
+
+#### Cloud credits
 
 Starter accounts with cloud credits on selected platforms (to be listed e.g. Seven Bridges BioData Catalyst)
+
+## Installation
+
+#### Python environment
+
+Con
+
+`conda create --name ismb_tut`
+
+`conda activate ismb_tut`
+
+`conda install pip`
+
+change directory to local of fast-scripts
+
+Pip install .
+
+#### Test
 
 ### Working notes
 
