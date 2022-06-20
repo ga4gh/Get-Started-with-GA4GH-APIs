@@ -36,7 +36,13 @@ For follow on from morning sessions will likely use CNest example (complex), or 
 
 #### Jupyter/pandas
 
+Python 3.x
+
+Choose your favourite Python virtual environmenet manafer
+
 Anaconda?
+
+Or venc
 
 #### Fasp-scripts
 

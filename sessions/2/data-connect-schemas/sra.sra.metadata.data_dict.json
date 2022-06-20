@@ -1,0 +1,15 @@
+{
+      "description": "Metadata Table (sra.metadata) contains information about the run and biological samples. The biological sample data is stored in two different columns.",
+    "$id": "dbgap:pht008524.v1",
+    "properties": {
+        "acc": {
+            "$id": "def",
+            "description": "SRA Run accession in the form of SRR######## (ERR or DRR for INSDC partners)",
+            "type": "string"        
+            },
+        "assay_type": {
+            "$id": "abc",
+            "description": "Type of library (i.e. AMPLICON, RNA-Seq, WGS, etc)"
+        }
+    }
+}
