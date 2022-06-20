@@ -60,7 +60,7 @@ services:
     depends_on:
       - wes-migrate
       - wes-dataset
-    image: ga4gh/ga4gh-starter-kit-wes:0.3.1-nextflow
+    image: ga4gh/ga4gh-starter-kit-wes:0.3.2-nextflow
     hostname: wes.starterkit.federatedgenomics.org
     container_name: part_1_wes
     ports:
