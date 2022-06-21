@@ -2,6 +2,7 @@ import requests
 import datetime
 
 import hashlib
+drs_map_file = 'drs_map.txt'
 
 timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 aws_region = "us-east-2"
@@ -14,6 +15,12 @@ def post_drs_object_to_server(object_id=None, description=None, name=None,
 
     """Submit DRS Object to the local Starter Kit DRS server"""
 
+    if is_bundle == None or not is_bundle:
+        with open (drs_map_file, 'a') as f:
+            f.write(f"{checksum_md5}\t{object_id}\n") 
+	
+    if checksum_md5 != None:
+        object_id = checksum_md5
     url = "http://localhost:5001/admin/ga4gh/drs/v1/objects"
     drs_object_json = {
         "id": object_id,
@@ -125,11 +132,12 @@ def add_ref_to_drs():
         aws_file_key="/data/ref/GRCh38_full_analysis_set_plus_decoy_hla.fa.fai"
     )
 
-def bundle_id_from_name(bundle_name)
+def bundle_id_from_name(bundle_name):
     bundle_hash = hashlib.md5(bundle_name.encode()) 
     bundle_id = bundle_hash.hexdigest()
+    with open (drs_map_file, 'a') as f:
+        f.write(f"{bundle_id}\t{bundle_name}\n")
     return bundle_id
-
 
 def add_1k_genomes_highcov_dataset_to_drs():
     """
@@ -185,6 +193,8 @@ def add_1k_genomes_highcov_dataset_to_drs():
         bundle_name = "%s.1000genomes.highcov.downsampled.bundle" % (file_d["sample_id"])
         bundle_id = bundle_id_from_name(bundle_name)
         
+
+            
         # CRAM/CRAI Bundle
         post_drs_object_to_server(
             object_id=bundle_id,

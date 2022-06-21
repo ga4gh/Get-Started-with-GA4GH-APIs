@@ -3,6 +3,11 @@ import os
 import requests
 import datetime
 
+import hashlib
+drs_map = {}
+drs_map_file = 'drs_map.json'
+
+
 timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 aws_region = "us-east-2"
 aws_bucket = "ga4gh-ismb-tutorial-2022"
@@ -15,6 +20,12 @@ def post_drs_object_to_server(object_id=None, description=None, name=None,
 
     """Submit DRS Object to the local Starter Kit DRS server"""
 
+    if is_bundle == None or not is_bundle:
+        drs_map[object_id] = checksum_md5
+        	
+    if checksum_md5 != None:
+        object_id = checksum_md5
+        
     url = "http://localhost:5001/admin/ga4gh/drs/v1/objects"
     drs_object_json = {
         "id": object_id,
@@ -129,6 +140,13 @@ def add_ref_to_drs():
         aws_file_key="/data/ref/GRCh38_full_analysis_set_plus_decoy_hla.fa.fai"
     )
 
+def bundle_id_from_name(bundle_name):
+    bundle_hash = hashlib.md5(bundle_name.encode()) 
+    bundle_id = bundle_hash.hexdigest()
+    drs_map[bundle_name] = bundle_id
+    return bundle_id
+
+
 def add_1k_genomes_lowcov_dataset_to_drs():
     """
     Register test CRAM dataset (from 1000 genomes) on local Starter Kit DRS
@@ -166,7 +184,8 @@ def add_1k_genomes_lowcov_dataset_to_drs():
 
     for key in superpop_keys:
         superpop = superpops[key]
-        superpop_bundle_id = "1000genomes.%s.superpopulation" % superpop["name"]
+        superpop_bundle_name = "1000genomes.%s.superpopulation" % superpop["name"]
+        superpop_bundle_id = bundle_id_from_name(superpop_bundle_name)
         post_drs_object_to_server(
             object_id=superpop_bundle_id,
             description="Controlled access CRAMs for individuals with " + superpop["desc"],
@@ -192,8 +211,10 @@ def add_1k_genomes_lowcov_dataset_to_drs():
         record_split = record.rstrip().split("\t")
         record_dict = {header[i] : record_split[i] for i in range(0, len(header))}
         superpop = superpops[superpop_map[record_dict["sample_id"]]]
-        superpop_bundle_id = "1000genomes.%s.superpopulation" % superpop["name"]
-        cram_bundle_id = "%s.1000genomes.lowcov.downsampled.bundle" % (record_dict["sample_id"])
+        superpop_bundle_name = "1000genomes.%s.superpopulation" % superpop["name"]
+        superpop_bundle_id = bundle_id_from_name(superpop_bundle_name)
+        cram_bundle_name = "%s.1000genomes.lowcov.downsampled.bundle" % (record_dict["sample_id"])
+        cram_bundle_id = bundle_id_from_name(cram_bundle_name)
         
         # CRAM/CRAI Bundle
         post_drs_object_to_server(
@@ -255,6 +276,11 @@ def main():
     add_bed_to_drs()
     add_ref_to_drs()
     add_1k_genomes_lowcov_dataset_to_drs()
+    
+    with open (drs_map_file, 'w') as f:
+        json.dump(drs_map, f)
+
+
 
 if __name__ == "__main__":
     main()
