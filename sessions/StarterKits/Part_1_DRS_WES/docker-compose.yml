@@ -70,6 +70,6 @@ services:
       - "./resources/wes/config:/config"
       - "./resources/wes/db:/db"
       - "/var/run/docker.sock:/var/run/docker.sock"
-      - "/tmp/shared/wes:/tmp/shared/wes"
+      - "./tmp/shared/wes:/tmp/shared/wes"
     working_dir: /tmp/shared/wes
     command: -c /config/config.yml
