@@ -81,9 +81,9 @@ BODY
 {
     "selection":
         [
-            "HG00449.1000genomes.lowcov.downsampled.cram",
-            "HG00449.1000genomes.lowcov.downsampled.crai"
-        ],
+            "HG00449.1000genomes.highcov.downsampled.cram",
+            "HG00449.1000genomes.highcov.downsampled.crai"
+        ]
 }
 ```
 
@@ -128,7 +128,10 @@ workflow_params:{"input":<drs uri>}
 TODO: fix wes - /runs
 TODO: fix wes - drs hostname resolution
 ### 5. Monitor the workflow
-
+Using run id from step 4
+```
+GET http://localhost:6000/ga4gh/wes/v1/runs/<run id>
+```
 
 ### 6. Add a nextflow workflow - Samtools view
 
