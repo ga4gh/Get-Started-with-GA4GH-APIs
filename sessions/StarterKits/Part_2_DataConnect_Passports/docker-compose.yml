@@ -3,7 +3,7 @@ services:
 
   # DATA CONNECT
   data-connect:
-     image: ga4gh/ga4gh-starter-kit-data-connect:0.1.1
+     image: ianfore/ga4gh-starter-kit-data-connect:latest
      hostname: dataconnect.starterkit.ga4gh.org
      ports:
        - "4800:4500" # public
