@@ -60,7 +60,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 **Summary:** Run DRS and WES instances using Docker, execute a nextflow workflow using WES
 
-[**Go to Starter Kits Part I**](sessions/StarterKits/Part_1_DRS_WES/README.md)
+[**Go to Starter Kits Part I**](https://github.com/ga4gh/ismb-2022-ga4gh-tutorial/wiki/Starter-Kits-(Part-1-DRS-and-WES))
 
 ### Part II: Controlled data access and data discovery
 
@@ -68,7 +68,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 **Summary:** Run Data Connect and Passport Broker instances using Docker. Acting as a researcher, search and obtain authorization for input datasets based on clearance.
 
-[**Go to Starter Kits Part II**](sessions/StarterKits/Part_2_DataConnect_Passports/README.md)
+[**Go to Starter Kits Part II**](https://github.com/ga4gh/ismb-2022-ga4gh-tutorial/wiki/Starter-Kits-(Part-2-Data-Connect-and-Passports))
 
 ## Instructors
 
