@@ -277,8 +277,9 @@ def main():
     add_ref_to_drs()
     add_1k_genomes_lowcov_dataset_to_drs()
     
+    # Save the mapping of previous drs_ids to hex drs_ids
     with open (drs_map_file, 'w') as f:
-        json.dump(drs_map, f)
+        json.dump(drs_map, f, indent=3)
 
 
 
