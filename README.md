@@ -31,25 +31,25 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 ### Session 1: Introduction to GA4GH, Federated Analysis, and the Starter Kit
 
-**Time:** 11 am - 12 pm
+**Time:** 11 am - 11:30 am
 
 **Summary:** Overview of GA4GH as a technical standards-setting organization in genomics, outline key technical standards that we will interact with during the tutorial. 
 
 [**Go to Session 1**](./sessions/1/README.md)
 
-### Session 2: Federated Analysis - Find and access data in the cloud via Data Connect and Data Repository Service (DRS)
+### Session 2: Federated Analysis - Find and access data in the cloud via Data Connect, Data Repository Service (DRS) and Workflow Execution Service WES
 
-**Time:** 12 pm - 1 pm
+**Time:** 11:30 am - 1 pm
 
-**Summary:** Interact with real-world implementations of Data Connect and DRS to locate and access files in various datasets.
+**Summary:** Interact with real-world implementations of Data Connect, DRS and WES to locate and access files in various datasets.
 
 [**Go to Session 2**](./sessions/2/README.md)
 
-### Session 3: Federated Analysis - Run workflows using the Workflow Execution Service (WES)
+### Session 3: Federated Analysis - Putting the standards together 
 
 **Time:** 2 pm - 3:15 pm
 
-**Summary:** Interact with real-world implementations of WES to run workflows on the data accessed in the previous session.
+**Summary:** Combine examples from the previous session to perform an end to end task. Explore some of the other implementations of the standards explored.
 
 [**Go to Session 3**](./sessions/3/README.md)
 
@@ -72,13 +72,13 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 ## Instructors
 
-1. Ian Fore, D. Phil. Senior Biomedical Informatics Program Manager, National Cancer Institute
-    * Github
-    * ORCID
+Ian Fore, D. Phil. Senior Biomedical Informatics Program Manager, National Cancer Institute
+* [Github](https://github.com/ianfore)
+* [orcid:0000-0002-2926-9324](http://identifiers.org/orcid:0000-0002-2926-9324)
 
-2. Yash Puligundla, Software Engineer, Global Alliance for Genomics and Health
-    * Github
-    * ORCID
+Yash Puligundla, Software Engineer, Global Alliance for Genomics and Health
+* Github
+* ORCID
 
 ## Additional Links
 
