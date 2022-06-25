@@ -18,7 +18,7 @@ Participants will interact with Driver Project implementations of Data Connect a
 
 Candidate scripts to be selected from https://github.com/ga4gh/fasp-scripts/tree/master/notebooks
 
-For follow on from morning sessions will likely use CNest example (complex), or SAMTools (less computaionally ambitious, but easier).
+For follow on from morning sessions will  use  SAMTools (less computaionally ambitious, but easier).
 
 ### Draft component list
 
@@ -34,41 +34,25 @@ For follow on from morning sessions will likely use CNest example (complex), or 
 
 ## Session specific requirements
 
-#### Jupyter/pandas
-
-Python 3.x
-
-Choose your favourite Python virtual environmenet manafer
-
-Anaconda?
-
-Or venc
-
 #### Fasp-scripts
 
 Clone the fasp-client branch of fasp-scripts
 
 `git clone -b fasp-client --single-branch https://github.com/ga4gh/fasp-scripts.git`
 
+change directory to local copy of fasp-scripts
+
+`pip install .`
+
 #### Cloud credits
 
-Starter accounts with cloud credits on selected platforms (to be listed e.g. Seven Bridges BioData Catalyst)
+Starter accounts with cloud credits on selected platforms (to be listed e.g. Seven Bridges Cancer Genomics Cloud)
 
 ## Installation
 
-#### Python environment
 
-Con
 
-`conda create --name ismb_tut`
 
-`conda activate ismb_tut`
-
-`conda install pip`
-
-change directory to local of fast-scripts
-
-Pip install .
 
 #### Test
 
