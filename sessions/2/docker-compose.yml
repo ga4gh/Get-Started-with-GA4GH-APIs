@@ -1,20 +1,20 @@
 version: "3.9"
 services:
   trino-db:
-    image: trino:latest
+    image: ianfore/ismb_trino:0.3
     container_name: session_2_trino
     ports:
       - "8080:8080"
   dnastack-data-connect-db:
     image: postgres
-    container_name: session_2_dnastack-data-connect-db
+    container_name: session_2_postgres-data-connect-db
     environment:
       - POSTGRES_USER=dataconnecttrino
       - POSTGRES_PASSWORD=dataconnecttrino
     ports:
       - "15432:5432"
   dev-data-connect:
-    image: data-connect-trino:dev
+    image: ianfore/data-connect-trino:dev
     container_name: session_2_dev-data-connect
     ports:
       - "8089:8089"
