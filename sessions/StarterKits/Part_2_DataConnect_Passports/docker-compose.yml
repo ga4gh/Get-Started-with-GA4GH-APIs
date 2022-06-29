@@ -1,13 +1,35 @@
 version: "3.9"
 services:
 
+  # Create DATA CONNECT Database
+  data-connect-migrate:
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    volumes:
+      - "./resources/data-connect/db:/db"
+    command: database create-tables -d jdbc:sqlite:/db/data-connect.db data-connect@v0.1.1
+
+  # Add default data to DATA CONNECT Database
+  data-connect-dataset:
+    depends_on:
+      - data-connect-migrate
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    volumes:
+      - "./resources/data-connect/db:/db"
+    command: database add-test-dataset -d jdbc:sqlite:/db/data-connect.db data-connect@v0.1.1
+
   # DATA CONNECT
   data-connect:
-     image: ianfore/ga4gh-starter-kit-data-connect:latest
-     hostname: dataconnect.starterkit.ga4gh.org
-     ports:
-       - "4800:4500" # public
-       - "4801:4501" # admin
+    depends_on:
+      - data-connect-migrate
+      - data-connect-dataset
+    image: ianfore/ga4gh-starter-kit-data-connect:latest
+    hostname: dataconnect.starterkit.ga4gh.org
+    ports:
+      - "4800:4500" # public
+      - "4801:4501" # admin
+    volumes:
+      - "./resources/data-connect/config:/config"
+      - "./resources/data-connect/db:/db"
 
   # PASSPORT
   kratos-migrate:
@@ -86,7 +108,7 @@ services:
 
   # Create DRS Database
   drs-migrate:
-    image: ga4gh/ga4gh-starter-kit-utils:0.1.1
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
     volumes:
       - "./resources/drs/db:/db"
     command: database create-tables -d jdbc:sqlite:/db/drs.db drs@v0.3.1
@@ -95,7 +117,7 @@ services:
   drs-dataset:
     depends_on:
       - drs-migrate
-    image: ga4gh/ga4gh-starter-kit-utils:0.1.1
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
     volumes:
       - "./resources/drs/db:/db"
     command: database add-test-dataset -d jdbc:sqlite:/db/drs.db drs@v0.3.1
