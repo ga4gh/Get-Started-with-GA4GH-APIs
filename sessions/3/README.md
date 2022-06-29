@@ -2,8 +2,6 @@
 
 ## Outline
 
-This session would likely be #5 in the running order
-
 Still need to work out the balance between this session and the previous one. Though previous session is focussed on Data Connect and DRS, may be good to take it all the way through to a workflow example. This session would then look at more advanced examples (as advanced as appropriate - need to find the right level ).
 
 A controlled access example should feature, possibly in this session, possibly in previous. 
@@ -16,7 +14,6 @@ In this session, participants will learn how to run workflows on the data access
 
 ## Tutorial
 
-Possibly CNest compute on TopMed etc. doesn't feature until this session.
 
 ### Session specific requirements
 
