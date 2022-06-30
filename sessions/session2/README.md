@@ -1,7 +1,3 @@
----
-typora-copy-images-to: ../../supporting/images
----
-
 # Session 2: Federated Analysis - Find and access data in the cloud via Data Connect and Data Repository Service (DRS)
 
 ## Outline
