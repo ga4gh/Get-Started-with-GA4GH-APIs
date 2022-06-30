@@ -99,24 +99,4 @@ Close the browser tab or window to return to the notebook
 
 Click on the .. folder icon to navigate back up to the sessions folder.
 
-#### Start Data Connect Server 
-
-Start Docker
-
-Start the Session 2 Data Connect application
-
-```
-cd session2 
-docker-compose up -d
-```
-
-If you are running Docker Desktop you should see something like the following
-
-<img src="../../supporting/images/docker_sess2.png" alt="docker_sess2" style="zoom:50%;" />
-
-Alternatively, type the following at a command line
-
-```
-docker ps
-```
 
