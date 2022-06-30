@@ -36,7 +36,7 @@ change directory to local copy of fasp-scripts
 
 Starter accounts with cloud credits on selected platforms (to be listed e.g. Seven Bridges Cancer Genomics Cloud)
 
-
+#### Create a project in the Cancer Genomics Cloud
 
 Open http://cgc.sbgenomics.com and login with your username and password.
 
@@ -49,3 +49,74 @@ From the Projects menu select **Create a Project**
 Fill in project details
 
 <img src="../../supporting/images/cgc3.png" alt="cgc3" style="zoom: 33%;" />
+
+
+
+#### Obtain an authentication token and save it to disk
+
+Go to the Developer Menu and copy the authentication token to the clipboard 
+
+<img src="../../supporting/images/cgc_token.png" alt="cgc_token" style="zoom:33%;" />
+
+
+
+Open the file 
+
+ismb-2022-ga4gh-tutorial/sessions/session2/keys/sbcgc_key.json 
+
+Replace your_token_here with the token copied from the page above.
+
+```json
+{"auth_token" : "your_token_here"}
+```
+
+Create a folder in your home directory called .keys
+
+Copy the sbcgc_key.json file there.
+
+Note: you may save the file elsewhere. If so, make a note of the location you saved it to as you will need to replace the default path later.
+
+#### Start Jupyter
+
+```
+cd ../sessions
+jupyter notebook
+```
+
+<img src="../../supporting/images/check_jupyter.png" alt="check_jupyter" style="zoom: 50%;" />
+
+
+
+Click on session1 to open the folder
+
+Click on 1-1 Access token check.ipynb
+
+Follow the instructions in the notebook
+
+Check for a successful response
+
+Close the browser tab or window to return to the notebook
+
+Click on the .. folder icon to navigate back up to the sessions folder.
+
+#### Start Data Connect Server 
+
+Start Docker
+
+Start the Session 2 Data Connect application
+
+```
+cd session2 
+docker-compose up -d
+```
+
+If you are running Docker Desktop you should see something like the following
+
+<img src="../../supporting/images/docker_sess2.png" alt="docker_sess2" style="zoom:50%;" />
+
+Alternatively, type the following at a command line
+
+```
+docker ps
+```
+
