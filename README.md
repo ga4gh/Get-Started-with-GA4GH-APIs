@@ -45,7 +45,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 **Summary:** Overview of GA4GH as a technical standards-setting organization in genomics, outline key technical standards that we will interact with during the tutorial. 
 
-[**Go to Session 1**](./sessions/1/README.md)
+[**Go to Session 1**](./sessions/session1/README.md)
 
 ### Session 2: Federated Analysis - Find and access data in the cloud via Data Connect, Data Repository Service (DRS) and Workflow Execution Service WES
 
@@ -53,7 +53,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 **Summary:** Interact with real-world implementations of Data Connect, DRS and WES to locate and access files in various datasets.
 
-[**Go to Session 2**](./sessions/2/README.md)
+[**Go to Session 2**](./sessions/session2/README.md)
 
 ### Session 3: Federated Analysis - Putting the standards together 
 
@@ -61,7 +61,7 @@ If you are planning to attend the ISMB tutorial, please complete the steps in th
 
 **Summary:** Combine examples from the previous session to perform an end to end task. Explore some of the other implementations of the standards explored.
 
-[**Go to Session 3**](./sessions/3/README.md)
+[**Go to Session 3**](./sessions/session3/README.md)
 
 ### Starter Kits:
 ### Part I: Data abstraction and workflow execution
