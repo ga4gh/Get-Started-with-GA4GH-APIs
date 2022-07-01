@@ -16,3 +16,7 @@ presenter/ismb-prep-embassy/ref/*
 
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# drs_map file
+Part_2_DataConnect_Passports/drs_map.json
+Part_1_DRS_WES/drs_map.json

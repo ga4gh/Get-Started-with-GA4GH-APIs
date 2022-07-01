@@ -15,7 +15,8 @@ services:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.2
     volumes:
       - "./resources/data-connect/db:/db"
-    command: database add-test-dataset -d jdbc:sqlite:/db/data-connect.db data-connect@v0.1.1
+      - "./resources/data-connect/db-scripts:/db-scripts"
+    command: database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
 
   # DATA CONNECT
   data-connect:
