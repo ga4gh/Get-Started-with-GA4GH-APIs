@@ -20,22 +20,9 @@ We will explore two perspectives
    
 If you are planning to attend the ISMB tutorial, please complete the steps in the [Preparation](#preparation) section to ensure your laptop is ready to run the various demos.
 
-## Preparation
+## Environment Set up
 
-* Install [Docker](https://docs.docker.com/get-docker/) (and Docker Compose) on your local machine. Verify installation by running `docker` and `docker-compose` in your terminal, you should see a dialog message explaining how to use the command in each case. 
-* Install an HTTP client testing tool, we recommend [Postman](https://www.postman.com/downloads/).
-
-* Ensure the Docker daemon is running on your local machine at the start of the tutorial.
-
-###### Setting up Python
-
-* Install [Python](https://www.python.org/downloads/) on your local machine. Verify installation by running `python --version` in your terminal, you should see the version printed.
-    * Note: If you installed Python3 you should place a 3 at the end of your commands, for example `python3` and `pip3`
-
-* The Package Installer for Python `pip` should come pre-installed, you can confirm it by running the command `pip --version`.
-    * If `pip` is not installed, visit the [pip documentation website](https://pip.pypa.io/en/stable/installation/) to set it up.
-
-* Download the required python modules by running the command `pip install -r starterkit-requirements.txt`
+Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms5uANK76cngDyc/edit?usp=sharing) document to set up your environment for this tutorial.
 
 ## Schedule
 
@@ -87,9 +74,4 @@ Ian Fore, D. Phil. Senior Biomedical Informatics Program Manager, National Cance
 * [orcid:0000-0002-2926-9324](http://identifiers.org/orcid:0000-0002-2926-9324)
 
 Yash Puligundla, Software Engineer, Global Alliance for Genomics and Health
-* Github
-* ORCID
-
-## Additional Links
-
-* Coming Soon...
+* [Github](https://github.com/yash-puligundla)
