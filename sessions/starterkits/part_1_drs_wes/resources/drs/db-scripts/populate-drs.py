@@ -1,5 +1,10 @@
 import requests
 import datetime
+import json
+
+import hashlib
+drs_map = {}
+drs_map_file = './helper_notebooks/drs_map.json'
 
 timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 aws_region = "us-east-2"
@@ -12,6 +17,12 @@ def post_drs_object_to_server(object_id=None, description=None, name=None,
 
     """Submit DRS Object to the local Starter Kit DRS server"""
 
+    if is_bundle == None or not is_bundle:
+        drs_map[object_id] = checksum_md5
+        	
+    if checksum_md5 != None:
+        object_id = checksum_md5
+        
     url = "http://localhost:5001/admin/ga4gh/drs/v1/objects"
     drs_object_json = {
         "id": object_id,
@@ -54,7 +65,7 @@ def add_bed_to_drs():
     """Register test dataset BED file on local Starter Kit DRS service"""
 
     post_drs_object_to_server(
-        object_id="cnest.downsampling.intervals",
+        object_id="828e5c16c726aa39f1bd35d153b9ab01",
         description="Downsampling interval file for test runs of CNest",
         name="2400kb.bed",
         version="1.0.0",
@@ -123,13 +134,20 @@ def add_ref_to_drs():
         aws_file_key="/data/ref/GRCh38_full_analysis_set_plus_decoy_hla.fa.fai"
     )
 
+def bundle_id_from_name(bundle_name):
+    bundle_hash = hashlib.md5(bundle_name.encode()) 
+    bundle_id = bundle_hash.hexdigest()
+    drs_map[bundle_name] = bundle_id
+    return bundle_id
+
 def add_1k_genomes_highcov_dataset_to_drs():
     """
     Register test CRAM dataset (from 1000 genomes) on local Starter Kit DRS 
     """
 
     # create root bundle for high coverage downsampled dataset
-    root_bundle_id = "1000genomes.highcov.downsampled"
+    root_bundle_name = "1000genomes.highcov.downsampled"
+    root_bundle_id = bundle_id_from_name(root_bundle_name)
     post_drs_object_to_server(
         object_id=root_bundle_id,
         description="15-sample high coverage, downsampled CRAM test dataset from 1000 genomes",
@@ -173,8 +191,11 @@ def add_1k_genomes_highcov_dataset_to_drs():
     # create CRAM/CRAI bundle, CRAM, and CRAI DRS Object for each sample
     for file_metadata in file_metadata_list:
         file_d = {headings[i]: file_metadata[i] for i in range(0, len(headings))}
-        bundle_id = "%s.1000genomes.highcov.downsampled.bundle" % (file_d["sample_id"])
+        bundle_name = "%s.1000genomes.highcov.downsampled.bundle" % (file_d["sample_id"])
+        bundle_id = bundle_id_from_name(bundle_name)
         
+
+            
         # CRAM/CRAI Bundle
         post_drs_object_to_server(
             object_id=bundle_id,
@@ -225,6 +246,10 @@ def add_1k_genomes_highcov_dataset_to_drs():
             drs_object_parent_ids=[bundle_id],
             aws_file_key="/data/1000genomes/cram/highcov/%s.final.2400kb.cram.crai" % file_d["sample_id"]
         )
+
+    # Save the mapping of previous drs_ids to hex drs_ids
+    with open (drs_map_file, 'w') as f:
+        json.dump(drs_map, f, indent=3)
 
 def main():
     """Register all test dataset DRS Objects on local Starter Kit DRS server"""

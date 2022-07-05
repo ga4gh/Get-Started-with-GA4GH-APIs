@@ -1,17 +1,51 @@
 version: "3.9"
 services:
 
+  # Create DATA CONNECT Database
+  # TODO: This container should exist only after the database file and tables are created/ refreshed on host machine
+  data-connect-migrate:
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_2_dataconnect_migrate
+    volumes:
+      - "./resources/data-connect/db:/db"
+    command: database create-tables -d jdbc:sqlite:/db/data-connect.db data-connect@v0.1.1
+
+  # Add default data to DATA CONNECT Database
+  data-connect-dataset:
+    depends_on:
+      - data-connect-migrate
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_2_dataconnect_dataset
+    volumes:
+      - "./resources/data-connect/db:/db"
+      - "./resources/data-connect/db-scripts:/db-scripts"
+    entrypoint: ["/bin/sh","-c"]
+    command:
+    # wait till /db/data-connect.db is available
+    # TODO: this should be handled by depends_on, but currently data-connect-migrate container exits before data-connect.db is created
+      - |
+        while [ ! -f /db/data-connect.db ]; do sleep 1; done
+        java -jar ga4gh-starter-kit-utils.jar database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
+
   # DATA CONNECT
   data-connect:
-     image: ga4gh/ga4gh-starter-kit-data-connect:0.1.1
-     hostname: dataconnect.starterkit.ga4gh.org
-     ports:
-       - "4800:4500" # public
-       - "4801:4501" # admin
+    depends_on:
+      - data-connect-migrate
+      - data-connect-dataset
+    image: ga4gh/ga4gh-starter-kit-data-connect:0.1.1
+    container_name: part_2_dataconnect
+    hostname: dataconnect.starterkit.ga4gh.org
+    ports:
+      - "4800:4500" # public
+      - "4801:4501" # admin
+    volumes:
+      - "./resources/data-connect/config:/config"
+      - "./resources/data-connect/db:/db"
 
   # PASSPORT
   kratos-migrate:
     image: oryd/kratos:v0.9.0-alpha.2
+    container_name: part_2_kratos_migrate
     environment:
       - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rwc
     volumes:
@@ -28,14 +62,15 @@ services:
       - intranet
   passport-ui-node:
     image: ga4gh/ga4gh-starter-kit-passport-ui-node:0.0.2
+    container_name: part_2_passport_ui
     environment:
       - KRATOS_PUBLIC_URL=http://kratos:4433/
       - KRATOS_ADMIN_URL=http://kratos:4434/
       - PORT=4455
       - SECURITY_MODE=
       - KRATOS_BROWSER_URL=http://127.0.0.1:4433/
-      - PASSPORT_BROKER_PUBLIC_URL=http://passport-broker.ga4gh.org:4500/ga4gh/passport/v1/ 
-      - PASSPORT_BROKER_ADMIN_URL=http://passport-broker.ga4gh.org:4501/admin/ga4gh/passport/v1/ 
+      - PASSPORT_BROKER_PUBLIC_URL=http://passport-broker.ga4gh.org:4500/ga4gh/passport/v1/
+      - PASSPORT_BROKER_ADMIN_URL=http://passport-broker.ga4gh.org:4501/admin/ga4gh/passport/v1/
     ports:
       - "4455:4455"
     restart: unless-stopped
@@ -45,6 +80,7 @@ services:
     depends_on:
       - kratos-migrate
     image: oryd/kratos:v0.9.0-alpha.2
+    container_name: part_2_kratos
     ports:
       - '4433:4433' # public
       - '4434:4434' # admin
@@ -65,6 +101,7 @@ services:
       - intranet
   mailslurper:
     image: oryd/mailslurper:latest-smtps
+    container_name: part_2_mailslurper
     ports:
       - "4436:4436"
       - "4437:4437"
@@ -72,6 +109,7 @@ services:
       - intranet
   passport-broker:
     image: ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
+    container_name: part_2_passport_broker
     ports:
       - '4500:4500' # public
       - '4501:4501' # admin
@@ -86,7 +124,8 @@ services:
 
   # Create DRS Database
   drs-migrate:
-    image: ga4gh/ga4gh-starter-kit-utils:0.1.1
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_2_drs_migrate
     volumes:
       - "./resources/drs/db:/db"
     command: database create-tables -d jdbc:sqlite:/db/drs.db drs@v0.3.1
@@ -95,7 +134,8 @@ services:
   drs-dataset:
     depends_on:
       - drs-migrate
-    image: ga4gh/ga4gh-starter-kit-utils:0.1.1
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_2_drs_dataset
     volumes:
       - "./resources/drs/db:/db"
     command: database add-test-dataset -d jdbc:sqlite:/db/drs.db drs@v0.3.1
@@ -106,6 +146,7 @@ services:
       - drs-migrate
       - drs-dataset
     image: ga4gh/ga4gh-starter-kit-drs:0.3.1
+    container_name: part_2_drs
     hostname: drs.starterkit.federatedgenomics.org
     ports:
       - "5000:5000"
@@ -117,6 +158,5 @@ services:
 
 networks:
   intranet:
-  
 volumes:
   kratos-sqlite:
