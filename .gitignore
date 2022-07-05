@@ -10,6 +10,8 @@ presenter/ismb-prep-embassy/downsampled-highcov/*
 !presenter/ismb-prep-embassy/downsampled-highcov/.file
 presenter/ismb-prep-embassy/ref/*
 !presenter/ismb-prep-embassy/ref/.file
+sessions/starterkits/part_1_drs_wes/helper_notebooks/drs_map.json
+sessions/starterkits/part_2_dataconnect_passports/helper_notebooks/drs_map.json
 
 # Ignore Mac OS DS Store files
 **/.DS_Store

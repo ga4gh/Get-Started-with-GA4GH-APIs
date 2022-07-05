@@ -5,7 +5,7 @@ import datetime
 
 import hashlib
 drs_map = {}
-drs_map_file = 'drs_map.json'
+drs_map_file = './helper_notebooks/drs_map.json'
 
 
 timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
