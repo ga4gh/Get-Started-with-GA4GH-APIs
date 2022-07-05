@@ -32,7 +32,7 @@ services:
     depends_on:
       - data-connect-migrate
       - data-connect-dataset
-    image: ianfore/ga4gh-starter-kit-data-connect:latest
+    image: ga4gh/ga4gh-starter-kit-data-connect:0.1.1
     container_name: part_2_dataconnect
     hostname: dataconnect.starterkit.ga4gh.org
     ports:
