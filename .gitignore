@@ -1,8 +1,8 @@
 *.db
-sessions/starterkits/part_1/tmp/*
-!sessions/starterkits/part_1/tmp/.file
-sessions/starterkits/part_2/tmp/*
-!sessions/starterkits/part_2/tmp/.file
+sessions/starterkits/part_1_drs_wes/tmp/*
+!sessions/starterkits/part_1_drs_wes/tmp/.file
+sessions/starterkits/part_2_dataconnect_passports/tmp/*
+!sessions/starterkits/part_2_dataconnect_passports/tmp/.file
 presenter/ismb-prep-embassy/.env.sh
 presenter/ismb-prep-embassy/downsampled/*
 !presenter/ismb-prep-embassy/downsampled/.file

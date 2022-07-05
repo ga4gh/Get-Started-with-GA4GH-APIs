@@ -42,6 +42,7 @@ services:
   # Create WES Database
   wes-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_1_wes_migrate
     volumes:
       - "./resources/wes/db:/db"
     command: database create-tables -d jdbc:sqlite:/db/wes.db wes@v0.3.0
@@ -51,6 +52,7 @@ services:
     depends_on:
       - wes-migrate
     image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_1_wes_dataset
     volumes:
       - "./resources/wes/db:/db"
     command: database add-test-dataset -d jdbc:sqlite:/db/wes.db wes@v0.3.0
