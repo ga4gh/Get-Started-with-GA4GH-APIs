@@ -2,6 +2,7 @@ version: "3.9"
 services:
 
   # Create DATA CONNECT Database
+  # TODO: This container should exist only after the database file and tables are created/ refreshed on host machine
   data-connect-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.2
     volumes:
@@ -16,7 +17,13 @@ services:
     volumes:
       - "./resources/data-connect/db:/db"
       - "./resources/data-connect/db-scripts:/db-scripts"
-    command: database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
+    entrypoint: ["/bin/sh","-c"]
+    command:
+    # wait till /db/data-connect.db is available
+    # TODO: this should be handled by depends_on, but currently data-connect-migrate container exits before data-connect.db is created
+      - |
+        while [ ! -f /db/data-connect.db ]; do sleep 1; done
+        java -jar ga4gh-starter-kit-utils.jar database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
 
   # DATA CONNECT
   data-connect:
@@ -57,8 +64,8 @@ services:
       - PORT=4455
       - SECURITY_MODE=
       - KRATOS_BROWSER_URL=http://127.0.0.1:4433/
-      - PASSPORT_BROKER_PUBLIC_URL=http://passport-broker.ga4gh.org:4500/ga4gh/passport/v1/ 
-      - PASSPORT_BROKER_ADMIN_URL=http://passport-broker.ga4gh.org:4501/admin/ga4gh/passport/v1/ 
+      - PASSPORT_BROKER_PUBLIC_URL=http://passport-broker.ga4gh.org:4500/ga4gh/passport/v1/
+      - PASSPORT_BROKER_ADMIN_URL=http://passport-broker.ga4gh.org:4501/admin/ga4gh/passport/v1/
     ports:
       - "4455:4455"
     restart: unless-stopped
@@ -140,6 +147,5 @@ services:
 
 networks:
   intranet:
-  
 volumes:
   kratos-sqlite:
