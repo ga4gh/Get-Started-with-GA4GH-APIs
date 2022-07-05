@@ -37,7 +37,7 @@ cd fasp-scripts
 pip install .
 ```
 
-
+git pull https://github.com/ga4gh/ismb-2022-ga4gh-tutorial
 
 #### Cloud credits
 

@@ -1,8 +1,8 @@
 *.db
-sessions/StarterKits/Part_1_DRS_WES/tmp/*
-!sessions/StarterKits/Part_1_DRS_WES/tmp/.file
-sessions/StarterKits/Part_2_DataConnect_Passports/tmp/*
-!sessions/StarterKits/Part_2_DataConnect_Passports/tmp/.file
+sessions/starterkits/part_1_drs_wes/tmp/*
+!sessions/starterkits/part_1_drs_wes/tmp/.file
+sessions/starterkits/part_2_dataconnect_passports/tmp/*
+!sessions/starterkits/part_2_dataconnect_passports/tmp/.file
 presenter/ismb-prep-embassy/.env.sh
 presenter/ismb-prep-embassy/downsampled/*
 !presenter/ismb-prep-embassy/downsampled/.file
@@ -10,6 +10,8 @@ presenter/ismb-prep-embassy/downsampled-highcov/*
 !presenter/ismb-prep-embassy/downsampled-highcov/.file
 presenter/ismb-prep-embassy/ref/*
 !presenter/ismb-prep-embassy/ref/.file
+sessions/starterkits/part_1_drs_wes/helper_notebooks/drs_map.json
+sessions/starterkits/part_2_dataconnect_passports/helper_notebooks/drs_map.json
 
 # Ignore Mac OS DS Store files
 **/.DS_Store
