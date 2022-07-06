@@ -89,6 +89,14 @@ cp session2/keys/sbcgc_key.json ~/.keys
 
 Note: you may save the file elsewhere. If so, make a note of the location you saved it to as you will need to replace the default path later.
 
+
+
+```
+python ismb_test/test_sbcgc_auth.py ~/.keys/sbcgc_key.json
+```
+
+
+
 #### Start Jupyter
 
 ```

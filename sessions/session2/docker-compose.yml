@@ -14,6 +14,9 @@ services:
     ports:
       - "15432:5432"
   dev-data-connect:
+    depends_on:
+       - trino-db
+       - dnastack-data-connect-db
     image: ianfore/data-connect-trino:dev
     container_name: session_2_dev-data-connect
     ports:
