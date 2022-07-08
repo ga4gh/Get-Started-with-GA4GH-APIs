@@ -1,10 +1,10 @@
 {
     "description": "Thousand genomes sample metadata",
-    "$id": "t5",
-    "properties": {
+    "$id": "TG_sra_t2",
+    "properties": {  
         "population": {
-            "$id": "v4",
-            "type": "string",
+            "$id": "TG_sra_v10",
+            "type": "encoded value",
             "description": "Population list",
             "oneOf": [
                 {
@@ -113,20 +113,83 @@
                 }
             ]
         },
-        "race": {
-            "$id": "v1",
+        "annotated_sex": {
+            "$id": "TG_sra_v11",
+            "description": "Sex of participant",
+            "type": "encoded value",
+            "oneOf": [
+                {
+                    "const": "male",
+                    "title": "male"
+                },
+                {
+                    "const": "female",
+                    "title": "female"
+                }
+            ]
+        },       
+        "su_submitter_id": {
+            "$id": "TG_sra_v14",
             "type": "string",
-            "description": "Race no list"
+            "description": "Subject id used by submitter"
         },
-        "ethnicity": {
-            "$id": "v2",
+        "sa_submitter_id": {
+            "$id": "TG_sra_v15",
             "type": "string",
-            "description": "Ethnicity no list"
+            "description": "Sample id used by submitter"
         },
-        "weight": {
-            "$id": "v3",
+        "al_submitter_id": {
+            "$id": "TG_sra_v16",
+            "type": "string",
+            "description": "Aliquot id used by submitter"
+        },
+        "rg_submitter_id": {
+            "$id": "TG_sra_v17",
+            "type": "string",
+            "description": "Read group id used by submitter"
+        },
+        "read_drs_id": {
+            "$id": "TG_sra_v18",
+            "type": "string",
+            "description": "DRS id for read file"
+        },
+        "file_name": {
+            "$id": "TG_sra_v19",
+            "type": "string",
+            "description": "Name of file"
+        },
+        "file_size": {
+            "$id": "TG_sra_v20",
             "type": "number",
-            "description": "weight in kg"
+            "description": "Size of file in bytes",
+            "$unit": "bytes"
+        },
+        "md5sum": {
+            "$id": "TG_sra_v21",
+            "type": "number",
+            "description": "MD5 checksum for file"
+        },
+        "data_type": {
+            "$id": "TG_sra_v22",
+            "type": "encoded value",
+            "description": "Type of data contained in file",
+            "oneOf": [
+                {
+                    "const": "Aligned_20_Reads",
+                    "title": "Aligned_20_Reads"
+                }
+            ]
+        },
+        "data_format": {
+            "$id": "TG_sra_v23",
+            "type": "encoded value",
+            "description": "Format of data file",
+            "oneOf": [
+                {
+                    "const": "CRAM",
+                    "title": "CRAM"
+                }
+            ]
         }
     }
 }
