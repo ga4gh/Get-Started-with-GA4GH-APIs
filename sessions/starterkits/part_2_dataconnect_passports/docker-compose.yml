@@ -41,6 +41,7 @@ services:
     volumes:
       - "./resources/data-connect/config:/config"
       - "./resources/data-connect/db:/db"
+    command: -c /config/config.yml
 
   # PASSPORT
   kratos-migrate:
