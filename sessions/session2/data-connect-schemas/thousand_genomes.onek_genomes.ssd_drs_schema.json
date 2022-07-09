@@ -1,0 +1,195 @@
+{
+    "description": "Thousand genomes sample metadata",
+    "$id": "TG_sra_t2",
+    "properties": {  
+        "population": {
+            "$id": "TG_sra_v10",
+            "type": "encoded value",
+            "description": "Population list",
+            "oneOf": [
+                {
+                    "const": "ACB",
+                    "title": "African Caribbean in Barbados"
+                },
+                {
+                    "const": "ASW",
+                    "title": "African Ancestry in Southwest US"
+                },
+                {
+                    "const": "BEB",
+                    "title": "Bengali in Bangladesh"
+                },
+                {
+                    "const": "CDX",
+                    "title": "Chinese Dai in Xishuangbanna, China"
+                },
+                {
+                    "const": "CEU",
+                    "title": "Utah residents (CEPH) with Northern and Western European ancestry "
+                },
+                {
+                    "const": "CHB",
+                    "title": "Han Chinese in Beijing, China"
+                },
+                {
+                    "const": "CHS",
+                    "title": "Han Chinese South"
+                },
+                {
+                    "const": "CLM",
+                    "title": "Colombian in Medellin, Colombia"
+                },
+                {
+                    "const": "ESN",
+                    "title": "Esan in Nigeria"
+                },
+                {
+                    "const": "FIN",
+                    "title": "Finnish in Finland "
+                },
+                {
+                    "const": "GBR",
+                    "title": "British in England and Scotland "
+                },
+                {
+                    "const": "GIH",
+                    "title": "Gujarati Indian in Houston, TX"
+                },
+                {
+                    "const": "GWD",
+                    "title": "Gambian in Western Division, The Gambia "
+                },
+                {
+                    "const": "IBS",
+                    "title": "Iberian populations in Spain "
+                },
+                {
+                    "const": "ITU",
+                    "title": "Indian Telugu in the UK"
+                },
+                {
+                    "const": "JPT",
+                    "title": "Japanese in Tokyo, Japan"
+                },
+                {
+                    "const": "KHV",
+                    "title": "Kinh in Ho Chi Minh City, Vietnam"
+                },
+                {
+                    "const": "LWK",
+                    "title": "Luhya in Webuye, Kenya"
+                },
+                {
+                    "const": "MSL",
+                    "title": "Mende in Sierra Leone"
+                },
+                {
+                    "const": "MXL",
+                    "title": "Mexican Ancestry in Los Angeles, California"
+                },
+                {
+                    "const": "PEL",
+                    "title": "Peruvian in Lima, Peru"
+                },
+                {
+                    "const": "PJL",
+                    "title": "Punjabi in Lahore, Pakistan"
+                },
+                {
+                    "const": "PUR",
+                    "title": "Puerto Rican in Puerto Rico"
+                },
+                {
+                    "const": "STU",
+                    "title": "Sri Lankan Tamil in the UK"
+                },
+                {
+                    "const": "TSI",
+                    "title": "Toscani in Italia "
+                },
+                {
+                    "const": "YRI",
+                    "title": "Yoruba in Ibadan, Nigeria"
+                }
+            ]
+        },
+        "annotated_sex": {
+            "$id": "TG_sra_v11",
+            "description": "Sex of participant",
+            "type": "encoded value",
+            "oneOf": [
+                {
+                    "const": "male",
+                    "title": "male"
+                },
+                {
+                    "const": "female",
+                    "title": "female"
+                }
+            ]
+        },       
+        "su_submitter_id": {
+            "$id": "TG_sra_v14",
+            "type": "string",
+            "description": "Subject id used by submitter"
+        },
+        "sa_submitter_id": {
+            "$id": "TG_sra_v15",
+            "type": "string",
+            "description": "Sample id used by submitter"
+        },
+        "al_submitter_id": {
+            "$id": "TG_sra_v16",
+            "type": "string",
+            "description": "Aliquot id used by submitter"
+        },
+        "rg_submitter_id": {
+            "$id": "TG_sra_v17",
+            "type": "string",
+            "description": "Read group id used by submitter"
+        },
+        "read_drs_id": {
+            "$id": "TG_sra_v18",
+            "type": "string",
+            "description": "DRS id for read file"
+        },
+        "file_name": {
+            "$id": "TG_sra_v19",
+            "type": "string",
+            "description": "Name of file"
+        },
+        "file_size": {
+            "$id": "TG_sra_v20",
+            "type": "number",
+            "description": "Size of file in bytes",
+            "$unit": "bytes"
+        },
+        "md5sum": {
+            "$id": "TG_sra_v21",
+            "type": "number",
+            "description": "MD5 checksum for file"
+        },
+        "data_type": {
+            "$id": "TG_sra_v22",
+            "type": "encoded value",
+            "description": "Type of data contained in file",
+            "oneOf": [
+                {
+                    "const": "Aligned_20_Reads",
+                    "title": "Aligned_20_Reads"
+                }
+            ]
+        },
+        "data_format": {
+            "$id": "TG_sra_v23",
+            "type": "encoded value",
+            "description": "Format of data file",
+            "oneOf": [
+                {
+                    "const": "CRAM",
+                    "title": "CRAM"
+                }
+            ]
+        }
+    }
+}
