@@ -122,5 +122,6 @@ Click on the .. folder icon to navigate back up to the sessions folder.
 
 <img src="../../supporting/images/jupyter2.png" alt="jupyter2" style="zoom:50%;" />
 
+Click on session2 and open the 2-1 Basic DRS.ipynb notebook.
 
-
+Work through the exercises in the notebook.
