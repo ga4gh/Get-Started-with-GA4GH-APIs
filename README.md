@@ -42,6 +42,10 @@ Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms
 
 [**Go to Session 2**](./sessions/session2/README.md)
 
+### Lunch Break
+
+**Time:** 1 pm - 2 pm
+
 ### Session 3: Federated Analysis - Putting the standards together 
 
 **Time:** 2 pm - 3:15 pm
@@ -49,6 +53,10 @@ Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms
 **Summary:** Combine examples from the previous session to perform an end to end task. Explore some of the other implementations of the standards explored.
 
 [**Go to Session 3**](./sessions/session3/README.md)
+
+### Lunch Break
+
+**Time:** 3:15 pm - 3:30 pm
 
 ### Starter Kits:
 ### Part I: Data abstraction and workflow execution
@@ -58,6 +66,10 @@ Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms
 **Summary:** Run DRS and WES instances using Docker, execute a nextflow workflow using WES
 
 [**Go to Starter Kits Part I**](https://github.com/ga4gh/ismb-2022-ga4gh-tutorial/wiki/Starter-Kits-(Part-1-DRS-and-WES))
+
+### Break
+
+**Time:** 4:45 pm - 5 pm
 
 ### Part II: Controlled data access and data discovery
 
