@@ -2,10 +2,6 @@
 
 ## Outline
 
-Still need to work out the balance between this session and the previous one. Though previous session is focussed on Data Connect and DRS, may be good to take it all the way through to a workflow example. This session would then look at more advanced examples (as advanced as appropriate - need to find the right level ).
-
-A controlled access example should feature, possibly in this session, possibly in previous. 
-
 **Time:** Sunday, July 10th, 2022 @ 2 pm - 3:15 pm
 
 **Slides:** [link](https://docs.google.com/presentation/d/16AozizVh3pQ_RMuz4kLECt-MfjraKVH-BvcjMOpqCtU)
