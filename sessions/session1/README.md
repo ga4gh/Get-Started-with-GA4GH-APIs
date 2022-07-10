@@ -11,3 +11,5 @@ In this session, we will give an overview of the GA4GH, highlighting its role as
 Next, we will outline the key GA4GH standards pertaining to federated analysis that will be covered during the tutorial: Data Repository Service (DRS), Workflow Execution Service (WES), Passports, and Data Connect. We'll look at the roles and responsibilities of each standard API, and how they fit together to enable federated analysis.
 
 ## Tutorial
+
+Go to this url: https://github.com/ga4gh/ismb-2022-ga4gh-tutorial/tree/main/sessions/session2
