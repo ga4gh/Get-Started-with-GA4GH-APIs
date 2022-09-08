@@ -18,32 +18,30 @@ Open a terminal in your chosen python3 environment
 
 ![python](../../supporting/images/python-icon.png)If you are using Python virtual environments and set one up for the tutorial activate that environment now.
 
-#### Install Jupyter
+### Install Jupyter
 
 ```
 pip install jupyter
 ```
 
-#### Fasp-scripts
+### Install fasp-clients
 
-- Create a directory to download a package for the tutorial
-- Clone the fasp-client branch of fasp-scripts
+- Install the fasp-clients branch of fasp-scripts. FASP is the GA4GH Federated Analysis Systems Project.
 
 ```
-mkdir tutorial_installs
-cd tutorial_installs
-git clone -b fasp-client --single-branch https://github.com/ga4gh/fasp-scripts.git
-cd fasp-scripts
-pip install .
+pip install git+https://github.com/ga4gh/fasp-clients
+
 ```
+
+### Clone or pull the respository for this tutorial
 
 git pull https://github.com/ga4gh/ismb-2022-ga4gh-tutorial
 
-#### Cloud credits
+### Cloud credits
 
 Starter accounts with cloud credits on selected platforms (to be listed e.g. Seven Bridges Cancer Genomics Cloud)
 
-#### Create a project in the Cancer Genomics Cloud
+### Create a project in the Cancer Genomics Cloud
 
 Open http://cgc.sbgenomics.com and login with your username and password.
 
