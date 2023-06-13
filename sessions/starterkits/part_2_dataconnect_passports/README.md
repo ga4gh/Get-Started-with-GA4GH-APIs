@@ -487,8 +487,12 @@ Create a passport token without the required visa "SouthAsianAncestry" for the D
 > }
 > ```
 
-### 13. Stop and Remove all docker containers, networks, volumes, and images created in step 1
+### 13. Stop and Remove all docker containers, networks, volumes, and images created in this session
+Ensure you are in the working directory for Starter Kits Part 2 before running `docker-compose down`
 
+```
+cd Get-Started-with-GA4GH-APIs/starterkits/part_2_dataconnect_passports
+```
 ```
 docker-compose down
 ```
