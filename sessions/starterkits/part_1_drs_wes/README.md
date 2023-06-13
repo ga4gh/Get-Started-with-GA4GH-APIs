@@ -263,8 +263,12 @@ The response from this request provides the "run_id" which can be used to monito
 
 It takes about 20 minutes to complete this run. Do not stop your docker containers until then.
 
-### 8. Stop and Remove all docker containers, networks, volumes, and images created in step 1
+### 8. Stop and Remove all docker containers, networks, volumes, and images created in this session
+Ensure you are in the working directory for Starter Kits Part 1 before running `docker-compose down`
 
+```
+cd Get-Started-with-GA4GH-APIs/starterkits/part_1_drs_wes
+```
 ```
 docker-compose down
 ```
