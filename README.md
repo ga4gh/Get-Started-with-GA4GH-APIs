@@ -65,7 +65,7 @@ Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms
 
 **Summary:** Run DRS and WES instances using Docker, execute a nextflow workflow using WES
 
-[**Go to Starter Kits Part I**](https://github.com/ga4gh/ismb-2022-ga4gh-tutorial/wiki/Starter-Kits-(Part-1-DRS-and-WES))
+[**Go to Starter Kits Part I**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_1_drs_wes/README.md)
 ***
 ### Break
 
@@ -77,7 +77,7 @@ Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms
 
 **Summary:** Run Data Connect and Passport Broker instances using Docker. Acting as a researcher, search and obtain authorization for input datasets based on clearance.
 
-[**Go to Starter Kits Part II**](https://github.com/ga4gh/ismb-2022-ga4gh-tutorial/wiki/Starter-Kits-(Part-2-Data-Connect-and-Passports))
+[**Go to Starter Kits Part II**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_2_dataconnect_passports/README.md)
 
 ## Instructors
 
