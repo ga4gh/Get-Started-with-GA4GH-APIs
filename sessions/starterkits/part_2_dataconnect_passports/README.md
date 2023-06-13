@@ -34,7 +34,7 @@ If you have not set up your environment, follow Tutorial Steps 1,2 from [Starter
 Enter the working directory for Starter Kits Part 2
 
 ```
-cd Get-Started-with-GA4GH-APIs/starterkits/part_2_dataconnect_passports
+cd Get-Started-with-GA4GH-APIs/sessions/starterkits/part_2_dataconnect_passports
 ```
 
 Delete any databases and temporary files from previous runs
