@@ -2,7 +2,6 @@ version: "3.9"
 services:
 
   # Create DATA CONNECT Database
-  # TODO: This container should exist only after the database file and tables are created/ refreshed on host machine
   data-connect-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.2
     container_name: part_2_dataconnect_migrate
@@ -20,17 +19,11 @@ services:
       - "./resources/data-connect/db:/db"
       - "./resources/data-connect/db-scripts:/db-scripts"
     entrypoint: ["/bin/sh","-c"]
-    command:
-    # wait till /db/data-connect.db is available
-    # TODO: this should be handled by depends_on, but currently data-connect-migrate container exits before data-connect.db is created
-      - |
-        while [ ! -f /db/data-connect.db ]; do sleep 1; done
-        java -jar ga4gh-starter-kit-utils.jar database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
+    command: database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
 
   # DATA CONNECT
   data-connect:
     depends_on:
-      - data-connect-migrate
       - data-connect-dataset
     image: ga4gh/ga4gh-starter-kit-data-connect:0.1.1
     container_name: part_2_dataconnect
@@ -48,19 +41,15 @@ services:
     image: oryd/kratos:v0.9.0-alpha.2
     container_name: part_2_kratos_migrate
     environment:
-      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rwc
+      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rw
     volumes:
-      - type: volume
-        source: kratos-sqlite
-        target: /var/lib/sqlite
-        read_only: false
-      - type: bind
-        source: ./contrib/kratos
-        target: /etc/config/kratos
+      - "./kratos-sqlite:/var/lib/sqlite"
+      - "./contrib/kratos:/etc/config/kratos"
     command: -c /etc/config/kratos/kratos.yml migrate sql -e --yes
     restart: on-failure
     networks:
       - intranet
+
   passport-ui-node:
     image: ga4gh/ga4gh-starter-kit-passport-ui-node:0.0.2
     container_name: part_2_passport_ui
@@ -77,6 +66,7 @@ services:
     restart: unless-stopped
     networks:
       - intranet
+
   kratos:
     depends_on:
       - kratos-migrate
@@ -91,15 +81,11 @@ services:
       - LOG_LEVEL=trace
     command: serve -c /etc/config/kratos/kratos.yml --dev --watch-courier
     volumes:
-      - type: volume
-        source: kratos-sqlite
-        target: /var/lib/sqlite
-        read_only: false
-      - type: bind
-        source: ./contrib/kratos
-        target: /etc/config/kratos
+      - "./kratos-sqlite:/var/lib/sqlite"
+      - "./contrib/kratos:/etc/config/kratos"
     networks:
       - intranet
+
   mailslurper:
     image: oryd/mailslurper:latest-smtps
     container_name: part_2_mailslurper
@@ -108,7 +94,32 @@ services:
       - "4437:4437"
     networks:
       - intranet
+
+  # Add default tables passport broker Database
+  passport-broker-migrate:
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_2_passport_broker_migrate
+    volumes:
+      - "./resources/passportBroker/db:/db"
+      - "./resources/passportBroker/db-scripts:/db-scripts"
+    # using local copy of create-tables.sql as the file name is different on passport-broker repo
+    command: database create-tables -d jdbc:sqlite:/db/passport-broker.db /db-scripts/create-tables.sql
+
+  # Add default data to passport broker Database
+  passport-broker-dataset:
+    depends_on:
+      - passport-broker-migrate
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_1_passport_broker_dataset
+    volumes:
+      - "./resources/passportBroker/db:/db"
+      - "./resources/passportBroker/db-scripts:/db-scripts"
+    # using local copy of add-test-dataset.sql as the file name is different on passport-broker repo
+    command: database add-test-dataset -d jdbc:sqlite:/db/passport-broker.db /db-scripts/add-dev-dataset.sql
+
   passport-broker:
+    depends_on:
+      - passport-broker-dataset
     image: ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
     container_name: part_2_passport_broker
     ports:
@@ -119,6 +130,7 @@ services:
     hostname: passport-broker.ga4gh.org
     volumes:
       - "./resources/passportBroker/config:/config"
+      - "./resources/passportBroker/db:/db"
     command: -c /config/config.yml
 
   # DRS
@@ -159,5 +171,3 @@ services:
 
 networks:
   intranet:
-volumes:
-  kratos-sqlite:

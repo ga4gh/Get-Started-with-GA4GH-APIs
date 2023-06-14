@@ -16,5 +16,10 @@ sessions/starterkits/part_2_dataconnect_passports/helper_notebooks/drs_map.json
 # Ignore Mac OS DS Store files
 **/.DS_Store
 
+.idea/
+
 # Jupyter Notebook
 .ipynb_checkpoints
+
+# kratos database
+db.sqlite
