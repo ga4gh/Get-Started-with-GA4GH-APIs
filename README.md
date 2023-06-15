@@ -1,4 +1,5 @@
-# ISMB 2022 GA4GH Tutorial
+# ELWAZI 
+# TODO: Update session title, timings and details
 
 ## Introduction
 
@@ -26,38 +27,6 @@ Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms
 
 ## Schedule
 
-### Session 1: Introduction to GA4GH, Federated Analysis, and the Starter Kit
-
-**Time:** 11 am - 11:30 am
-
-**Summary:** Overview of GA4GH as a technical standards-setting organization in genomics, outline key technical standards that we will interact with during the tutorial. 
-
-[**Go to Session 1**](./sessions/session1/README.md)
-***
-### Session 2: Federated Analysis - Find and access data in the cloud via Data Connect, Data Repository Service (DRS) and Workflow Execution Service WES
-
-**Time:** 11:30 am - 1 pm
-
-**Summary:** Interact with real-world implementations of Data Connect, DRS and WES to locate and access files in various datasets.
-
-[**Go to Session 2**](./sessions/session2/README.md)
-***
-### Lunch Break
-
-**Time:** 1 pm - 2 pm
-***
-### Session 3: Federated Analysis - Putting the standards together 
-
-**Time:** 2 pm - 3:15 pm
-
-**Summary:** Combine examples from the previous session to perform an end to end task. Explore some of the other implementations of the standards explored.
-
-[**Go to Session 3**](./sessions/session3/README.md)
-***
-### Break
-
-**Time:** 3:15 pm - 3:30 pm
-***
 ### Starter Kits:
 ### Part I: Data abstraction and workflow execution
 
