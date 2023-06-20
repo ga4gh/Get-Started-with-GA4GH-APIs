@@ -49,7 +49,7 @@ Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms
 [**Go to Starter Kits Part II**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_2_dataconnect_passports/README.md)
 
 ## Instructors
-
+TODO: update
 Ian Fore, D. Phil. Senior Biomedical Informatics Program Manager, National Cancer Institute
 * [Github](https://github.com/ianfore)
 * [orcid:0000-0002-2926-9324](http://identifiers.org/orcid:0000-0002-2926-9324)
