@@ -10,7 +10,7 @@ services:
     volumes:
       - "./resources/drs/db:/db"
     command: database create-tables -d jdbc:sqlite:/db/drs.db drs@v0.3.1
-
+    
   # Add default data to DRS Database
   drs-dataset:
     depends_on:
@@ -75,3 +75,9 @@ services:
       - "/tmp/shared/wes:/tmp/shared/wes"
     working_dir: /tmp/shared/wes
     command: -c /config/config.yml
+    
+networks:
+  default:
+    driver: bridge
+    driver_opts:
+      com.docker.network.driver.mtu: 1450
