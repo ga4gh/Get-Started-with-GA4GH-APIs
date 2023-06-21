@@ -63,6 +63,12 @@ TODO: Link to jupyter notebook for hands on workflow using WES to run a workflow
 
 
 
+###  5. Load 1000 genomes data into DRS
+```
+python3 resources/drs/db-scripts/populate-drs.py
+```
+
+
 
 ### 6. Explore DRS endpoints
 
