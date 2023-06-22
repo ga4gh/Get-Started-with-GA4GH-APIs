@@ -3,10 +3,11 @@
 
 ## Introduction
 
-Welcome to the tutorial outline for _**GA4GH: An introduction to federated genomics using the GA4GH Starter Kit and real-world data platforms**_. This tutorial will be (has been) presented at the ISMB conference on Sunday, July 10th, 2022 in Madison, Wisconsin, USA.
+Welcome to the tutorial outline for _**Get Started with GA4GH APIs: An introduction to federated genomics using the GA4GH Starter Kit**_. This tutorial will be (has been) presented at the eLwazi workshop on July 10th - 12th, 2023 in Cape Town, South Africa.
 
 The Global Alliance for Genomics and Health (GA4GH) is an international technical standards-setting organization, enabling genomic data sharing. Through its standards, GA4GH aims to promote a federated model of data sharing, in which researchers can seamlessly access data from multiple sources in an international network using common tools and protocols, and data providers can securely share data with trusted researchers while still maintaining ownership and control over their data. 
 
+TODO: update this section
 In this tutorial, we explore four GA4GH standardized API interfaces that enable federated data access and analysis. The first API standard, **Data Repository Service (DRS)**, provides minimal metadata and access information about files that can be used as input to analytical workflows. The second standard, **Workflow Execution Service (WES)**, enables researchers to remotely run workflows defined in Common Workflow Language (CWL), Workflow Description Language (WDL), or Nextflow on an input dataset of interest. The third standard, **Data Connect**, allows researchers to search and filter biomedical datasets based on criteria of interest. Lastly, **GA4GH Passports** grants researchers fine-grained permission sets for data and compute resources they are allowed to access, and is used to control researcher access to resources behind the other three APIs.
 
 We will explore two perspectives
@@ -18,41 +19,56 @@ We will explore two perspectives
   * *System/Platform admin:* Configure, start, and stop GA4GH Starter Kit services 
   * *Researcher / Data Consumer:* explore direct http access to services
   * *Data Access Committee (DAC):* Grant/revoke researcher access to datasets
-   
-If you are planning to attend the ISMB tutorial, please complete the steps in the [Preparation](#preparation) section to ensure your laptop is ready to run the various demos.
 
 ## Environment Set up
 
-Follow [this](https://docs.google.com/document/d/1n3UjQ1m0B1fG3LHFDPXx1OUw2uMzms5uANK76cngDyc/edit?usp=sharing) document to set up your environment for this tutorial.
+We will be using VMs in the Ilifi(TODO: check the spelling) environment for the purpose of these workshop sessions. The VM comes pre-installed with required software and docker images. Please refer to (TODO: link to the terraform here) for the VM set up if you are interested
+
 
 ## Schedule
 
 ### Starter Kits:
-### Part I: Data abstraction and workflow execution
 
-**Time:** 3:30 pm - 4:45 pm
+(TODO: Check this content)
+### Part 0: Check the Environment set up
+**Time:** July 10, 2023 | 12:15 - 13:00
 
-**Summary:** Run DRS and WES instances using Docker, execute a nextflow workflow using WES
+**Summary:** Ensure that all required software and tools are downloaded and installed correctly
 
-[**Go to Starter Kits Part I**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_1_drs_wes/README.md)
+[**Go to Part 0**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_0_env_check/README.md)
+
 ***
-### Break
+### Part 1: Data abstraction and workflow execution
 
-**Time:** 4:45 pm - 5 pm
+**Time:** July 10, 2023 | 3:30 pm - 4:45 pm
+
+**Summary:** Run DRS and WES instances using Docker, execute a nextflow workflow using WES.
+
+[**Go to Part I**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_1_drs_wes/README.md)
 ***
-### Part II: Controlled data access and data discovery
+### Part 2: Data Discovery
+**Time:** July 11, 2023 | 3:30 pm - 4:45 pm
 
-**Time:** 5 pm - 6 pm
+**Summary:** Run Data Connect instance using Docker and explore the dataset using the Data Connect endpoints.
 
-**Summary:** Run Data Connect and Passport Broker instances using Docker. Acting as a researcher, search and obtain authorization for input datasets based on clearance.
+[**Go to Part II**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_2_dataconnect/README.md)
 
-[**Go to Starter Kits Part II**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_2_dataconnect_passports/README.md)
+***
+### Part 3: Controlled data access
+
+**Time:**  July 12, 2023 |5 pm - 6 pm
+
+**Summary:** Run DRS and Passport Broker instances using Docker. Acting as a researcher, obtain authorization for input datasets based on clearance.
+
+[**Go to Part III**](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_2_drs_passports/README.md)
 
 ## Instructors
-TODO: update
-Ian Fore, D. Phil. Senior Biomedical Informatics Program Manager, National Cancer Institute
-* [Github](https://github.com/ianfore)
-* [orcid:0000-0002-2926-9324](http://identifiers.org/orcid:0000-0002-2926-9324)
 
-Yash Puligundla, Software Engineer, Global Alliance for Genomics and Health
+Alex Tsai, Software Engineer, Global Alliance for Genomics and Health
+* [Github](https://github.com/alextsaihi)
+
+Chen Chen, Software Engineer, Global Alliance for Genomics and Health
+* [Github](https://github.com/Chen2x)
+
+Yash Puligundla, Senior Software Engineer, Global Alliance for Genomics and Health
 * [Github](https://github.com/yash-puligundla)
