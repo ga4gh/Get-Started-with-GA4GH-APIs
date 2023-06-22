@@ -19,8 +19,11 @@ services:
       - "./resources/data-connect/db:/db"
       - "./resources/data-connect/db-scripts:/db-scripts"
     entrypoint: ["/bin/sh","-c"]
-    command: database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
-
+    command: 
+      - |
+        while [ ! -f /db/data-connect.db ]; do sleep 1; done
+        java -jar ga4gh-starter-kit-utils.jar database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
+        
   # DATA CONNECT
   data-connect:
     depends_on:
