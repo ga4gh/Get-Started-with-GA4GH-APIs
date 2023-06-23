@@ -1,4 +1,4 @@
-# Starter Kits (Part 2 Data Connect)
+# Starter Kits (Part 2 Data Connect and Passports)
 **Time:** Sunday, July 10th, 2022 @ 5 pm - 6 pm
 
 **Slides:** [link](https://docs.google.com/presentation/d/1nrR0rCpKPpKzrizdUfRcG5ijmEpwgqlT/edit#slide=id.g135c1eb0a82_0_732)
