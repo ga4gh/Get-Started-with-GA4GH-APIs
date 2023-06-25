@@ -1,3 +1,0 @@
-dataConnectConfig:
-  databaseProps:
-    url: jdbc:sqlite:/db/data-connect.db

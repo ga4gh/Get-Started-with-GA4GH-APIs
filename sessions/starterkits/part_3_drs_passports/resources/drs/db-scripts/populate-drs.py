@@ -5,7 +5,7 @@ import datetime
 import hashlib
 
 drs_map = {}
-drs_map_file = './helper_notebooks/drs_map.json'
+drs_map_file = './tmp/drs_map.json'
 
 
 timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
@@ -61,10 +61,15 @@ def post_drs_object_to_server(object_id=None, description=None, name=None,
         drs_object_json["passport_visas"] = [{"id": passport_visa_id}]
 
     response = requests.post(url, json=drs_object_json)
-    if response.status_code != 200:
+    if response.status_code == 500:
         response_json = response.json()
         message = ( "WARNING: Unsuccessful object creation for DRS object with ID: '{}'. " \
-                + "Status Code: {}. Error Message: {}").format(object_id, response_json["status_code"], response_json["msg"])
+        + "Status Code: {}. Error Message: {}").format(object_id, response_json["status"], response_json["error"])
+        print(message)
+    elif response.status_code != 200:
+        response_json = response.json()
+        message = ( "WARNING: Unsuccessful object creation for DRS object with ID: '{}'. " \
+        + "Status Code: {}. Error Message: {}").format(object_id, response_json["status_code"], response_json["msg"])
         print(message)
 
 def add_bed_to_drs():

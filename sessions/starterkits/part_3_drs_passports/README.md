@@ -42,6 +42,15 @@ Delete any databases and temporary files from previous runs
 ./refresh.sh
 ```
 
+
+Make sure contrib/kratos/kratos.yml is updated with the public IP of your VM and in docker-compose file
+
+In my case, it is "154.114.10.160"
+
+
+
+
+
 Deploy Data Connect and Passport Starter Kits using docker-compose
 
 ```
@@ -165,6 +174,8 @@ http://localhost:5000/ga4gh/drs/v1/objects/28ffe6386b78fffb7cd0a7b2d0a79846
 
 ### 5. Add the broker and visa information to the DRS server and load 1000 genomes data into DRS
 
+
+Replacing this with drs-dataset-add-visas 
 ```
 python3 resources/drs/db-scripts/add-known-visas-to-drs.py
 ```

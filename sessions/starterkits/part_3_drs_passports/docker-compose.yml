@@ -1,77 +1,43 @@
 version: "3.9"
 services:
 
-  # Create DATA CONNECT Database
-  data-connect-migrate:
-    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
-    container_name: part_2_dataconnect_migrate
-    volumes:
-      - "./resources/data-connect/db:/db"
-    command: database create-tables -d jdbc:sqlite:/db/data-connect.db data-connect@v0.1.1
-
-  # Add default data to DATA CONNECT Database
-  data-connect-dataset:
-    depends_on:
-      - data-connect-migrate
-    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
-    container_name: part_2_dataconnect_dataset
-    volumes:
-      - "./resources/data-connect/db:/db"
-      - "./resources/data-connect/db-scripts:/db-scripts"
-    entrypoint: ["/bin/sh","-c"]
-    command: database add-test-dataset -d jdbc:sqlite:/db/data-connect.db /db-scripts/add-dev-dataset.sql
-
-  # DATA CONNECT
-  data-connect:
-    depends_on:
-      - data-connect-dataset
-    image: ga4gh/ga4gh-starter-kit-data-connect:0.1.1
-    container_name: part_2_dataconnect
-    hostname: dataconnect.starterkit.ga4gh.org
-    ports:
-      - "4800:4500" # public
-      - "4801:4501" # admin
-    volumes:
-      - "./resources/data-connect/config:/config"
-      - "./resources/data-connect/db:/db"
-    command: -c /config/config.yml
-
   # PASSPORT
   kratos-migrate:
     image: oryd/kratos:v0.9.0-alpha.2
-    container_name: part_2_kratos_migrate
+    container_name: part_3_kratos_migrate
     environment:
-      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rw
+      - DSN=sqlite:///var/lib/sqlite/db.sqlite?_fk=true&mode=rwc
     volumes:
-      - "./kratos-sqlite:/var/lib/sqlite"
-      - "./contrib/kratos:/etc/config/kratos"
+      - type: volume
+        source: kratos-sqlite
+        target: /var/lib/sqlite
+        read_only: false
+      - type: bind
+        source: ./contrib/kratos
+        target: /etc/config/kratos
     command: -c /etc/config/kratos/kratos.yml migrate sql -e --yes
     restart: on-failure
-    networks:
-      - intranet
 
   passport-ui-node:
     image: ga4gh/ga4gh-starter-kit-passport-ui-node:0.0.2
-    container_name: part_2_passport_ui
+    container_name: part_3_passport_ui
     environment:
       - KRATOS_PUBLIC_URL=http://kratos:4433/
       - KRATOS_ADMIN_URL=http://kratos:4434/
       - PORT=4455
       - SECURITY_MODE=
-      - KRATOS_BROWSER_URL=http://127.0.0.1:4433/
+      - KRATOS_BROWSER_URL=http://154.114.10.160:4433/
       - PASSPORT_BROKER_PUBLIC_URL=http://passport-broker.ga4gh.org:4500/ga4gh/passport/v1/
       - PASSPORT_BROKER_ADMIN_URL=http://passport-broker.ga4gh.org:4501/admin/ga4gh/passport/v1/
     ports:
       - "4455:4455"
     restart: unless-stopped
-    networks:
-      - intranet
 
   kratos:
     depends_on:
       - kratos-migrate
     image: oryd/kratos:v0.9.0-alpha.2
-    container_name: part_2_kratos
+    container_name: part_3_kratos
     ports:
       - '4433:4433' # public
       - '4434:4434' # admin
@@ -81,24 +47,25 @@ services:
       - LOG_LEVEL=trace
     command: serve -c /etc/config/kratos/kratos.yml --dev --watch-courier
     volumes:
-      - "./kratos-sqlite:/var/lib/sqlite"
-      - "./contrib/kratos:/etc/config/kratos"
-    networks:
-      - intranet
-
+      - type: volume
+        source: kratos-sqlite
+        target: /var/lib/sqlite
+        read_only: false
+      - type: bind
+        source: ./contrib/kratos
+        target: /etc/config/kratos
+        
   mailslurper:
     image: oryd/mailslurper:latest-smtps
-    container_name: part_2_mailslurper
+    container_name: part_3_mailslurper
     ports:
       - "4436:4436"
       - "4437:4437"
-    networks:
-      - intranet
-
+      
   # Add default tables passport broker Database
   passport-broker-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.2
-    container_name: part_2_passport_broker_migrate
+    container_name: part_3_passport_broker_migrate
     volumes:
       - "./resources/passportBroker/db:/db"
       - "./resources/passportBroker/db-scripts:/db-scripts"
@@ -118,19 +85,17 @@ services:
     command: database add-test-dataset -d jdbc:sqlite:/db/passport-broker.db /db-scripts/add-dev-dataset.sql
 
   passport-broker:
+    image: ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
     depends_on:
       - passport-broker-dataset
-    image: ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
-    container_name: part_2_passport_broker
+    container_name: part_3_passport_broker
     ports:
       - '4500:4500' # public
       - '4501:4501' # admin
-    networks:
-      - intranet
     hostname: passport-broker.ga4gh.org
     volumes:
-      - "./resources/passportBroker/config:/config"
       - "./resources/passportBroker/db:/db"
+      - "./resources/passportBroker/config:/config"
     command: -c /config/config.yml
 
   # DRS
@@ -138,7 +103,7 @@ services:
   # Create DRS Database
   drs-migrate:
     image: ga4gh/ga4gh-starter-kit-utils:0.1.2
-    container_name: part_2_drs_migrate
+    container_name: part_3_drs_migrate
     volumes:
       - "./resources/drs/db:/db"
     command: database create-tables -d jdbc:sqlite:/db/drs.db drs@v0.3.1
@@ -148,18 +113,30 @@ services:
     depends_on:
       - drs-migrate
     image: ga4gh/ga4gh-starter-kit-utils:0.1.2
-    container_name: part_2_drs_dataset
+    container_name: part_3_drs_dataset
     volumes:
       - "./resources/drs/db:/db"
     command: database add-test-dataset -d jdbc:sqlite:/db/drs.db drs@v0.3.1
+    
+  drs-dataset-add-visas:
+    depends_on:
+      - drs-migrate
+      - drs-dataset
+    image: ga4gh/ga4gh-starter-kit-utils:0.1.2
+    container_name: part_3_drs_dataset_add_visas
+    volumes:
+      - "./resources/drs/db:/db"
+      - "./resources/drs/db-scripts:/db-scripts"
+    command: database add-test-dataset -d jdbc:sqlite:/db/drs.db /db-scripts/add-known-visas.sql
 
   # DRS Starter Kit
   drs:
     depends_on:
       - drs-migrate
       - drs-dataset
+      - drs-dataset-add-visas
     image: ga4gh/ga4gh-starter-kit-drs:0.3.1
-    container_name: part_2_drs
+    container_name: part_3_drs
     hostname: drs.starterkit.federatedgenomics.org
     ports:
       - "5000:5000"
@@ -170,9 +147,10 @@ services:
     command: -c /config/config.yml
 
 networks:
-  intranet:
-
   default:
     driver: bridge
     driver_opts:
       com.docker.network.driver.mtu: 1450
+  
+volumes:
+  kratos-sqlite:
