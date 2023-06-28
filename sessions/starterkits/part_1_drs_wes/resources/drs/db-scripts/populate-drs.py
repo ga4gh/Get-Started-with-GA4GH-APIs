@@ -258,10 +258,20 @@ def add_1k_genomes_highcov_dataset_to_drs():
 
 def main():
     """Register all test dataset DRS Objects on local Starter Kit DRS server"""
+    print("Loading a subset of One Thousand Genomes Sample Data into DRS database.....")
 
     add_bed_to_drs()
+    print("Successfully added test dataset BED file to DRS")
+    
     add_ref_to_drs()
+    print("Successfully added GRCh38 reference genome to Starter Kit DRS")
+    
     add_1k_genomes_highcov_dataset_to_drs()
+    print("Successfully added test CRAM dataset (from 1000 Genomes) to Starter Kit DRS")
 
+    print("Process Completed!")
+    
+    
+    
 if __name__ == "__main__":
     main()
