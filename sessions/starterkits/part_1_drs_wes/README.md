@@ -1,8 +1,12 @@
 # Starter Kits:
 ## Part 1 - Data Abstraction and Workflow Execution
+
 **Starter Kits:** Data Repository Service (DRS) and Workflow Execution Service (WES)
+
 **Time:** July 10, 2023 | 2:45 PM - 3:30 PM SAST
+
 **Slides:** [link]() (TODO: Update link in the slides)
+
 ## Outline
 
 In this session, participants will gain familiarity with the GA4GH Starter Kits for Data Repository Service (DRS) and Workflow Execution Service (WES) standards. Using Docker and Docker Compose, participants will download and run DRS and WES API instances on their local machine. They will then populate the DRS instance with references to public genomics datasets, such as 1000 Genomes CRAM and CRAI files. Lastly, participants will execute containerized workflows (stored in Github) using WES.

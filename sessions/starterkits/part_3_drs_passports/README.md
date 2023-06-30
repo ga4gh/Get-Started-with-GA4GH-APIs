@@ -1,121 +1,186 @@
-# Starter Kits (Part 2 Data Connect and Passports)
-**Time:** Sunday, July 10th, 2022 @ 5 pm - 6 pm
+# Starter Kits:
+## Part 3 - Controlled Data Access
 
-**Slides:** [link](https://docs.google.com/presentation/d/1nrR0rCpKPpKzrizdUfRcG5ijmEpwgqlT/edit#slide=id.g135c1eb0a82_0_732)
+**Starter Kits:** GA4GH Passports, Data Repository Service (DRS)
+
+**Time:** July 12, 2023 | 4:15 PM - 5:00 PM SAST
+
+**Slides:** [link]() (TODO: Update link in the slides)
 
 ## Outline
+In this session, participants will gain familiarity with the process of using GA4GH Passports to access controlled data through the Data Repository Service (DRS). Using Docker and Docker Compose, participants will be able to download and run local instances of DRS, Passport Broker, and Passport UI Starter Kits. They will then populate the DRS instance with references to public genomics datasets, such as 1000 Genomes CRAM and CRAI files. 
 
-In the previous session, we assumed: 
-1. The input dataset (DRS URIs) was known by the researcher ahead of time
-2. The input dataset was completely open access. 
+Next, participants will populate the Passport Broker service with researcher user accounts, and give different levels of dataset access to each researcher. Finally, participants will act on behalf of these researchers, by leveraging their access credentials to retrieve DRS objects for which they have been granted clearance.
 
-In a realistic research scenario, the researcher will need to both **search** for and **obtain authorization** to a suitable, controlled access dataset prior to running workflows.
-
-In this session, we will introduce two more GA4GH standard APIs: Data Connect and Passports, which facilitate search and authorization, respectively. Using Docker and Docker Compose, participants will start a Data Connect service and populate it with biomedical metadata about the input dataset. Next, participants will start a Passport Broker service, populate it with researcher user accounts, and give different levels of dataset access to each researcher. Finally, participants will act on behalf of these researchers, running biomedical search queries and using their access credentials to obtain datasets for which they have clearance.
-
-
-The participants will play the roles of 
+The participants will play the roles of
 * **Data Provider**
-  * *System/Platform admin:* Configure, start, and stop GA4GH Starter Kit services 
+  * *System/Platform admin:* Configure, start, and stop GA4GH Starter Kit services
   * *Data Access Committee (DAC):* Grant/revoke researcher access to datasets
 
-* **Researcher / Data Consumer**
+* **Data Consumer (Researcher)**
   * Interact with the GA4GH services to accomplish a scientific objective
-  * Search, authorize, access, and analyze using the hosted services
+  * Authorize and access data objects using the hosted services
 
-**NOTE:** We use Postman for all the HTTP requests
+## Tutorial Steps
 
-## Tutorial
+### 1. Prerequisite: Environment Set up and Check
+Ensure that all required software and tools are downloaded and installed correctly by following the steps at [part_0_env_check](./sessions/starterkits/part_0_env_check)
 
-If you have not set up your environment, follow Tutorial Steps 1,2 from [Starter Kits Part 1](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/blob/main/sessions/starterkits/part_1_drs_wes/README.md)
-
-### 1. Run Data Connect and Passport Starter Kit docker containers using docker-compose
-
-Enter the working directory for Starter Kits Part 2
-
+### 2. Make sure you are in `part_3_drs_passports` directory
 ```
-cd Get-Started-with-GA4GH-APIs/sessions/starterkits/part_2_dataconnect_passports
+cd Get-Started-with-GA4GH-APIs/sessions/starterkits/part_3_drs_passports
 ```
 
-Delete any databases and temporary files from previous runs
+### 3. Update *./contrib/kratos/kratos.yml* and *docker-compose.yml* files with the public IP of your Virtual Machine
+
+To ensure proper redirection by the Passport UI service, please follow these steps:
+
+#### i. "./contrib/kratos/kratos.yml"
+Open the **./contrib/kratos/kratos.yml** file and locate all the re-direct URLs. Update each of these URLs with the public IP address of your Virtual Machine. Refer to the provided screenshot for guidance.
+<TODO: insert screenshot>
+
+#### ii. "docker-compose.yml"
+Open the **docker-compose.yml** file and find the **passport-ui-node** service. Within this service, locate the environment variable named **KRATOS_BROWSER_URL**. Update its value with the public IP address of your Virtual Machine. Refer to the provided screenshot for guidance.
+<TODO: insert screenshot>
+
+### 4. Run DRS, Passport UI and Passport Broker Starter Kit docker containers using docker-compose
+
+For a fresh install, delete any databases and temporary files from previous runs
 ```
 ./refresh.sh
 ```
 
-
-Make sure contrib/kratos/kratos.yml is updated with the public IP of your VM and in docker-compose file
-
-In my case, it is "154.114.10.160"
-
-
-
-
-
-Deploy Data Connect and Passport Starter Kits using docker-compose
-
+Deploy the Starter Kits and their databases using docker-compose
 ```
 docker-compose up -d
 ```
 
-
-### 2. Check if the docker containers are running
-
-List all the running docker containers 
-
+### 5. Check if the docker containers are running
+List all the currently running docker containers. 
 ```
 docker ps
 ```
-You can also get this information from the docker desktop application. Check the list of running docker containers in the **part_2_dataconnect_passports** stack 
+You should see five containers in the response:
+- part_3_kratos
+- part_3_passport_broker
+- part_3_drs
+- part_3_mailslurper
+- part_3_passport_ui
 
-<img width="1009" alt="docker-desktop-list-containers" src="https://user-images.githubusercontent.com/89084962/175333953-976e5406-8202-4590-a266-66077ea66ef6.png">
+<TODO: add image here>
 
-### 3. Load 1000 genomes data into Data Connect
+### 6. Confirm the service-info endpoints
+To verify that the service-info endpoints are working correctly, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/1_Check_DRS_PassportBroker_Container_Status.ipynb` notebook.
 
-The Data Connect Starter Kit comes loaded with two default datasets - phenopackets v1 dataset and 200 genome samples from the 1000 genomes sample dataset.
-
-
-
-### 5. Add the broker and visa information to the DRS server and load 1000 genomes data into DRS
-
-
-
+```
+Get-Started-with-GA4GH-APIs
+│
+└── sessions
+    │
+    └── starterkits
+        │
+        └── part_3_drs_passports
+            │
+            └── client_notebooks
+                │
+                └── 1_Check_DRS_PassportBroker_Container_Status.ipynb
+```
+###  6. Load a subset of 1000 genomes data into DRS
 ```
 python3 resources/drs/db-scripts/populate-drs.py
 ```
 
+### 7. Access DRS objects without using a Passport Token that contains required Visa
+Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/1_Check_DRS_PassportBroker_Container_Status.ipynb` notebook.
 
+```
+Get-Started-with-GA4GH-APIs
+│
+└── sessions
+    │
+    └── starterkits
+        │
+        └── part_3_drs_passports
+            │
+            └── client_notebooks
+                │
+                └── 1_Check_DRS_PassportBroker_Container_Status.ipynb
+```
 
-### 8. Register a new user account with the passport broker
+### 8. Add Visas to the Passport Broker
 
-Visit the welcome page at http://{public_ip_of_your_VM}:4455/welcome
+Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./admin_notebooks/1_Add_Visas_to_Passport_Broker.ipynb` notebook to add all the 5 visas into the Passport Broker.
 
-Towards the bottom, under Account Management press Sign Up, which takes you to http://{public_ip_of_your_VM}:4455/registration where you can create a new account.
+```
+Get-Started-with-GA4GH-APIs
+│
+└── sessions
+    │
+    └── starterkits
+        │
+        └── part_3_drs_passports
+            │
+            └── admin_notebooks
+                │
+                └── 1_Add_Visas_to_Passport_Broker.ipynb
+```
 
-After signing up, you should see your account information on the welcome page, under User Information. Note down the **user-id**
+### 9. Register a new user account with the Passport Broker
+
+To create a new user account, follow these steps:
+
+* Visit the welcome page at `http://{Public_IP_of_your_VM}:4455/welcome`
+* Scroll down to the "Account Management" section and click on "Sign Up". This will redirect you to `http://{Public_IP_of_your_VM}:4455/registration`
+* Fill in the necessary information to create a new account
+* After signing up, you will be redirected to the welcome page. Under "User Information", you will find your account details. Take note of the `user-id`
 <img width="1009" alt="passport-broker-user-id" src="https://user-images.githubusercontent.com/89084962/175366273-f053ca18-583b-444d-b8c2-d9923b6cedf6.png">
+* A successful sign-up will create a new user in the Passport Broker database
 
-A successful sign-up will result in the user being created in the passport broker database as well.
+### 9. Confirm User Creation and Grant Visas
 
-Go to ....ipynb to confirm this and grant required visas to this user to access the DRS objects of interest
+Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./admin_notebooks/2_Grant_Visas_to_User.ipynb` notebook to confirm the user's presence in the Passport Broker Database and grant them the necessary visas.
 
+```
+Get-Started-with-GA4GH-APIs
+│
+└── sessions
+    │
+    └── starterkits
+        │
+        └── part_3_drs_passports
+            │
+            └── admin_notebooks
+                │
+                └── 2_Grant_Visas_to_User.ipynb
+```
+### 10. Obtain Passport Token with Selected Visas from the Passport UI
 
-### 10. Log back into the passport broker, select visas, and obtain the passport token
-
-Back in the [welcome page](http://127.0.0.1:4455/welcome) press [Get Passport Token](http://127.0.0.1:4455/passport). On this page, you should see your assigned visas, check all of them and press Get Passport Token.
+* Go back to the welcome page at `http://{Public_IP_of_your_VM}:4455/welcome`
+* Click on **Get Passport Token** button. This will take you to a page where you can view your assigned visas
+* Check all the visas that you require and click on **Get Passport Token**
 <img width="1009" alt="image" src="https://user-images.githubusercontent.com/89084962/175381003-f91f6160-6dd3-4c3f-afbb-d1f4acba771d.png">
+* The passport token will be generated.
+* You can verify the validity of your JWT token by visiting [jwt.io](https://jwt.io/) and pasting the passport JWT token to examine its contents.
 
-You can confirm the validity of your JWT token by visiting https://jwt.io/ and pasting the passport JWT token to examine its contents.
-
-11. Take this passport token to DRS server to obtain access to DRS objects - .ipynb notebook
-
-
-
-### 13. Stop and Remove all docker containers, networks, volumes, and images created in this session
-Ensure you are in the working directory for Starter Kits Part 2 before running `docker-compose down`
+### 11. Take this passport token to DRS server to obtain access to DRS objects
+Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/3_Access_DRS_Object_with_Passport_Token.ipynb` notebook.
 
 ```
-cd Get-Started-with-GA4GH-APIs/starterkits/part_2_dataconnect_passports
+Get-Started-with-GA4GH-APIs
+│
+└── sessions
+    │
+    └── starterkits
+        │
+        └── part_3_drs_passports
+            │
+            └── client_notebooks
+                │
+                └── 3_Access_DRS_Object_with_Passport_Token.ipynb
 ```
+
+### 12. Clean up
+Finally, to stop and remove all the deployed docker containers, networks and volumes created in this session, run the following command from the working directory of this session ( `Get-Started-with-GA4GH-APIs/starterkits/part_3_drs_passports`)
 ```
 docker-compose down
 ```

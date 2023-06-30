@@ -59,7 +59,7 @@ For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu e
 ***
 ### Part 3: Controlled Data Access
 
-**Time:**  July 12, 2023 | 4:15 PM - 5 PM SAST
+**Time:**  July 12, 2023 | 4:15 PM - 5:00 PM SAST
 
 **Summary:** 
 * Run DRS and Passport Broker instances using Docker. 
