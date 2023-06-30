@@ -37,11 +37,15 @@ To ensure proper redirection by the Passport UI service, please follow these ste
 
 #### i. "./contrib/kratos/kratos.yml"
 Open the **./contrib/kratos/kratos.yml** file and locate all the re-direct URLs. Update each of these URLs with the public IP address of your Virtual Machine. Refer to the provided screenshot for guidance.
-<TODO: insert screenshot>
+
+<img width="598" alt="image" src="https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/assets/89084962/697e846e-ff8c-460f-b01f-02b640e15dd5">
+
 
 #### ii. "docker-compose.yml"
 Open the **docker-compose.yml** file and find the **passport-ui-node** service. Within this service, locate the environment variable named **KRATOS_BROWSER_URL**. Update its value with the public IP address of your Virtual Machine. Refer to the provided screenshot for guidance.
-<TODO: insert screenshot>
+
+<img width="598" alt="image" src="https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/assets/89084962/4f916b2d-9f78-4775-9591-a34a9fdcce7d">
+
 
 ### 4. Run DRS, Passport UI and Passport Broker Starter Kit docker containers using docker-compose
 
@@ -67,7 +71,8 @@ You should see five containers in the response:
 - part_3_mailslurper
 - part_3_passport_ui
 
-<TODO: add image here>
+<img width="1435" alt="image" src="https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/assets/89084962/37d9c7e6-93db-4a29-b6c2-15e901ef7c0a">
+
 
 ### 6. Confirm the service-info endpoints
 To verify that the service-info endpoints are working correctly, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/1_Check_DRS_PassportBroker_Container_Status.ipynb` notebook.
