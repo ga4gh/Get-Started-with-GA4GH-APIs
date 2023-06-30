@@ -41,11 +41,11 @@ List all the currently running docker containers.
 ```
 docker ps
 ```
-You should see two containers:
+You should see two containers in the response:
 - part_1_wes
 - part_1_drs
 
-TODO: add image here
+<img width="1317" alt="image" src="https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/assets/89084962/fd33dde3-3456-4bdf-94ac-c69bfd54b8c0">
 
 ### 5. Confirm the service-info endpoints
 To verify that the service-info endpoints are working correctly, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/1_Check_DRS_WES_Container_Status.ipynb` notebook.
