@@ -5,9 +5,6 @@ import datetime
 import hashlib
 
 drs_map = {}
-drs_map_file = './tmp/drs_map.json'
-
-
 timestamp = datetime.datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
 aws_region = "us-east-2"
 aws_bucket = "ga4gh-ismb-tutorial-2022"
@@ -215,17 +212,18 @@ def add_1k_genomes_lowcov_dataset_to_drs():
     for record in input_fh:
         record_split = record.rstrip().split("\t")
         record_dict = {header[i] : record_split[i] for i in range(0, len(header))}
-        superpop = superpops[superpop_map[record_dict["sample_id"]]]
+        this_sample_id = record_dict["sample_id"]
+        superpop = superpops[superpop_map[this_sample_id]]
         superpop_bundle_name = "1000genomes.%s.superpopulation" % superpop["name"]
         superpop_bundle_id = bundle_id_from_name(superpop_bundle_name)
-        cram_bundle_name = "%s.1000genomes.lowcov.downsampled.bundle" % (record_dict["sample_id"])
+        cram_bundle_name = "%s.1000genomes.lowcov.downsampled.bundle" % (this_sample_id)
         cram_bundle_id = bundle_id_from_name(cram_bundle_name)
         
         # CRAM/CRAI Bundle
         post_drs_object_to_server(
             object_id=cram_bundle_id,
-            description="Low coverage, downsampled CRAM/CRAI bundle for sample %s" % (record_dict["sample_id"]),
-            name="%s 1000 Genomes Downsampled Low Coverage CRAM Bundle" % (record_dict["sample_id"]),
+            description="Low coverage, downsampled CRAM/CRAI bundle for sample %s" % (this_sample_id),
+            name="%s 1000 Genomes Downsampled Low Coverage CRAM Bundle" % (this_sample_id),
             version="1.0.0",
             aliases=[
                 "%s low coverage downsampled bundle" % record_dict["sample_id"]
@@ -237,12 +235,12 @@ def add_1k_genomes_lowcov_dataset_to_drs():
         
         # CRAM File
         post_drs_object_to_server(
-            object_id="%s.1000genomes.lowcov.downsampled.cram" % (record_dict["sample_id"]),
-            description="Low coverage, downsampled CRAM file for sample %s" % (record_dict["sample_id"]),
-            name="%s 1000 Genomes Downsampled Low Coverage CRAM file" % (record_dict["sample_id"]),
+            object_id="%s.1000genomes.lowcov.downsampled.cram" % (this_sample_id),
+            description="Low coverage, downsampled CRAM file for sample %s" % (this_sample_id),
+            name="%s 1000 Genomes Downsampled Low Coverage CRAM file" % (this_sample_id),
             version="1.0.0",
             aliases=[
-                "%s low coverage downsampled CRAM" % record_dict["sample_id"]
+                "%s low coverage downsampled CRAM" % this_sample_id
             ],
             is_bundle=False,
             size=record_dict["cram_size"],
@@ -251,18 +249,18 @@ def add_1k_genomes_lowcov_dataset_to_drs():
             checksum_sha1=record_dict["cram_sha1"],
             checksum_sha256=record_dict["cram_sha256"],
             drs_object_parent_ids=[cram_bundle_id],
-            aws_file_key="/data/1000genomes/cram/lowcov/%s.lowcoverage.downsampled.cram" % record_dict["sample_id"],
+            aws_file_key="/data/1000genomes/cram/lowcov/%s.lowcoverage.downsampled.cram" % this_sample_id,
             passport_visa_id=superpop["visa_id"]
         )
 
         #CRAI File
         post_drs_object_to_server(
-            object_id="%s.1000genomes.lowcov.downsampled.crai" % (record_dict["sample_id"]),
-            description="Low coverage, downsampled CRAI file for sample %s" % (record_dict["sample_id"]),
-            name="%s 1000 Genomes Downsampled Low Coverage CRAI file" % (record_dict["sample_id"]),
+            object_id="%s.1000genomes.lowcov.downsampled.crai" % (this_sample_id),
+            description="Low coverage, downsampled CRAI file for sample %s" % (this_sample_id),
+            name="%s 1000 Genomes Downsampled Low Coverage CRAI file" % (this_sample_id),
             version="1.0.0",
             aliases=[
-                "%s low coverage downsampled CRAI" % record_dict["sample_id"]
+                "%s low coverage downsampled CRAI" % this_sample_id
             ],
             is_bundle=False,
             size=record_dict["crai_size"],
@@ -271,22 +269,27 @@ def add_1k_genomes_lowcov_dataset_to_drs():
             checksum_sha1=record_dict["crai_sha1"],
             checksum_sha256=record_dict["crai_sha256"],
             drs_object_parent_ids=[cram_bundle_id],
-            aws_file_key="/data/1000genomes/cram/lowcov/%s.lowcoverage.downsampled.cram.crai" % record_dict["sample_id"],
+            aws_file_key="/data/1000genomes/cram/lowcov/%s.lowcoverage.downsampled.cram.crai" % this_sample_id,
             passport_visa_id=superpop["visa_id"]
         )
+        print("Added CRAM, CRAI and CRAM/CRAI bundle for {}".format(this_sample_id))
 
 def main():
     """Register all test dataset DRS Objects on local Starter Kit DRS server"""
-
-    add_bed_to_drs()
-    add_ref_to_drs()
-    add_1k_genomes_lowcov_dataset_to_drs()
     
-    # Save the mapping of previous drs_ids to hex drs_ids
-    with open (drs_map_file, 'w') as f:
-        json.dump(drs_map, f, indent=3)
+    print("Loading a subset of One Thousand Genomes Sample Data into DRS database.....")
+    
+    add_bed_to_drs()
+    print("Successfully added test dataset BED file to DRS")
+    
+    add_ref_to_drs()
+    print("Successfully added GRCh38 reference genome to Starter Kit DRS")
+    
+    add_1k_genomes_lowcov_dataset_to_drs()
+    print("Successfully added test CRAM dataset (from 1000 Genomes) to Starter Kit DRS")
 
-
+    print("Process Completed!")
+    
 
 if __name__ == "__main__":
     main()
