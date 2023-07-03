@@ -26,7 +26,7 @@ services:
       - KRATOS_ADMIN_URL=http://kratos:4434/
       - PORT=4455
       - SECURITY_MODE=
-      - KRATOS_BROWSER_URL=http://154.114.10.160:4433/
+      - KRATOS_BROWSER_URL=http://{your-public-ip}:4433/
       - PASSPORT_BROKER_PUBLIC_URL=http://passport-broker.ga4gh.org:4500/ga4gh/passport/v1/
       - PASSPORT_BROKER_ADMIN_URL=http://passport-broker.ga4gh.org:4501/admin/ga4gh/passport/v1/
     ports:

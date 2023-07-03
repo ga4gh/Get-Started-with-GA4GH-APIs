@@ -33,19 +33,18 @@ cd Get-Started-with-GA4GH-APIs/sessions/starterkits/part_3_drs_passports
 
 ### 3. Update *./contrib/kratos/kratos.yml* and *docker-compose.yml* files with the public IP of your Virtual Machine
 
-To ensure proper redirection by the Passport UI service, please follow these steps:
+To update the *./contrib/kratos/kratos.yml* and *docker-compose.yml* files with the Public IP of your VM, execute the following command, replacing XYZ with your actual Public IP:
 
-#### i. "./contrib/kratos/kratos.yml"
-Open the **./contrib/kratos/kratos.yml** file and locate all the re-direct URLs. Update each of these URLs with the public IP address of your Virtual Machine. Refer to the provided screenshot for guidance.
+```
+sed -i.bak -e's/{your-public-ip}/XYZ/' ./contrib/kratos/kratos.yml docker-compose.yml
+```
 
-<img width="598" alt="image" src="https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/assets/89084962/697e846e-ff8c-460f-b01f-02b640e15dd5">
+For example, if Public IP = `154.114.10.160`, the command will be
+```
+sed -i.bak -e's/{your-public-ip}/154.114.10.160/' ./contrib/kratos/kratos.yml docker-compose.yml
+```
 
-
-#### ii. "docker-compose.yml"
-Open the **docker-compose.yml** file and find the **passport-ui-node** service. Within this service, locate the environment variable named **KRATOS_BROWSER_URL**. Update its value with the public IP address of your Virtual Machine. Refer to the provided screenshot for guidance.
-
-<img width="598" alt="image" src="https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/assets/89084962/4f916b2d-9f78-4775-9591-a34a9fdcce7d">
-
+This command will replace all occurrences of {your-public-ip} with the specified IP in both the *./contrib/kratos/kratos.yml* file (11 instances) and the *docker-compose.yml* file (1 instance).
 
 ### 4. Run DRS, Passport UI and Passport Broker Starter Kit docker containers using docker-compose
 
@@ -137,6 +136,10 @@ To create a new user account, follow these steps:
 * Visit the welcome page at `http://{Public_IP_of_your_VM}:4455/welcome`
 * Scroll down to the "Account Management" section and click on "Sign Up". This will redirect you to `http://{Public_IP_of_your_VM}:4455/registration`
 * Fill in the necessary information to create a new account
+  * E-Mail: `demo@gmail.com`
+  * Password: `ga4ghstarterkit`
+  * First Name: `demo`
+  * Last Name: `demo`
 * After signing up, you will be redirected to the welcome page. Under "User Information", you will find your account details. Take note of the `user-id`
 <img width="1009" alt="passport-broker-user-id" src="https://user-images.githubusercontent.com/89084962/175366273-f053ca18-583b-444d-b8c2-d9923b6cedf6.png">
 * A successful sign-up will create a new user in the Passport Broker database

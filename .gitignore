@@ -23,3 +23,9 @@ sessions/starterkits/part_2_dataconnect_passports/helper_notebooks/drs_map.json
 
 # kratos database
 db.sqlite
+
+# docker backup
+docker-compose.yml.bak
+
+# kratos backup
+kratos.yml.bak
