@@ -24,7 +24,7 @@ Ensure that all required software and tools are downloaded and installed correct
 
 ### 2. Make sure you are in `part_1_drs_wes` directory
 ```
-cd Get-Started-with-GA4GH-APIs/sessions/starterkits/part_1_drs_wes
+cd ~/Get-Started-with-GA4GH-APIs/sessions/starterkits/part_1_drs_wes
 ```
 ### 3. Run DRS and WES Starter Kit docker containers using docker-compose
 
@@ -71,7 +71,7 @@ Get-Started-with-GA4GH-APIs
 ```
 python3 resources/drs/db-scripts/populate-drs.py
 ```
-### 6. Explore DRS endpoints
+### 7. Explore DRS endpoints
 
 To explore various DRS endpoints, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/2_Explore_DRS_Endpoints.ipynb` notebook.
 ```
@@ -89,7 +89,7 @@ Get-Started-with-GA4GH-APIs
 ```
 Find the detailed GA4GH DRS Specification [here](https://github.com/ga4gh/data-repository-service-schemas).
 
-### 7. Explore WES Endpoints
+### 8. Explore WES Endpoints
 To explore various WES endpoints, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/3_Explore_WES_Endpoints.ipynb` notebook.
 ```
 Get-Started-with-GA4GH-APIs
@@ -106,8 +106,19 @@ Get-Started-with-GA4GH-APIs
 ```
 Find the detailed GA4GH WES Specification [here](https://github.com/ga4gh/workflow-execution-service-schemas).
 
-### 8. Clean up
-Finally, to stop and remove all the deployed docker containers, networks and volumes created in this session, run the following command from the working directory of this session ( `Get-Started-with-GA4GH-APIs/starterkits/part_1_drs_wes`)
+### 9. Clean up
+To stop and remove all the deployed Docker containers, networks, and volumes created in this session, follow these steps:
+
+Make sure you are in the working directory of this session by running this command:
+
+```
+cd ~/Get-Started-with-GA4GH-APIs/starterkits/part_1_drs_wes
+```
+
+The following command stops and removes all the Docker resources created in this session:
+
 ```
 docker-compose down
 ```
+
+To confirm the cleanup, execute `docker ps` command. The response should not list any of the Docker containers from this session.

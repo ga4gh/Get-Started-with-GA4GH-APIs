@@ -28,7 +28,7 @@ Ensure that all required software and tools are downloaded and installed correct
 
 ### 2. Make sure you are in `part_3_drs_passports` directory
 ```
-cd Get-Started-with-GA4GH-APIs/sessions/starterkits/part_3_drs_passports
+cd ~/Get-Started-with-GA4GH-APIs/sessions/starterkits/part_3_drs_passports
 ```
 
 ### 3. Update *./contrib/kratos/kratos.yml* and *docker-compose.yml* files with the public IP of your Virtual Machine
@@ -188,7 +188,18 @@ Get-Started-with-GA4GH-APIs
 ```
 
 ### 12. Clean up
-Finally, to stop and remove all the deployed docker containers, networks and volumes created in this session, run the following command from the working directory of this session ( `Get-Started-with-GA4GH-APIs/starterkits/part_3_drs_passports`)
+To stop and remove all the deployed Docker containers, networks, and volumes created in this session, follow these steps:
+
+Make sure you are in the working directory of this session by running this command:
+
+```
+cd ~/Get-Started-with-GA4GH-APIs/starterkits/part_3_drs_passports
+```
+
+The following command stops and removes all the Docker resources created in this session:
+
 ```
 docker-compose down
 ```
+
+To confirm the cleanup, execute `docker ps` command. The response should not list any of the Docker containers from this session.
