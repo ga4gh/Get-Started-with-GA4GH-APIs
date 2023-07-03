@@ -75,7 +75,7 @@ You should see five containers in the response:
 
 
 ### 6. Confirm the service-info endpoints
-To verify that the service-info endpoints are working correctly, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/1_Check_DRS_PassportBroker_Container_Status.ipynb` notebook.
+To verify that the service-info endpoints are working correctly, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/1_Check_DRS_PassportBroker_Container_Status.ipynb` notebook.
 
 ```
 Get-Started-with-GA4GH-APIs
@@ -86,7 +86,7 @@ Get-Started-with-GA4GH-APIs
         │
         └── part_3_drs_passports
             │
-            └── client_notebooks
+            └── notebooks
                 │
                 └── 1_Check_DRS_PassportBroker_Container_Status.ipynb
 ```
@@ -96,7 +96,7 @@ python3 resources/drs/db-scripts/populate-drs.py
 ```
 
 ### 7. Access DRS objects without using a Passport Token that contains required Visa
-Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/1_Check_DRS_PassportBroker_Container_Status.ipynb` notebook.
+Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/2_Access_DRS_object_without_Passport_Token.ipynb` notebook.
 
 ```
 Get-Started-with-GA4GH-APIs
@@ -107,14 +107,14 @@ Get-Started-with-GA4GH-APIs
         │
         └── part_3_drs_passports
             │
-            └── client_notebooks
+            └── notebooks
                 │
-                └── 1_Check_DRS_PassportBroker_Container_Status.ipynb
+                └── 2_Access_DRS_object_without_Passport_Token.ipynb
 ```
 
-### 8. Add Visas to the Passport Broker
+### 8. Acting as an Admin, Add Visas to the Passport Broker
 
-Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./admin_notebooks/1_Add_Visas_to_Passport_Broker.ipynb` notebook to add all the 5 visas into the Passport Broker.
+Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/3_Add_Visas_to_Passport_Broker.ipynb` notebook to add all the 5 visas into the Passport Broker.
 
 ```
 Get-Started-with-GA4GH-APIs
@@ -125,9 +125,9 @@ Get-Started-with-GA4GH-APIs
         │
         └── part_3_drs_passports
             │
-            └── admin_notebooks
+            └── notebooks
                 │
-                └── 1_Add_Visas_to_Passport_Broker.ipynb
+                └── 3_Add_Visas_to_Passport_Broker.ipynb
 ```
 
 ### 9. Register a new user account with the Passport Broker
@@ -141,9 +141,9 @@ To create a new user account, follow these steps:
 <img width="1009" alt="passport-broker-user-id" src="https://user-images.githubusercontent.com/89084962/175366273-f053ca18-583b-444d-b8c2-d9923b6cedf6.png">
 * A successful sign-up will create a new user in the Passport Broker database
 
-### 9. Confirm User Creation and Grant Visas
+### 9. Acting as an Admin, Confirm User Creation and Grant Visas
 
-Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./admin_notebooks/2_Grant_Visas_to_User.ipynb` notebook to confirm the user's presence in the Passport Broker Database and grant them the necessary visas.
+Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/4_Grant_Visas_to_User.ipynb` notebook to confirm the user's presence in the Passport Broker Database and grant them the necessary visas.
 
 ```
 Get-Started-with-GA4GH-APIs
@@ -154,9 +154,9 @@ Get-Started-with-GA4GH-APIs
         │
         └── part_3_drs_passports
             │
-            └── admin_notebooks
+            └── notebooks
                 │
-                └── 2_Grant_Visas_to_User.ipynb
+                └── 4_Grant_Visas_to_User.ipynb
 ```
 ### 10. Obtain Passport Token with Selected Visas from the Passport UI
 
@@ -168,7 +168,7 @@ Get-Started-with-GA4GH-APIs
 * You can verify the validity of your JWT token by visiting [jwt.io](https://jwt.io/) and pasting the passport JWT token to examine its contents.
 
 ### 11. Take this passport token to DRS server to obtain access to DRS objects
-Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/3_Access_DRS_Object_with_Passport_Token.ipynb` notebook.
+Go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/5_Access_DRS_Object_with_Passport_Token.ipynb` notebook.
 
 ```
 Get-Started-with-GA4GH-APIs
@@ -179,9 +179,9 @@ Get-Started-with-GA4GH-APIs
         │
         └── part_3_drs_passports
             │
-            └── client_notebooks
+            └── notebooks
                 │
-                └── 3_Access_DRS_Object_with_Passport_Token.ipynb
+                └── 5_Access_DRS_Object_with_Passport_Token.ipynb
 ```
 
 ### 12. Clean up

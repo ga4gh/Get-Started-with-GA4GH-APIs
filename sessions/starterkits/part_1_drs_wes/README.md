@@ -52,7 +52,7 @@ You should see two containers in the response:
 <img width="1438" alt="image" src="https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/assets/89084962/87bc82fe-eff2-4fdf-b7e9-9b72d9d53e1c">
 
 ### 5. Confirm the service-info endpoints
-To verify that the service-info endpoints are working correctly, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/1_Check_DRS_WES_Container_Status.ipynb` notebook.
+To verify that the service-info endpoints are working correctly, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/1_Check_DRS_WES_Container_Status.ipynb` notebook.
 
 ```
 Get-Started-with-GA4GH-APIs
@@ -63,7 +63,7 @@ Get-Started-with-GA4GH-APIs
         │
         └── part_1_drs_wes
             │
-            └── client_notebooks
+            └── notebooks
                 │
                 └── 1_Check_DRS_WES_Container_Status.ipynb
 ```
@@ -73,7 +73,7 @@ python3 resources/drs/db-scripts/populate-drs.py
 ```
 ### 6. Explore DRS endpoints
 
-To explore various DRS endpoints, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/2_Explore_DRS_Endpoints.ipynb` notebook.
+To explore various DRS endpoints, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/2_Explore_DRS_Endpoints.ipynb` notebook.
 ```
 Get-Started-with-GA4GH-APIs
 │
@@ -83,14 +83,14 @@ Get-Started-with-GA4GH-APIs
         │
         └── part_1_drs_wes
             │
-            └── client_notebooks
+            └── notebooks
                 │
                 └── 2_Explore_DRS_Endpoints.ipynb
 ```
 Find the detailed GA4GH DRS Specification [here](https://github.com/ga4gh/data-repository-service-schemas).
 
 ### 7. Explore WES Endpoints
-To explore various WES endpoints, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./client_notebooks/3_Explore_WES_Endpoints.ipynb` notebook.
+To explore various WES endpoints, go to Jupyter Notebook using a browser on your local machine and follow the steps in `./notebooks/3_Explore_WES_Endpoints.ipynb` notebook.
 ```
 Get-Started-with-GA4GH-APIs
 │
@@ -100,7 +100,7 @@ Get-Started-with-GA4GH-APIs
         │
         └── part_1_drs_wes
             │
-            └── client_notebooks
+            └── notebooks
                 │
                 └── 3_Explore_WES_Endpoints.ipynb
 ```
