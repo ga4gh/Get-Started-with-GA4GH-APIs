@@ -5,7 +5,7 @@
 
 **Time:** July 10, 2023 | 2:45 PM - 3:30 PM SAST
 
-**Slides:** [link]() (TODO: Update link in the slides)
+**Slides:** [link](https://docs.google.com/presentation/d/1R0AZDTl8JAGJgvU8A3ESCk7OKp6l77KW/edit?usp=sharing&ouid=116022107626925645879&rtpof=true&sd=true)
 
 ## Outline
 

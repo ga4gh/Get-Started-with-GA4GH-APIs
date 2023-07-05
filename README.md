@@ -21,7 +21,7 @@ In this tutorial the participants will play the roles of Data Provider, Data Con
 
 ## Environment Set up
 
-For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu environment. These VMs have already been configured with the required software installations. If you would like to set up your own VM, please refer to the provided terraform template (TODO: link to the terraform here).
+For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu environment. These VMs have already been configured with the required software installations. If you would like to set up your own VM, please refer to the details at [grbot/elwazi-workshop-vm-setup](https://github.com/grbot/elwazi-workshop-vm-setup).
 
 ## Schedule
 

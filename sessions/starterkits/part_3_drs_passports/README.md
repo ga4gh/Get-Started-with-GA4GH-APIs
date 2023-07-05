@@ -5,7 +5,7 @@
 
 **Time:** July 12, 2023 | 4:15 PM - 5:00 PM SAST
 
-**Slides:** [link]() (TODO: Update link in the slides)
+**Slides:** [link](https://docs.google.com/presentation/d/1dje_Lj6LyFJFzDXsLpQhOofgOh2ZAEvs/edit?usp=sharing&ouid=116022107626925645879&rtpof=true&sd=true)
 
 ## Outline
 In this session, participants will gain familiarity with the process of using GA4GH Passports to access controlled data through the Data Repository Service (DRS). Using Docker and Docker Compose, participants will be able to download and run local instances of DRS, Passport Broker, and Passport UI Starter Kits. They will then populate the DRS instance with references to public genomics datasets, such as 1000 Genomes CRAM and CRAI files. 
