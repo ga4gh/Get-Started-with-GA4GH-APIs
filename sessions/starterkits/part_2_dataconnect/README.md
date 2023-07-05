@@ -164,7 +164,7 @@ http://localhost:5000/ga4gh/drs/v1/objects/28ffe6386b78fffb7cd0a7b2d0a79846
 Ensure you are in the working directory for Starter Kits Part 2 before running `docker-compose down`
 
 ```
-cd Get-Started-with-GA4GH-APIs/starterkits/part_2_dataconnect
+cd Get-Started-with-GA4GH-APIs/sessions/starterkits/part_2_dataconnect
 ```
 ```
 docker-compose down
