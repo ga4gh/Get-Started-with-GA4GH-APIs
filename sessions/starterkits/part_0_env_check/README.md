@@ -17,7 +17,7 @@ It should return `/home/{user_name}`
 ## 2. Python
 Check the installed Python version by running the following command:
 ```
-python --version
+python3 --version
 ```
 Make sure the version is 3.x.
 
@@ -26,14 +26,17 @@ Check the installed sqlite3 version by running the following command:
 ```
 sqlite3 --version
 ```
-Make sure it returns the installed sqlite3 version
+Make sure it returns the installed sqlite3 version.
+
+e.g. `3.37.2 2022-01-06 13:25:41 872ba256cbf61d9290b571c0e6d82a20c224ca3ad82971edc46b29818d5dalt1`
 
 ## 4. Docker
 Check if Docker is properly installed by running the following command:
 ```
 docker run hello-world
 ```
-It should return "Hello from Docker!" if Docker is working correctly.
+This will attempt find a local `hello-world` docker image. If the image doesn't exist, it will pull an image from `library/hello-world`.
+If docker is running correctly, we should see a message that starts with "Hello from Docker!"
 
 ## 5. Download Docker images
 Download the required Docker images by running the following command:
@@ -47,6 +50,9 @@ docker pull ga4gh/ga4gh-starter-kit-passport-ui-node:0.0.2 &\
 docker pull oryd/mailslurper:latest-smtps &\
 docker pull ga4gh/ga4gh-starter-kit-passport-broker:0.0.2
 ```
+We will initially see 7 PID listed in the command line. Afterwards, the docker image pulling processes begin.
+Once all the progress bars stop moving, hit `Enter` once to ensure that all `docker pull` commands status are `Done`.
+
 
 ## 6. Check if all the Docker images are successfully downloaded
 Run the following command to list all the downloaded Docker images:
