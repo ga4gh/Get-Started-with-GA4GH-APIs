@@ -3,7 +3,7 @@
 
 **Starter Kits:** GA4GH Passports, Data Repository Service (DRS)
 
-**Time:** July 12, 2023 | 4:15 PM - 5:00 PM SAST
+**Time:** July 11, 2023 | 4:00 PM - 5:00 PM SAST
 
 **Slides:** [link](https://docs.google.com/presentation/d/1dje_Lj6LyFJFzDXsLpQhOofgOh2ZAEvs/edit?usp=sharing&ouid=116022107626925645879&rtpof=true&sd=true)
 

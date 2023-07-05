@@ -48,7 +48,7 @@ For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu e
 [**Go to Part 1**](./sessions/starterkits/part_1_drs_wes/README.md)
 ***
 ### Part 2: Data Discovery
-**Time:** July 11, 2023 | 4:30 PM - 5:00 PM SAST \
+**Time:** July 10, 2023 | 4:30 PM - 5:00 PM SAST \
 **Instructor:** Chen Chen \
 **Summary:** 
 * Run Data Connect instance using Docker.
@@ -59,7 +59,7 @@ For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu e
 ***
 ### Part 3: Controlled Data Access
 
-**Time:**  July 12, 2023 | 4:15 PM - 5:00 PM SAST \
+**Time:**  July 11, 2023 | 4:00 PM - 5:00 PM SAST \
 **Instructor:** Yash Puligundla \
 **Summary:** 
 * Run DRS and Passport Broker instances using Docker. 
