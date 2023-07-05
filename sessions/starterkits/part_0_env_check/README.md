@@ -1,3 +1,5 @@
+Slides: https://docs.google.com/presentation/d/1vaDbFvemBZ6HLxR9qF0-WmX2cxfkIcSOE9PsKWCvbSU/edit?usp=sharing
+
 # Environment Set up and Check
 
 ## 1. SSH into the VM
