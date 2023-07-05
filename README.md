@@ -28,8 +28,8 @@ For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu e
 ### Starter Kits:
 
 ### Part 0: Intro to GA4GH Starter Kit and test the environment set up
-**Time:** July 10, 2023 | 11:45 AM - 1:00 PM SAST
-**Instructor:** Alex Tsai
+**Time:** July 10, 2023 | 11:45 AM - 1:00 PM SAST \
+**Instructor:** Alex Tsai \
 **Summary:** 
 * Introduction to GA4GH Starter Kit. 
 * Ensure that all required software and tools are downloaded and installed correctly
@@ -39,8 +39,8 @@ For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu e
 ***
 ### Part 1: Data Abstraction and Workflow Execution
 
-**Time:** July 10, 2023 | 2:45 PM - 3:30 PM SAST
-**Instructor:** Yash Puligundla
+**Time:** July 10, 2023 | 2:45 PM - 3:30 PM SAST \
+**Instructor:** Yash Puligundla \
 **Summary:** 
 * Run DRS and WES instances using Docker.
 * Execute a nextflow workflow using WES.
@@ -48,8 +48,8 @@ For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu e
 [**Go to Part 1**](./sessions/starterkits/part_1_drs_wes/README.md)
 ***
 ### Part 2: Data Discovery
-**Time:** July 11, 2023 | 4:30 PM - 5:00 PM SAST
-**Instructor:** Chen Chen
+**Time:** July 11, 2023 | 4:30 PM - 5:00 PM SAST \
+**Instructor:** Chen Chen \
 **Summary:** 
 * Run Data Connect instance using Docker.
 * Explore the dataset using the Data Connect endpoints.
@@ -59,8 +59,8 @@ For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu e
 ***
 ### Part 3: Controlled Data Access
 
-**Time:**  July 12, 2023 | 4:15 PM - 5:00 PM SAST
-**Instructor:** Yash Puligundla
+**Time:**  July 12, 2023 | 4:15 PM - 5:00 PM SAST \
+**Instructor:** Yash Puligundla \
 **Summary:** 
 * Run DRS and Passport Broker instances using Docker. 
 * Acting as a researcher, obtain authorization for input datasets based on clearance.
