@@ -193,7 +193,7 @@ To stop and remove all the deployed Docker containers, networks, and volumes cre
 Make sure you are in the working directory of this session by running this command:
 
 ```
-cd ~/Get-Started-with-GA4GH-APIs/starterkits/part_3_drs_passports
+cd ~/Get-Started-with-GA4GH-APIs/sessions/starterkits/part_3_drs_passports
 ```
 
 The following command stops and removes all the Docker resources created in this session:
