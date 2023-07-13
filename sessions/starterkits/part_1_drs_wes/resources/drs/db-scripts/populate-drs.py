@@ -13,16 +13,18 @@ aws_bucket = "ga4gh-ismb-tutorial-2022"
 def post_drs_object_to_server(object_id=None, description=None, name=None,
     version=None, aliases=[], is_bundle=None, size=None, mime_type=None,
     checksum_md5=None, checksum_sha1=None, checksum_sha256=None,
-    drs_object_parent_ids=[], aws_file_key=None):
+    drs_object_parent_ids=[], aws_file_key=None, use_object_id=False):
 
     """Submit DRS Object to the local Starter Kit DRS server"""
 
     if is_bundle == None or not is_bundle:
         drs_map[object_id] = checksum_md5
-        	
-    if checksum_md5 != None:
+        if use_object_id == True:
+            drs_map[object_id] = object_id
+
+    if checksum_md5 != None and use_object_id == False:
         object_id = checksum_md5
-        
+
     url = "http://localhost:5001/admin/ga4gh/drs/v1/objects"
     drs_object_json = {
         "id": object_id,
@@ -86,6 +88,27 @@ def add_bed_to_drs():
         aws_file_key="/data/bed/2400kb.bed"
     )
 
+def add_fai_to_drs_for_elwazi_hackathon():
+    # Reference Index
+    post_drs_object_to_server(
+        object_id="063e092e-b9e2-496f-ac5a-27dc3a1764e5",
+        description="GRCh38 Reference Genome Index used for elwazi hackathon",
+        name="GRCh38_full_analysis_set_plus_decoy_hla.fa.fai",
+        version="1.0.0",
+        aliases=[
+            "GRCh38 Index"
+        ],
+        is_bundle=False,
+        size=154196,
+        mime_type="application/fasta/fai",
+        checksum_md5="5ccc91e56dc4a05448dd5b9507ec6bc6",
+        checksum_sha1="8c6e9635f50256e4ecd84bee2bfb1cb27cc8bbd1",
+        checksum_sha256="f361f004bdae5ca68d632458b01a3848d02834ac7176f378e177344d148a6a6d",
+        drs_object_parent_ids=[],
+        aws_file_key="/data/ref/GRCh38_full_analysis_set_plus_decoy_hla.fa.fai",
+        use_object_id=True
+    )
+
 def add_ref_to_drs():
     """Register GRCh38 reference genome on local Starter Kit DRS service"""
 
@@ -140,14 +163,14 @@ def add_ref_to_drs():
     )
 
 def bundle_id_from_name(bundle_name):
-    bundle_hash = hashlib.md5(bundle_name.encode()) 
+    bundle_hash = hashlib.md5(bundle_name.encode())
     bundle_id = bundle_hash.hexdigest()
     drs_map[bundle_name] = bundle_id
     return bundle_id
 
 def add_1k_genomes_highcov_dataset_to_drs():
     """
-    Register test CRAM dataset (from 1000 genomes) on local Starter Kit DRS 
+    Register test CRAM dataset (from 1000 genomes) on local Starter Kit DRS
     """
 
     # create root bundle for high coverage downsampled dataset
@@ -198,9 +221,9 @@ def add_1k_genomes_highcov_dataset_to_drs():
         file_d = {headings[i]: file_metadata[i] for i in range(0, len(headings))}
         bundle_name = "%s.1000genomes.highcov.downsampled.bundle" % (file_d["sample_id"])
         bundle_id = bundle_id_from_name(bundle_name)
-        
 
-            
+
+
         # CRAM/CRAI Bundle
         post_drs_object_to_server(
             object_id=bundle_id,
@@ -262,16 +285,19 @@ def main():
 
     add_bed_to_drs()
     print("Successfully added test dataset BED file to DRS")
-    
+
     add_ref_to_drs()
     print("Successfully added GRCh38 reference genome to Starter Kit DRS")
-    
+
     add_1k_genomes_highcov_dataset_to_drs()
     print("Successfully added test CRAM dataset (from 1000 Genomes) to Starter Kit DRS")
 
+    add_fai_to_drs_for_elwazi_hackathon()
+    print ("Successfully added a test FAI file for the elwazi hackathon")
+
     print("Process Completed!")
-    
-    
-    
+
+
+
 if __name__ == "__main__":
     main()
