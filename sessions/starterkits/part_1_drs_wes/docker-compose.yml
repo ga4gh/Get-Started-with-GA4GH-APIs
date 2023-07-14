@@ -20,7 +20,7 @@ services:
   drs:
     depends_on:
       - drs-database
-    image: ga4gh/ga4gh-starter-kit-drs:0.3.1
+    image: ga4gh/ga4gh-starter-kit-drs:0.3.3
     hostname: drs.starterkit.federatedgenomics.org
     container_name: part_1_drs
     ports:
