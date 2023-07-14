@@ -39,9 +39,13 @@ mkdir -p /tmp/shared/wes/
 Deploy DRS and WES Starter Kits and their databases using docker-compose
 ```
 docker-compose up -d
+
+# with newer versions of docker this might be
+docker compose  up -d
+
 ```
 ### 4. Check if the docker containers are running
-List all the currently running docker containers. 
+List all the currently running docker containers.
 ```
 docker ps
 ```
@@ -119,6 +123,10 @@ The following command stops and removes all the Docker resources created in this
 
 ```
 docker-compose down
+
+# or
+docker compose down
+
 ```
 
 To confirm the cleanup, execute `docker ps` command. The response should not list any of the Docker containers from this session.
