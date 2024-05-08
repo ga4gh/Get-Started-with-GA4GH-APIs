@@ -26,7 +26,7 @@ pip install jupyter
 
 ### Install fasp-clients
 
-- Install the fasp-clients branch of fasp-scripts. FASP is the GA4GH Federated Analysis Systems Project.
+- Install the fasp-clients Python package from GitHub. FASP is the GA4GH Federated Analysis Systems Project.
 
 ```
 pip install git+https://github.com/ga4gh/fasp-clients
