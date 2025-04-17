@@ -1,1 +1,0 @@
-rm -f resources/data-connect/db/data-connect.db
