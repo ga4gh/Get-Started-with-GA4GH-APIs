@@ -1,6 +1,6 @@
 # BOSC 2025 - Walkthrough of GA4GH standards and interoperability it provides for genomic data implementations
 
-
+## Part 0
 ## Introduction
 
 Welcome to the session on GA4GH standards for genomic data sharing and the interoperability it provides. This session is for presentation at the Bioinformatics Open Source Conference held on 21-22 July, 2025 in Liverpool, UK.
@@ -20,35 +20,4 @@ We will demonstrate how this interoperability enables open source, cloud-agnosti
 
 ## Environment Set up
 
-The environment can be set up by: 
-
-1. Check out the branch to local system.
-2. Navigate to the local folder:
-```terminal
-cd ~/Get-Started-with-GA4GH-APIs/sessions/starterkits/part_1_drs_wes
-```
-3. Execute the refresh script:
-```terminal
-./refresh.sh
-```
-4. Create a directory for the WES component to be loaded. This is configured in the kit (the repository downloaded to local):
-```terminal
-mkdir -p /tmp/shared/wes/
-```
-5. Bring up the docker instances through ```docker-compose```:
-```terminal
-docker-compose up -d
-```
-6. Once the docker instances are up, perform a check to ensure two instances are running with image as:
-```terminal
-docker ps
-```
-Image |
------- |
-ga4gh/ga4gh-starter-kit-drs:0.3.1 |
-ga4gh/ga4gh-starter-kit-wes:0.3.2-nextflow |
-
-
-## Running local instances
-
-Once the docker instances are up, note the port number associated with the WES image (default is 6000). The local instance is tested by hitting the WES endpoint (http://localhost:6000/ga4gh/wes/v1/service-info) in a browser or Postman. It will respond with a JSON containing details of the WES instance. 
+To set up the environment on local system (such as laptop), the instructions are available in [Part 1](https://github.com/ga4gh/Get-Started-with-GA4GH-APIs/tree/bosc-2025/sessions/starterkits/part_1_drs_wes).
