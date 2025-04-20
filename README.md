@@ -11,11 +11,12 @@ In this session, we explore two GA4GH standardized API interfaces that enable fe
 1. **Data Repository Service (DRS)**, provides minimal metadata and access information about files that can be used as input to analytical workflows.
 2. **Workflow Execution Service (WES)**, enables researchers to remotely run workflows defined in Common Workflow Language (CWL), Workflow Description Language (WDL), or Nextflow on an input dataset of interest.
 
-In this tutorial the participants will play the roles of Data Provider, Data Consumer and Data Access Committee
 
-  * *System/Platform admin:* Configure, start, and stop GA4GH Starter Kit services 
-  * *Researcher / Data Consumer:* explore direct http access to services
-  * *Data Access Committee (DAC):* Grant/revoke researcher access to datasets
+These two services are fully interoperable. Data retrieved via DRS can be directly consumed by workflows run through WES. This integration facilitates a seamless pipeline from data access to analysis, enhancing reproducibility, collaboration, and scalability. The figure below is a visual representation of the interoperability that can be achieved between implementations of these two standards. 
+
+ 
+We will demonstrate how this interoperability enables open source, cloud-agnostic research workflows using open standards. In addition, we will showcase real-world use cases to illustrate how DRS and WES can support data science and accelerate discovery.
+
 
 ## Environment Set up
 
