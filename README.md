@@ -20,54 +20,31 @@ We will demonstrate how this interoperability enables open source, cloud-agnosti
 
 ## Environment Set up
 
-For the workshop sessions, we will utilize Virtual Machines setup in the Ilifu environment. These VMs have already been configured with the required software installations. If you would like to set up your own VM, please refer to the details at [grbot/elwazi-workshop-vm-setup](https://github.com/grbot/elwazi-workshop-vm-setup).
+The environment can be set up by: 
 
-## Schedule
+1. Check out the branch to local system.
+2. Navigate to the local folder:
+```terminal
+cd ~/Get-Started-with-GA4GH-APIs/sessions/starterkits/part_1_drs_wes
+```
+3. Execute the refresh script:
+```terminal
+./refresh.sh
+```
+4. Create a directory for the WES component to be loaded. This is configured in the kit (the repository downloaded to local):
+```terminal
+mkdir -p /tmp/shared/wes/
+```
+5. Bring up the docker instances through ```docker-compose```:
+```terminal
+docker-compose up -d
+```
+6. Once the docker instances are up, perform a check to ensure two instances are running with image as:
+```terminal
+docker ps
+```
+Image |
+------ |
+ga4gh/ga4gh-starter-kit-drs:0.3.1 |
+ga4gh/ga4gh-starter-kit-wes:0.3.2-nextflow |
 
-### Starter Kits:
-
-### Part 0: Intro to GA4GH Starter Kit and test the environment set up
-**Time:** November 12, 2024 | 9:00 AM - 9:45 PM COT \
-**Instructor:**  \
-**Summary:** 
-* Introduction to GA4GH Starter Kit. 
-* Ensure that all required software and tools are downloaded and installed correctly
-
-[**Go to Part 0**](./sessions/starterkits/part_0_env_check/README.md)
-
-***
-### Part 1: Data Abstraction and Workflow Execution
-
-**Time:** November 12, 2024 | 9:45 AM - 11:00 AM COT \
-**Instructor:**  \
-**Summary:** 
-* Run DRS and WES instances using Docker.
-* Execute a nextflow workflow using WES.
-
-[**Go to Part 1**](./sessions/starterkits/part_1_drs_wes/README.md)
-***
-### Part 2: Data Discovery
-**Time:** November 12, 2024 | 11:00 AM - 12:00 PM COT \
-**Instructor:**  \
-**Summary:** 
-* Run Data Connect instance using Docker.
-* Explore the dataset using the Data Connect endpoints.
-
-[**Go to Part 2**](./sessions/starterkits/part_2_dataconnect/README.md)
-
-***
-### Part 3: Controlled Data Access
-
-**Time:**  November 12, 2024 | 12:00 PM - 1:00 PM COT \
-**Instructor:**  \
-**Summary:** 
-* Run DRS and Passport Broker instances using Docker. 
-* Acting as a researcher, obtain authorization for input datasets based on clearance.
-
-[**Go to Part 3**](./sessions/starterkits/part_3_drs_passports/README.md)
-
-## Instructors
-
-* [Alex Tsai](https://github.com/alextsaihi), Software Engineer, Global Alliance for Genomics and Health
-* [Chen Chen](https://github.com/Chen2x), Software Engineer, Global Alliance for Genomics and Health
-* [Yash Puligundla](https://github.com/yash-puligundla), Senior Software Engineer, Global Alliance for Genomics and Health
