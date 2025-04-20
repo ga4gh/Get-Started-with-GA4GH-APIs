@@ -48,3 +48,7 @@ Image |
 ga4gh/ga4gh-starter-kit-drs:0.3.1 |
 ga4gh/ga4gh-starter-kit-wes:0.3.2-nextflow |
 
+
+## Running local instances
+
+Once the docker instances are up, note the port number associated with the WES image (default is 6000). The local instance is tested by hitting the WES endpoint (http://localhost:6000/ga4gh/wes/v1/service-info) in a browser or Postman. It will respond with a JSON containing details of the WES instance. 
