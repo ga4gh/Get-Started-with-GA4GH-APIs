@@ -1,26 +1,23 @@
-# Starter Kits:
+
 ## Part 1 - Data Abstraction and Workflow Execution
 
 **Starter Kits:** Data Repository Service (DRS) and Workflow Execution Service (WES)
 
-**Time:** November 12, 2024 | 9:45 PM - 11:00 PM COT
-
-**Slides:** [link](https://docs.google.com/presentation/d/1HS1e2rRyTNtQJL69wfn0KX8xN-GpPP1r/edit?usp=sharing&ouid=115324368688756029396&rtpof=true&sd=true)
 
 ## Outline
 
-In this session, participants will gain familiarity with the GA4GH Starter Kits for Data Repository Service (DRS) and Workflow Execution Service (WES) standards. Using Docker and Docker Compose, participants will download and run DRS and WES API instances on their local machine. They will then populate the DRS instance with references to public genomics datasets, such as 1000 Genomes CRAM and CRAI files. Lastly, participants will execute containerized workflows (stored in Github) using WES.
+In this session, we will introduce the GA4GH Starter Kits (SK) for Data Repository Service (DRS) and Workflow Execution Service (WES) standards. Using Docker and Docker Compose, DRS and WES API instances are downloaded and run on local machine. The DRS instance will be populated with references to public genomics datasets, such as 1000 Genomes CRAM and CRAI files. Lastly, containerized workflows will be executed (stored in Github) using WES.
 
-The participants will play the roles of
+The session covers prespectives from the roles of:
 * **Data Provider**
   * *System/Platform admin:* Configure, start, and stop GA4GH Starter Kit services
 * **Data Consumer (Researcher)**
   * Interact with the GA4GH services to accomplish a scientific objective
 
-## Tutorial Steps
+## Steps
 
 ### 1. Prerequisite: Environment Set up and Check
-Ensure that all required software and tools are downloaded and installed correctly by following the steps at [part_0_env_check](./sessions/starterkits/part_0_env_check)
+Ensure that all required software and tools are downloaded and installed correctly.
 
 ### 2. Make sure you are in `part_1_drs_wes` directory
 ```
