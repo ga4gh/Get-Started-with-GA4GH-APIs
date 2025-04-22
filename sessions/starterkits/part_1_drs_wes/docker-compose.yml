@@ -53,8 +53,8 @@ services:
     hostname: wes.starterkit.federatedgenomics.org
     container_name: part_1_wes
     ports:
-      - "5000:5000"
-      - "5001:5001"
+      - "6000:6000"
+      - "6001:6001"
     volumes:
       - "./resources/wes/config:/config"
       - "./resources/wes/db:/db"
