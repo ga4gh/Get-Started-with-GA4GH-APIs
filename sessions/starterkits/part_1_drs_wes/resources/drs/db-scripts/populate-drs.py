@@ -23,7 +23,7 @@ def post_drs_object_to_server(object_id=None, description=None, name=None,
     if checksum_md5 != None:
         object_id = checksum_md5
         
-    url = "http://localhost:5001/admin/ga4gh/drs/v1/objects"
+    url = "http://localhost:4501/admin/ga4gh/drs/v1/objects"
     drs_object_json = {
         "id": object_id,
         "description": description,
